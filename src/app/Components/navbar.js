@@ -1,230 +1,206 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
-import { Search, Bell, Moon, Sun, Monitor } from "lucide-react"; // Assuming you have lucide-react for icons
+import { Moon, Sun, Monitor, X, Menu, FileText } from "lucide-react";
 import { useTheme } from "next-themes";
+import Image from "next/image";
+import { usePathname } from "next/navigation";
+
+// Reusable NavLink component
+const NavLink = ({ href, children, mobile = false, onClick }) => {
+  const pathname = usePathname(); 
+  const isActive = pathname === href;
+  
+  if (mobile) {
+    return (
+      <Link 
+        href={href} 
+        onClick={onClick}
+        className={`block py-3 px-6 text-lg hover:text-white transition-colors duration-200 ${
+          isActive ? "text-white bg-indigo-600" : "text-gray-300"
+        }`}
+      >
+        {children}
+      </Link>
+    );
+  }
+  
+  return (
+    <Link
+      href={href}
+      className={`py-2 border-b-2 transition-colors duration-200 ${
+        isActive
+          ? "border-indigo-600 text-white"
+          : "border-transparent text-slate-300 hover:text-white hover:border-indigo-600"
+      }`}
+    >
+      {children}
+    </Link>
+  );
+};
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
-  const [themeOpen, setThemeOpen] = useState(false);
-  const { setTheme } = useTheme();
+  const { theme, setTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+
+  const pathname = usePathname();
+
+  useEffect(() => setMounted(true), []);
+
+  // Close menu when route changes
+  useEffect(() => {
+    setOpen(false);
+  }, [pathname]);
+
+  // Close menu when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (open && !event.target.closest('nav')) {
+        setOpen(false);
+      }
+    };
+
+    if (open) {
+      document.addEventListener('click', handleClickOutside);
+      return () => document.removeEventListener('click', handleClickOutside);
+    }
+  }, [open]);
+
+
+  const ThemeButton = ({ themeName, icon, label }) => (
+    <button
+      onClick={() => setTheme(themeName)}
+      className={`p-1.5 rounded-full transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 ${
+        theme === themeName
+          ? "bg-indigo-600 text-white shadow-lg"
+          : "text-gray-400 hover:bg-gray-700 hover:text-white"
+      }`}
+      aria-label={`Switch to ${label} theme`}
+    >
+      {icon}
+    </button>
+  );
+
+  const ThemeSelector = ({ mobile = false }) => mounted && (
+    <div className={`flex items-center space-x-1 bg-gray-800 rounded-full p-1 ${mobile ? "ml-2" : ""}`}>
+      <ThemeButton 
+        themeName="light" 
+        icon={<Sun className="h-4 w-4" />} 
+        label="light" 
+      />
+      <ThemeButton 
+        themeName="dark" 
+        icon={<Moon className="h-4 w-4" />} 
+        label="dark" 
+      />
+      <ThemeButton 
+        themeName="system" 
+        icon={<Monitor className="h-4 w-4" />} 
+        label="system" 
+      />
+    </div>
+  );
 
   return (
-    <nav className="w-full bg-gray-900 fixed top-0 left-0 z-50 shadow-md">
-      <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+    <nav className="w-full bg-slate-900 fixed top-0 left-0 z-50 shadow-lg border-b border-gray-800">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex justify-between items-center">
         {/* Logo and Main Nav */}
-        <div className="flex items-center space-x-10">
-          <Link href="/" className="flex items-center space-x-2 text-white">
-            {/* Replace with your actual logo component or SVG */}
-            <svg
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2ZM12 4C16.4183 4 20 7.58172 20 12C20 16.4183 16.4183 20 12 20C7.58172 20 4 16.4183 4 12C4 7.58172 7.58172 4 12 4ZM10.5 8C10.0858 8 9.75 8.33579 9.75 8.75V15.25C9.75 15.6642 10.0858 16 10.5 16H13.5C13.9142 16 14.25 15.6642 14.25 15.25V8.75C14.25 8.33579 13.9142 8 13.5 8H10.5Z"
-                fill="currentColor"
-              />
-            </svg>
-            <span className="font-semibold text-xl">Flow</span>
+        <div className="flex items-center space-x-8">
+          <Link href="/" className="flex items-center space-x-3 text-white hover:opacity-90 transition-opacity">
+            <Image
+              src="/logo.png"
+              alt="Birukdjn Logo"
+              width={48}
+              height={48}
+              className="h-12 w-12 rounded-lg"
+              quality={100}
+              priority
+            />
+            <span className="font-bold text-xl bg-gradient-to-r from-indigo-400 to-indigo-600 bg-clip-text text-transparent">
+              Birukdjn
+            </span>
           </Link>
 
           {/* Desktop Menu */}
-          <ul className="hidden md:flex space-x-8 font-medium text-gray-300">
+          <ul className="hidden md:flex space-x-6 font-medium text-sm">
             <li>
-              <Link
-                href="/dashboard"
-                className="hover:text-white transition-colors duration-200 py-2 border-b-2 border-transparent hover:border-blue-500"
-              >
-                Dashboard
-              </Link>
+              <NavLink href="/">Home</NavLink>
             </li>
             <li>
-              <Link
-                href="/team"
-                className="hover:text-white transition-colors duration-200 py-2 border-b-2 border-transparent hover:border-blue-500"
-              >
-                Team
-              </Link>
+              <NavLink href="/about">About</NavLink>
             </li>
             <li>
-              <Link
-                href="/projects"
-                className="hover:text-white transition-colors duration-200 py-2 border-b-2 border-transparent hover:border-blue-500"
-              >
-                Projects
-              </Link>
-            </li>
+              <NavLink href="/skills">Skills</NavLink>
+            </li> 
             <li>
-              <Link
-                href="/calendar"
-                className="hover:text-white transition-colors duration-200 py-2 border-b-2 border-transparent hover:border-blue-500"
-              >
-                Calendar
-              </Link>
+              <NavLink href="/projects">Projects</NavLink>
+            </li> 
+            <li>
+              <NavLink href="/experience">Experience</NavLink>
+            </li>  
+            <li>
+              <NavLink href="/blogs">Blogs </NavLink>
+            </li> 
+            <li>
+              <NavLink href="/contact">Contact</NavLink>
             </li>
           </ul>
         </div>
-
         {/* Right Section */}
-        <div className="flex items-center space-x-6">
-          {/* Search Bar */}
-          <div className="hidden md:flex items-center bg-gray-800 rounded-md px-3 py-2">
-            <Search className="text-gray-400 h-5 w-5 mr-2" />
-            <input
-              type="text"
-              placeholder="Search"
-              className="bg-transparent text-white focus:outline-none placeholder-gray-400 w-48"
-            />
+        <div className="flex items-center space-x-4">
+           {/* Resume Download Button - Desktop */}
+          <a
+            href="/resume.pdf"
+            download
+            className="hidden md:flex items-center space-x-2 bg-indigo-600 hover:bg-indigo-700 text-white px-3 py-1.5 rounded-md transition-colors duration-200"
+          >
+            <FileText className="h-4 w-4" />
+            <span className="text-sm font-medium">Resume</span>
+          </a>
+          {/* Theme Changer (Desktop) */}
+          <div className="hidden md:flex items-center">
+            <ThemeSelector />
           </div>
-
-          {/* Icons and Theme Changer */}
-          <div className="hidden md:flex items-center space-x-4">
-            <Bell className="text-gray-400 h-6 w-6 hover:text-white cursor-pointer" />
-            <div className="relative">
-              <button
-                onClick={() => setThemeOpen(!themeOpen)}
-                className="flex items-center justify-center w-9 h-9 rounded-full bg-gray-800 hover:bg-gray-700 text-gray-400 hover:text-white focus:outline-none"
-              >
-                <Sun className="h-5 w-5" />
-              </button>
-              {themeOpen && (
-                <div className="absolute right-0 mt-2 w-48 bg-gray-800 rounded-md shadow-lg py-1">
-                  <button
-                    onClick={() => setTheme("light")}
-                    className="flex items-center w-full px-4 py-2 text-sm text-gray-300 hover:bg-gray-700"
-                  >
-                    <Sun className="mr-3 h-5 w-5" />
-                    Light
-                  </button>
-                  <button
-                    onClick={() => setTheme("dark")}
-                    className="flex items-center w-full px-4 py-2 text-sm text-gray-300 hover:bg-gray-700"
-                  >
-                    <Moon className="mr-3 h-5 w-5" />
-                    Dark
-                  </button>
-                  <button
-                    onClick={() => setTheme("system")}
-                    className="flex items-center w-full px-4 py-2 text-sm text-gray-300 hover:bg-gray-700"
-                  >
-                    <Monitor className="mr-3 h-5 w-5" />
-                    System
-                  </button>
-                </div>
-              )}
-            </div>
+          {/* Mobile Icons */}
+          <div className="flex md:hidden items-center space-x-3">
+            <ThemeSelector mobile={true} />
           </div>
-
           {/* Mobile Menu Button */}
           <button
             onClick={() => setOpen(!open)}
-            className="md:hidden text-gray-400 focus:outline-none hover:text-white"
+            className="md:hidden text-gray-400 focus:outline-none hover:text-white p-2 rounded-lg hover:bg-gray-800 transition-colors"
+            aria-label="Toggle menu"
+            aria-expanded={open}
           >
-            {open ? (
-              <svg
-                className="h-6 w-6"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M6 18L18 6M6 6l12 12"
-                />
-              </svg>
-            ) : (
-              <svg
-                className="h-6 w-6"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M4 6h16M4 12h16M4 18h16"
-                />
-              </svg>
-            )}
+            {open ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
           </button>
         </div>
       </div>
-
       {/* Mobile Dropdown */}
       {open && (
-        <div className="md:hidden bg-gray-900 shadow-lg">
-          <ul className="flex flex-col items-center py-4 space-y-4 text-gray-300">
+        <div className="md:hidden bg-gray-900 border-t border-gray-800 shadow-xl animate-in slide-in-from-top duration-300">
+          <ul className="flex flex-col py-2">
             <li>
-              <Link href="/dashboard" onClick={() => setOpen(false)} className="hover:text-white">
-                Dashboard
-              </Link>
+              <NavLink href="/" mobile onClick={() => setOpen(false)}>Home</NavLink>
             </li>
             <li>
-              <Link href="/team" onClick={() => setOpen(false)} className="hover:text-white">
-                Team
-              </Link>
+              <NavLink href="/about" mobile onClick={() => setOpen(false)}>About</NavLink>
             </li>
             <li>
-              <Link href="/projects" onClick={() => setOpen(false)} className="hover:text-white">
-                Projects
-              </Link>
+              <NavLink href="/skills" mobile onClick={() => setOpen(false)}>Skills</NavLink>
+            </li>
+             <li>
+              <NavLink href="/projects" mobile onClick={() => setOpen(false)}>Projects</NavLink>
+            </li> 
+            <li>
+              <NavLink href="/experience" mobile onClick={() => setOpen(false)}>Experience </NavLink>
+            </li> 
+            <li>
+              <NavLink href="/blog" mobile onClick={() => setOpen(false)}>blog</NavLink>
             </li>
             <li>
-              <Link href="/calendar" onClick={() => setOpen(false)} className="hover:text-white">
-                Calendar
-              </Link>
-            </li>
-            <li className="w-full px-6">
-              <div className="flex items-center bg-gray-800 rounded-md px-3 py-2">
-                <Search className="text-gray-400 h-5 w-5 mr-2" />
-                <input
-                  type="text"
-                  placeholder="Search"
-                  className="bg-transparent text-white focus:outline-none placeholder-gray-400 w-full"
-                />
-              </div>
-            </li>
-            <li className="flex items-center space-x-4 pt-4">
-                <Bell className="text-gray-400 h-6 w-6 hover:text-white cursor-pointer" />
-                <div className="relative">
-                  <button
-                    onClick={() => setThemeOpen(!themeOpen)}
-                    className="flex items-center justify-center w-9 h-9 rounded-full bg-gray-800 hover:bg-gray-700 text-gray-400 hover:text-white focus:outline-none"
-                  >
-                    <Sun className="h-5 w-5" />
-                  </button>
-                  {themeOpen && (
-                    <div className="absolute right-0 mt-2 w-48 bg-gray-800 rounded-md shadow-lg py-1">
-                      <button
-                        onClick={() => setTheme("light")}
-                        className="flex items-center w-full px-4 py-2 text-sm text-gray-300 hover:bg-gray-700"
-                      >
-                        <Sun className="mr-3 h-5 w-5" />
-                        Light
-                      </button>
-                      <button
-                        onClick={() => setTheme("dark")}
-                        className="flex items-center w-full px-4 py-2 text-sm text-gray-300 hover:bg-gray-700"
-                      >
-                        <Moon className="mr-3 h-5 w-5" />
-                        Dark
-                      </button>
-                      <button
-                        onClick={() => setTheme("system")}
-                        className="flex items-center w-full px-4 py-2 text-sm text-gray-300 hover:bg-gray-700"
-                      >
-                        <Monitor className="mr-3 h-5 w-5" />
-                        System
-                      </button>
-                    </div>
-                  )}
-                </div>
+              <NavLink href="/contact" mobile onClick={() => setOpen(false)}>Contact</NavLink>
             </li>
           </ul>
         </div>
