@@ -1,5 +1,22 @@
-import Image from "next/image";
+import Hero from "./Pages/hero";
+import About from "./Pages/about";
+import Skills from "./Pages/skills";
+import Projects from "./Pages/projects";
+import Experience from "./Pages/experience";
+import Blogs from "./Pages/blogs";
+import Contact from "./Pages/contact";
+
 
 export default function Home() {
-  
+  return (
+    <div className="min-h-screen bg-white dark:bg-slate-900 transition-colors duration-300">
+      <Hero />
+      <About />
+      <Skills />
+      <Projects />
+      <Experience />
+      <Blogs />
+      <Contact />
+    </div>
+  );
 }
