@@ -146,7 +146,7 @@ export default function Experience() {
         </div>
       </div>
 
-      <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 z-10">
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6  z-10">
         {/* Header Section */}
         <motion.div
           initial={{ opacity: 0, y: 60 }}
@@ -155,12 +155,9 @@ export default function Experience() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <div className="inline-flex items-center space-x-3 mb-4">
-            <Code2 className="w-8 h-8 text-indigo-400" />
-            <GitBranch className="w-8 h-8 text-purple-400" />
-          </div>
+          
           <h2 className="text-4xl md:text-5xl font-black text-white mb-4">
-            Development <span className="bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">Timeline</span>
+            Work <span className="bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">Experience</span>
           </h2>
           <p className="text-xl text-gray-300 max-w-xl mx-auto">
             My coding journey through different branches and commits
@@ -170,7 +167,7 @@ export default function Experience() {
         {/* Circuit Timeline */}
         <div className="relative">
           {/* Main Timeline Trunk */}
-          <div className="absolute md:left-1/2 transform -translate-x-1/2 w-1 h-full mt-50 bg-gradient-to-b from-indigo-500/40 to-purple-500/40 rounded-full">
+          <div className="absolute md:left-1/2 transform -translate-x-1/2 w-1 h-full mt-45 bg-gradient-to-b from-indigo-500/40 to-purple-500/40 rounded-full">
             {/* Animated pulse along the trunk */}
             <motion.div
               className="absolute top-0 left-0 w-full h-8 bg-gradient-to-b from-indigo-400 to-transparent rounded-full"
