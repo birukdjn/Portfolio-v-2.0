@@ -58,7 +58,7 @@ export default function Contact() {
             Get In <span className="text-indigo-600">Touch</span>
           </h2>
           <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-            Have a project in mind? Let's discuss how we can work together to bring your ideas to life
+            {"Have a project in mind? Let's discuss how we can work together to bring your ideas to life"}
           </p>
         </motion.div>
 
