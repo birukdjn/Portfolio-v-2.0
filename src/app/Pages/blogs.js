@@ -1,115 +1,235 @@
 "use client";
 import { motion } from "framer-motion";
 import Link from "next/link";
+import Image from "next/image";
+import { Calendar, Clock, ArrowRight, ExternalLink, BookOpen } from "lucide-react";
 
 const blogs = [
   {
     title: "Building Scalable React Applications",
-    excerpt: "Learn how to structure your React apps for scalability and maintainability",
+    excerpt: "Learn how to structure your React apps for scalability and maintainability with modern patterns and best practices",
     date: "2024-01-15",
     readTime: "5 min read",
-    category: "React"
+    category: "React",
+    image: "/biruk.png",
+    tags: ["React", "Architecture", "Performance"]
   },
   {
     title: "Introduction to Next.js 14",
-    excerpt: "Exploring the new features and improvements in Next.js 14",
+    excerpt: "Exploring the new features and improvements in Next.js 14 including App Router, Server Components and enhanced performance",
     date: "2024-01-10",
     readTime: "8 min read",
-    category: "Next.js"
+    category: "Next.js",
+    image: "⚡",
+    tags: ["Next.js", "Framework", "Updates"]
   },
   {
     title: "AI Integration in Web Apps",
-    excerpt: "How to integrate AI capabilities into your web applications",
+    excerpt: "How to integrate AI capabilities into your web applications using modern APIs and machine learning libraries",
     date: "2024-01-05",
     readTime: "6 min read",
-    category: "AI"
+    category: "AI",
+    image: "🤖",
+    tags: ["AI", "Integration", "Innovation"]
   }
 ];
 
 export default function Blogs() {
   return (
-    <section id="blogs" className="py-20 bg-white dark:bg-slate-800">
-      <div className="max-w-7xl mx-auto px-6">
+    <section id="blogs" className="relative py-20 bg-gradient-to-br from-slate-950 via-indigo-950 to-slate-950 text-white overflow-hidden">
+      {/* Consistent Animated Background */}
+      <div className="absolute inset-0 overflow-hidden">
+        {/* Animated Gradient Orbs */}
+        <div className="absolute top-20 left-10 w-80 h-80 bg-gradient-to-r from-indigo-600/15 to-purple-600/15 rounded-full blur-3xl animate-float-slow"></div>
+        <div className="absolute bottom-32 right-20 w-96 h-96 bg-gradient-to-r from-blue-600/10 to-indigo-600/10 rounded-full blur-3xl animate-float-medium delay-1000"></div>
+        <div className="absolute top-1/2 left-1/3 w-64 h-64 bg-gradient-to-r from-purple-600/8 to-pink-600/8 rounded-full blur-3xl animate-float-fast delay-500"></div>
+        
+        {/* Grid Pattern */}
+        <div className="absolute inset-0 bg-[linear-gradient(rgba(99,102,241,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(99,102,241,0.03)_1px,transparent_1px)] bg-[size:64px_64px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,black,transparent)]"></div>
+        
+        {/* Animated Particles */}
+        <div className="absolute inset-0">
+          {[...Array(15)].map((_, i) => (
+            <motion.div
+              key={i}
+              className="absolute w-1 h-1 bg-indigo-400/20 rounded-full"
+              initial={{ 
+                opacity: 0,
+                x: Math.random() * 1000,
+                y: Math.random() * 1000 
+              }}
+              animate={{ 
+                opacity: [0, 0.5, 0],
+                y: [0, -80],
+              }}
+              transition={{ 
+                duration: 3 + Math.random() * 2,
+                repeat: Infinity,
+                delay: Math.random() * 2,
+                ease: "easeInOut"
+              }}
+            />
+          ))}
+        </div>
+      </div>
+
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-10">
+        {/* Header Section */}
         <motion.div
-          initial={{ opacity: 0, y: 50 }}
+          initial={{ opacity: 0, y: 60 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">
-            Latest <span className="text-indigo-600">Blogs</span>
+      
+          <h2 className="text-4xl md:text-5xl font-black text-white mb-6">
+            My <span className="bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">Blog</span>
           </h2>
-          <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-            Sharing knowledge and insights about web development and technology
+          <p className="text-xl text-gray-300 max-w-xl mx-auto leading-relaxed">
+            Sharing insights, tutorials, and thoughts about web development, AI integration, and modern technologies
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {/* Blogs Grid */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
           {blogs.map((blog, index) => (
             <motion.article
               key={blog.title}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
+              initial={{ opacity: 0, y: 50, scale: 0.95 }}
+              whileInView={{ opacity: 1, y: 0, scale: 1 }}
+              transition={{ duration: 0.6, delay: index * 0.2 }}
               viewport={{ once: true }}
-              className="bg-gray-50 dark:bg-slate-900 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow group"
+              whileHover={{ y: -8, scale: 1.02 }}
+              className="group relative"
             >
-              {/* Blog Image */}
-              <div className="h-48 bg-gradient-to-br from-indigo-400 to-indigo-600 relative overflow-hidden">
-                <div className="absolute inset-0 bg-black/20 group-hover:bg-black/30 transition-colors" />
-                <div className="absolute top-4 left-4">
-                  <span className="bg-white/90 text-indigo-600 px-3 py-1 rounded-full text-sm font-medium">
-                    {blog.category}
-                  </span>
-                </div>
-              </div>
+              {/* Background Glow Effect */}
+              <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/20 to-purple-500/20 rounded-3xl blur-xl transform scale-105 group-hover:scale-110 transition-all duration-500" />
+              
+              {/* Blog Card */}
+              <div className="relative bg-slate-800/60 backdrop-blur-xl border border-indigo-500/30 rounded-2xl overflow-hidden shadow-2xl hover:shadow-3xl transition-all duration-300 hover:border-indigo-400/50 h-full flex flex-col">
+                {/* Blog Header with Gradient */}
+                <div className="relative h-48 bg-gradient-to-br from-indigo-600 to-purple-600 overflow-hidden">
+                  <div className="absolute inset-0 bg-black/20 group-hover:bg-black/30 transition-colors" />
+                  <div className="absolute top-4 left-4">
+                    <span className="bg-white/90 text-indigo-600 px-3 py-1 rounded-full text-sm font-semibold backdrop-blur-sm">
+                      {blog.category}
+                    </span>
+                  </div>
+                  {blog.image && blog.image.startsWith('/') ? (
+                    <Image
+                      src={blog.image}
+                      alt={blog.title}
+                      layout="fill"
+                      className="object-cover w-full h-full"
+                      priority={index < 3}
+                    />
+                  ) : (
+                    <div className="absolute bottom-4 right-4 text-6xl opacity-20">
+                      {blog.image}
+                    </div>
+                  )}
 
-              {/* Blog Content */}
-              <div className="p-6">
-                <div className="flex justify-between items-center mb-3 text-sm text-gray-500 dark:text-gray-400">
-                  <time>{blog.date}</time>
-                  <span>{blog.readTime}</span>
+                  <motion.div 
+                    className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent"
+                    initial={{ x: "-100%" }}
+                    whileHover={{ x: "100%" }}
+                    transition={{ duration: 1.5 }}
+                  />
                 </div>
-                
-                <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3 line-clamp-2">
-                  {blog.title}
-                </h3>
-                
-                <p className="text-gray-600 dark:text-gray-300 mb-4 line-clamp-3">
-                  {blog.excerpt}
-                </p>
 
-                <Link
-                  href={`/blogs/${blog.title.toLowerCase().replace(/\s+/g, '-')}`}
-                  className="inline-flex items-center text-indigo-600 dark:text-indigo-400 hover:text-indigo-700 dark:hover:text-indigo-300 font-medium transition-colors"
-                >
-                  Read More
-                  <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                  </svg>
-                </Link>
+                {/* Blog Content */}
+                <div className="p-6 flex-1 flex flex-col">
+                  <div className="flex justify-between items-center mb-4 text-sm text-gray-400">
+                    <div className="flex items-center space-x-2">
+                      <Calendar className="w-4 h-4" />
+                      <time>{blog.date}</time>
+                    </div>
+                    <div className="flex items-center space-x-2">
+                      <Clock className="w-4 h-4" />
+                      <span>{blog.readTime}</span>
+                    </div>
+                  </div>
+                  
+                  <h3 className="text-xl font-bold text-white mb-3 line-clamp-2 group-hover:text-indigo-200 transition-colors">
+                    {blog.title}
+                  </h3>
+                  
+                  <p className="text-gray-300 mb-4 line-clamp-3 flex-1 leading-relaxed">
+                    {blog.excerpt}
+                  </p>
+
+                  {/* Tags */}
+                  <div className="flex flex-wrap gap-2 mb-4">
+                    {blog.tags.map((tag) => (
+                      <span
+                        key={tag}
+                        className="px-2 py-1 bg-indigo-900/30 text-indigo-300 rounded-full text-xs border border-indigo-500/20"
+                      >
+                        #{tag}
+                      </span>
+                    ))}
+                  </div>
+
+                  {/* Read More Link */}
+                  <Link
+                    href={`/blogs/${blog.title.toLowerCase().replace(/\s+/g, '-')}`}
+                    className="inline-flex items-center justify-between group/link text-indigo-400 hover:text-indigo-300 font-semibold transition-colors mt-auto pt-4 border-t border-indigo-500/20"
+                  >
+                    <span>Read Article</span>
+                    <motion.div
+                      whileHover={{ x: 4 }}
+                      transition={{ duration: 0.2 }}
+                    >
+                      <ArrowRight className="w-4 h-4 group-hover/link:translate-x-1 transition-transform" />
+                    </motion.div>
+                  </Link>
+                </div>
               </div>
             </motion.article>
           ))}
         </div>
 
+        {/* CTA Section */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.4 }}
           viewport={{ once: true }}
-          className="text-center mt-12"
+          className="text-center"
         >
           <Link
             href="/blogs"
-            className="inline-flex items-center space-x-2 border-2 border-indigo-600 text-indigo-600 dark:text-indigo-400 hover:bg-indigo-600 hover:text-white px-8 py-3 rounded-lg font-semibold transition-colors"
+            className="group relative inline-flex items-center space-x-3 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white px-8 py-4 rounded-2xl font-semibold transition-all duration-300 shadow-2xl hover:shadow-3xl overflow-hidden"
           >
-            <span>View All Blogs</span>
-            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-            </svg>
+            {/* Background Animation */}
+            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent transform -skew-x-12 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000" />
+            
+            <span className="relative">View All Articles</span>
+            <ExternalLink className="w-4 h-4 relative group-hover:translate-x-1 transition-transform" />
           </Link>
+          
+          {/* Stats */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ duration: 0.6, delay: 0.6 }}
+            viewport={{ once: true }}
+            className="flex justify-center items-center space-x-8 mt-8 text-gray-400"
+          >
+            <div className="text-center">
+              <div className="text-2xl font-bold text-indigo-400">3+</div>
+              <div className="text-sm">Articles Published</div>
+            </div>
+            <div className="text-center">
+              <div className="text-2xl font-bold text-indigo-400">5min+</div>
+              <div className="text-sm">Avg. Read Time</div>
+            </div>
+            <div className="text-center">
+              <div className="text-2xl font-bold text-indigo-400">100%</div>
+              <div className="text-sm">Useful Content</div>
+            </div>
+          </motion.div>
         </motion.div>
       </div>
     </section>

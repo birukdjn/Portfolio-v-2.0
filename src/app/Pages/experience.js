@@ -1,63 +1,52 @@
 "use client";
 import { motion } from "framer-motion";
-import { Briefcase, Calendar, MapPin, GitBranch, GitCommit } from "lucide-react";
+import { Briefcase, Calendar, MapPin, GitBranch, GitCommit, GraduationCap } from "lucide-react";
 
 const experiences = [
   {
     title: "Full Stack Developer",
     company: "Addis Systems Integration",
-    period: "2022 - Present",
+    period: "Sep 2025 - Present",
     location: "Addis Ababa, Ethiopia",
-    description: "Leading development of scalable web applications using modern technologies. Mentoring junior developers and implementing CI/CD pipelines.",
+    description: "Developing and maintaining full-stack web applications. Collaborating with cross-functional teams to deliver high-quality software solutions.",
     technologies: ["React", "Node.js", "MongoDB", "AWS", "Docker"],
     icon: "🚀",
     branch: "main",
-    commits: ["Team Leadership", "Architecture", "Deployment"]
+    commits: ["Full-Stack Development", "API Design", "Database Management"]
   },
-   {
-    title: "Full Stack Developer",
+  {
+    title: "Frontend Developer Intern",
     company: "Addis Systems Integration",
-    period: "2022 - Present",
+    period: "Jun 2025 - Sep 2025",
     location: "Addis Ababa, Ethiopia",
-    description: "Leading development of scalable web applications using modern technologies. Mentoring junior developers and implementing CI/CD pipelines.",
-    technologies: ["React", "Node.js", "MongoDB", "AWS", "Docker"],
-    icon: "🚀",
-    branch: "main",
-    commits: ["Team Leadership", "Architecture", "Deployment"]
-  },
-  {
-    title: "Frontend Developer",
-    company: "Digital Agency",
-    period: "2021 - 2022",
-    location: "New York, NY",
-    description: "Built responsive interfaces and collaborated with design teams. Optimized performance and implemented advanced animations.",
-    technologies: ["JavaScript", "Vue.js", "CSS3", "Git", "Figma"],
+    description: "Gained hands-on experience in frontend development, contributing to user interface components and collaborating with the development team on real-world projects.",
+    technologies: ["JavaScript", "React", "CSS3", "Git", "Figma"],
     icon: "💻",
-    branch: "feature/ui-ux",
-    commits: ["UI/UX", "Performance", "Animations"]
+    branch: "feature/internship-tasks",
+    commits: ["UI Components", "Code Review", "Collaboration"]
   },
   {
-    title: "Junior Developer",
-    company: "Startup XYZ",
-    period: "2020 - 2021",
-    location: "Austin, TX",
-    description: "Started my coding journey, learning best practices and contributing to small features. Built foundation in web development.",
-    technologies: ["HTML5", "CSS3", "JavaScript", "React", "Git"],
+    title: "Self-Study & Project Work",
+    company: "Personal Development",
+    period: "Jul 2024 - Jun 2025",
+    location: "Remote",
+    description: "Dedicated a year to intensive self-learning, focusing on full-stack development, modern frameworks, and building a portfolio of personal projects.",
+    technologies: ["Next.js", "TypeScript", "Python", "Express", "PostgreSQL"],
     icon: "🌟",
     branch: "develop",
-    commits: ["Learning", "Foundation", "Contributions"]
+    commits: ["Project Scaffolding", "Feature Implementation", "Continuous Learning"]
   },
   {
-    title: "Junior Developer",
-    company: "Startup XYZ",
-    period: "2020 - 2021",
-    location: "Austin, TX",
-    description: "Started my coding journey, learning best practices and contributing to small features. Built foundation in web development.",
-    technologies: ["HTML5", "CSS3", "JavaScript", "React", "Git"],
-    icon: "🌟",
-    branch: "develop",
-    commits: ["Learning", "Foundation", "Contributions"]
-  }
+    title: "BSc in Computer Science",
+    company: "Hawassa University",
+    period: "2020 - 2024",
+    location: "Hawassa, Ethiopia",
+    description: "Graduated on July 4, 2024, with a CGPA of 3.51. Acquired a strong foundation in computer science principles, algorithms, and software development.",
+    technologies: ["Java", "C++", "Data Structures", "Algorithms", "SQL"],
+    icon: <GraduationCap />,
+    branch: "education",
+    commits: ["Final Year Project", "Coursework", "Academic Excellence"]
+  },
 ];
 
 export default function Experience() {
@@ -224,29 +213,30 @@ export default function Experience() {
                   {/* Card Content */}
                   <div className="relative bg-slate-800/80 backdrop-blur-xl border border-indigo-500/30 rounded-2xl p-6 shadow-2xl hover:shadow-3xl transition-all duration-300 hover:border-indigo-400/50">
                     {/* Header */}
-                    <div className="flex items-start justify-between mb-4">
-                      <div className="flex-1">
+                    <div className="flex flex-col items-start justify-between mb-4">
+                      <div className="flex justify-between w-full">
                         <div className="flex items-center space-x-3 mb-2">
                           <span className="text-2xl">{exp.icon}</span>
-                          <h3 className="text-xl font-bold text-white group-hover:text-indigo-200 transition-colors">
+                          <h3 className="text-xl font-bold text-white group-hover:text-indigo-200 transition-colors leading-tight">
                             {exp.title}
                           </h3>
                         </div>
-                        <div className="flex items-center space-x-4 text-gray-300 text-sm">
-                          <div className="flex items-center space-x-1">
-                            <Briefcase className="w-4 h-4" />
-                            <span className="text-indigo-300 font-medium">{exp.company}</span>
-                          </div>
-                          <div className="flex items-center space-x-1">
-                            <MapPin className="w-4 h-4" />
-                            <span>{exp.location}</span>
-                          </div>
+                        <div className="flex items-center space-x-1 bg-indigo-900/30 text-indigo-300 px-3 py-1 rounded-full border border-indigo-500/20 text-sm">
+                          <Calendar className="w-3 h-3" />
+                          <span className="font-medium">{exp.period}</span>
+                        </div>
+                        </div>
+                        <div className="flex flex-wrap gap-x-4 gap-y-1 text-gray-300 text-sm mt-2">
+                        <div className="flex items-center space-x-1">
+                          <Briefcase className="w-4 h-4" />
+                          <span className="text-indigo-300 font-medium">{exp.company}</span>
+                        </div>
+                        <div className="flex items-center space-x-1">
+                          <MapPin className="w-4 h-4" />
+                          <span>{exp.location}</span>
                         </div>
                       </div>
-                      <div className="flex items-center space-x-1 bg-indigo-900/30 text-indigo-300 px-3 py-1 rounded-full border border-indigo-500/20 text-sm">
-                        <Calendar className="w-3 h-3" />
-                        <span className="font-medium">{exp.period}</span>
-                      </div>
+                      
                     </div>
 
                     {/* Description */}
@@ -298,9 +288,10 @@ export default function Experience() {
             </div>
             <div className="text-gray-300 space-y-1 text-sm">
               <p><span className="text-purple-400">$</span> git log --oneline --graph --all</p>
-              <p><span className="text-green-400">*</span> 2022-present: Full Stack Developer at Tech Solutions Inc. [main]</p>
-              <p><span className="text-green-400">*</span> 2021-2022: Frontend Developer at Digital Agency [feature/ui-ux]</p>
-              <p><span className="text-green-400">*</span> 2020-2021: Junior Developer at Startup XYZ [develop]</p>
+              <p><span className="text-green-400">*</span> Sep 2025-Present: Full Stack Developer at Addis Systems Integration [main]</p>
+              <p><span className="text-green-400">*</span> Jun 2025-Sep 2025: Frontend Developer Intern at Addis Systems Integration [feature/internship-tasks]</p>
+              <p><span className="text-green-400">*</span> Jul 2024-Jun 2025: Self-Study & Project Work [develop]</p>
+              <p><span className="text-green-400">*</span> Sep 2020-jul 2024: BSc in Computer Science at Hawassa University [education]</p>
               <p className="text-indigo-400"> Continue coding...</p>
             </div>
           </div>
