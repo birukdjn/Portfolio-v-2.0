@@ -1,7 +1,6 @@
 "use client";
 import { motion } from "framer-motion";
 import { User, MapPin, Mail, Award, Sparkles, Calendar, Target, Heart, Code, Trophy } from "lucide-react";
-import { DateTime } from "luxon";
 
 export default function About() {
   return (
@@ -194,11 +193,11 @@ export default function About() {
         >
           <div className="bg-gradient-to-r from-indigo-600/10 to-purple-600/10 border border-indigo-500/20 rounded-2xl p-8 backdrop-blur-xl">
             <h4 className="text-2xl font-bold text-white mb-4">
-              Let's Build Something Amazing Together
+              {"Let's Build Something Amazing Together"}
             </h4>
             <p className="text-lg text-gray-300 max-w-2xl mx-auto mb-6">
-              I'm always excited to take on new challenges and collaborate on innovative projects. 
-              Whether you need a website, web application, or technical consultation, I'm here to help.
+              {"I'm always excited to take on new challenges and collaborate on innovative projects. "}
+              {"Whether you need a website, web application, or technical consultation, I'm here to help."}
             </p>
             <div className="flex flex-wrap justify-center gap-4">
               <div className="flex items-center space-x-3 bg-gradient-to-r from-indigo-600/20 to-purple-600/20 border border-indigo-500/30 px-6 py-3 rounded-2xl backdrop-blur-xl">

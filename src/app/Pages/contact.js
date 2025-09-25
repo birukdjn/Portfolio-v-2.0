@@ -73,11 +73,11 @@ export default function Contact() {
           >
             <div>
               <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
-                Let's Talk
+                {"Let's Talk"}
               </h3>
               <p className="text-gray-600 dark:text-gray-300 mb-8">
-                I'm always open to discussing new opportunities, creative ideas, 
-                or opportunities to be part of your vision.
+                {"I'm always open to discussing new opportunities, creative ideas, "}
+                {"or opportunities to be part of your vision."}
               </p>
             </div>
 

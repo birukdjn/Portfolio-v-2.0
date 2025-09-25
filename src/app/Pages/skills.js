@@ -139,8 +139,8 @@ export default function Skills() {
               Always Learning, Always Growing
             </h4>
             <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-              I'm constantly exploring new technologies and frameworks to stay at the forefront of web development. 
-              Currently diving deeper into AI integration and cloud architecture.
+              {"I'm constantly exploring new technologies and frameworks to stay at the forefront of web development. "}
+              {"Currently diving deeper into AI integration and cloud architecture."}
             </p>
           </div>
         </motion.div>

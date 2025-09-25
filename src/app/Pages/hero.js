@@ -61,7 +61,7 @@ export default function HeroSection() {
                 transition={{ duration: 0.8, delay: 0.3 }}
                 className=" flex text-2xl font-bold text-indigo-100 justify-center md:justify-start"
               >
-                 Hi, I'm Biruk
+                 {"Hi, I'm Biruk"}
               </motion.div>
             <motion.h1 
               className="text-3xl md:text-4xl lg:text-5xl font-black tracking-tight leading-tight"
