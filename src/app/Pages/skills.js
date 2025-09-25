@@ -31,8 +31,44 @@ const categoryIcons = {
 
 export default function Skills() {
   return (
-    <section id="skills" className="py-20 bg-gradient-to-br from-slate-50 via-white to-indigo-50 dark:from-slate-950 dark:via-slate-900 dark:to-indigo-950">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="skills" className="relative py-20 bg-gradient-to-br from-slate-950 via-indigo-950 to-slate-950 text-white overflow-hidden">
+      {/* Enhanced Animated Background */}
+      <div className="absolute inset-0 overflow-hidden">
+        {/* Animated Gradient Orbs */}
+        <div className="absolute top-10 left-5 w-72 h-72 bg-gradient-to-r from-indigo-600/15 to-purple-600/15 rounded-full blur-3xl animate-float-slow"></div>
+        <div className="absolute bottom-20 right-10 w-80 h-80 bg-gradient-to-r from-blue-600/10 to-indigo-600/10 rounded-full blur-3xl animate-float-medium delay-1000"></div>
+        <div className="absolute top-1/3 right-1/4 w-60 h-60 bg-gradient-to-r from-purple-600/8 to-pink-600/8 rounded-full blur-3xl animate-float-fast delay-500"></div>
+        
+        {/* Grid Pattern with Animation */}
+        <div className="absolute inset-0 bg-[linear-gradient(rgba(99,102,241,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(99,102,241,0.03)_1px,transparent_1px)] bg-[size:64px_64px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,black,transparent)]"></div>
+        
+        {/* Animated Particles */}
+        <div className="absolute inset-0">
+          {[...Array(15)].map((_, i) => (
+            <motion.div
+              key={i}
+              className="absolute w-1 h-1 bg-indigo-400/20 rounded-full"
+              initial={{ 
+                opacity: 0,
+                x: Math.random() * 1000,
+                y: Math.random() * 1000 
+              }}
+              animate={{ 
+                opacity: [0, 0.5, 0],
+                y: [0, -80],
+              }}
+              transition={{ 
+                duration: 4 + Math.random() * 3,
+                repeat: Infinity,
+                delay: Math.random() * 2,
+                ease: "easeInOut"
+              }}
+            />
+          ))}
+        </div>
+      </div>
+
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-10">
         {/* Header Section */}
         <motion.div
           initial={{ opacity: 0, y: 60 }}
@@ -41,10 +77,10 @@ export default function Skills() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-5xl md:text-6xl font-black text-gray-900 dark:text-white mb-6">
+          <h2 className="text-4xl md:text-5xl font-black text-white mb-6">
             My <span className="bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">Skills</span>
           </h2>
-          <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-xl text-gray-300 max-w-xl mx-auto leading-relaxed">
             Technologies and tools I use to transform ideas into powerful, scalable digital solutions
           </p>
         </motion.div>
@@ -60,26 +96,26 @@ export default function Skills() {
                 whileInView={{ opacity: 1, y: 0, scale: 1 }}
                 transition={{ duration: 0.6, delay: categoryIndex * 0.2 }}
                 viewport={{ once: true }}
-                whileHover={{ y: -5 }}
+                whileHover={{ y: -8, scale: 1.02 }}
                 className="group relative"
               >
-                {/* Background Glow */}
-                <div className="absolute inset-0 bg-gradient-to-br from-indigo-600/10 to-purple-600/10 rounded-3xl blur-xl transform scale-105 group-hover:scale-110 transition-all duration-300" />
+                {/* Background Glow Effect */}
+                <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/20 to-purple-500/20 rounded-3xl blur-xl transform scale-105 group-hover:scale-110 transition-all duration-500" />
                 
                 {/* Skills Card */}
-                <div className="relative bg-white/80 dark:bg-slate-800/80 backdrop-blur-xl border border-indigo-500/20 rounded-3xl p-8 shadow-2xl hover:shadow-3xl transition-all duration-300">
+                <div className="relative bg-slate-800/60 backdrop-blur-xl border border-indigo-500/30 rounded-2xl p-8 shadow-2xl hover:shadow-3xl transition-all duration-300 hover:border-indigo-400/50">
                   {/* Category Header */}
                   <div className="text-center mb-8">
-                    <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-indigo-600 to-purple-600 rounded-2xl mb-4 shadow-lg">
-                      <IconComponent className="w-8 h-8 text-white" />
+                    <div className="inline-flex items-center justify-center w-12 h-12 bg-gradient-to-br from-indigo-600 to-purple-600 rounded-2xl mb-4 shadow-lg group-hover:shadow-indigo-500/25 transition-shadow">
+                      <IconComponent className="w-6 h-6 text-white" />
                     </div>
-                    <h3 className="text-2xl font-bold text-gray-900 dark:text-white">
+                    <h3 className="text-xl font-bold text-white">
                       {category}
                     </h3>
                   </div>
                   
                   {/* Skills List */}
-                  <div className="space-y-6">
+                  <div className="space-y-5">
                     {skillsList.map((skill, index) => (
                       <motion.div
                         key={skill.name}
@@ -90,26 +126,26 @@ export default function Skills() {
                         className="space-y-3"
                       >
                         <div className="flex justify-between items-center">
-                          <span className="text-lg font-semibold text-gray-800 dark:text-gray-200">
+                          <span className="text-md font-semibold text-gray-200">
                             {skill.name}
                           </span>
-                          <span className="text-indigo-600 dark:text-indigo-400 font-bold text-lg">
+                          <span className="text-indigo-200 font-bold text-md">
                             {skill.level}%
                           </span>
                         </div>
                         
                         {/* Progress Bar */}
-                        <div className="w-full bg-gray-200 dark:bg-slate-700 rounded-full h-3 overflow-hidden">
+                        <div className="w-full bg-slate-900/50 rounded-full h-2.5 overflow-hidden backdrop-blur-sm">
                           <motion.div
                             initial={{ width: 0 }}
                             whileInView={{ width: `${skill.level}%` }}
                             transition={{ duration: 1.2, delay: index * 0.1 + categoryIndex * 0.2, ease: "easeOut" }}
                             viewport={{ once: true }}
-                            className="bg-gradient-to-r from-indigo-600 to-purple-600 h-3 rounded-full shadow-lg shadow-indigo-500/25 relative overflow-hidden"
+                            className="bg-gradient-to-r from-indigo-600 to-purple-600 h-2.5 rounded-full shadow-lg shadow-indigo-500/25 relative overflow-hidden"
                           >
                             {/* Animated Shine Effect */}
                             <motion.div
-                              className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent"
+                              className="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent"
                               initial={{ x: "-100%" }}
                               whileInView={{ x: "100%" }}
                               transition={{ duration: 1.5, delay: 1 + index * 0.1, repeat: Infinity, repeatDelay: 2 }}
@@ -125,25 +161,6 @@ export default function Skills() {
             );
           })}
         </div>
-
-        {/* Additional Info */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.6 }}
-          viewport={{ once: true }}
-          className="text-center mt-16"
-        >
-          <div className="bg-gradient-to-r from-indigo-600/10 to-purple-600/10 border border-indigo-500/20 rounded-2xl p-8 backdrop-blur-sm">
-            <h4 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
-              Always Learning, Always Growing
-            </h4>
-            <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-              {"I'm constantly exploring new technologies and frameworks to stay at the forefront of web development. "}
-              {"Currently diving deeper into AI integration and cloud architecture."}
-            </p>
-          </div>
-        </motion.div>
       </div>
     </section>
   );

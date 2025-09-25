@@ -135,25 +135,25 @@ export default function About() {
                 icon: User,
                 title: "User-Centric Approach",
                 description: "I believe the best products are built with the end-user in mind. Every decision is guided by creating intuitive and enjoyable experiences.",
-                color: "from-indigo-600 to-purple-600"
+                color: "from-indigo-800 to-purple-600"
               },
               {
                 icon: Sparkles,
                 title: "Innovation Focused",
                 description: "Staying ahead of technology trends allows me to implement cutting-edge solutions that give projects a competitive advantage.",
-                color: "from-indigo-600 to-purple-600"
+                color: "from-indigo-800 to-purple-600"
               },
               {
                 icon: Target,
                 title: "Quality Driven",
                 description: "Clean code, thorough testing, and attention to detail are non-negotiable in my development process.",
-                color: "from-indigo-600 to-purple-600"
+                color: "from-indigo-800 to-purple-600"
               },
               {
                 icon: Heart,
                 title: "Continuous Learning",
                 description: "The tech landscape evolves rapidly, and I'm committed to constantly expanding my skills and knowledge.",
-                color: "from-indigo-600 to-purple-600"
+                color: "from-indigo-800 to-purple-600"
               }
             ].map((item, index) => (
               <motion.div
