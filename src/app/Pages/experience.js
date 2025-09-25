@@ -14,6 +14,17 @@ const experiences = [
     branch: "main",
     commits: ["Team Leadership", "Architecture", "Deployment"]
   },
+   {
+    title: "Full Stack Developer",
+    company: "Addis Systems Integration",
+    period: "2022 - Present",
+    location: "Addis Ababa, Ethiopia",
+    description: "Leading development of scalable web applications using modern technologies. Mentoring junior developers and implementing CI/CD pipelines.",
+    technologies: ["React", "Node.js", "MongoDB", "AWS", "Docker"],
+    icon: "🚀",
+    branch: "main",
+    commits: ["Team Leadership", "Architecture", "Deployment"]
+  },
   {
     title: "Frontend Developer",
     company: "Digital Agency",
@@ -24,6 +35,17 @@ const experiences = [
     icon: "💻",
     branch: "feature/ui-ux",
     commits: ["UI/UX", "Performance", "Animations"]
+  },
+  {
+    title: "Junior Developer",
+    company: "Startup XYZ",
+    period: "2020 - 2021",
+    location: "Austin, TX",
+    description: "Started my coding journey, learning best practices and contributing to small features. Built foundation in web development.",
+    technologies: ["HTML5", "CSS3", "JavaScript", "React", "Git"],
+    icon: "🌟",
+    branch: "develop",
+    commits: ["Learning", "Foundation", "Contributions"]
   },
   {
     title: "Junior Developer",
@@ -148,7 +170,7 @@ export default function Experience() {
         {/* Circuit Timeline */}
         <div className="relative">
           {/* Main Timeline Trunk */}
-          <div className="absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-gradient-to-b from-indigo-500/40 to-purple-500/40 rounded-full">
+          <div className="absolute md:left-1/2 transform -translate-x-1/2 w-1 h-full mt-50 bg-gradient-to-b from-indigo-500/40 to-purple-500/40 rounded-full">
             {/* Animated pulse along the trunk */}
             <motion.div
               className="absolute top-0 left-0 w-full h-8 bg-gradient-to-b from-indigo-400 to-transparent rounded-full"
@@ -169,9 +191,9 @@ export default function Experience() {
               }`}
             >
               {/* Branch Connection Line */}
-              <div className={`absolute left-1/2 w-1/4 h-1 bg-gradient-to-r ${
+              <div className={`absolute w-1/4 h-1 bg-gradient-to-r ${
                 index % 2 === 0 
-                  ? 'from-indigo-500/40 to-transparent left-1/2' 
+                  ? 'from-indigo-500/40 to-transparent left-1/2 ' 
                   : 'from-transparent to-indigo-500/40 right-1/2'
               } rounded-full`}></div>
 
