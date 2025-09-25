@@ -1,6 +1,6 @@
 "use client";
 import { motion } from "framer-motion";
-import { User, MapPin, Mail, Award, Sparkles, Calendar, Target, Heart, Code, Trophy } from "lucide-react";
+import { User,  Award, Sparkles, Calendar, Target, Heart, Code, Trophy } from "lucide-react";
 
 export default function About() {
   return (
@@ -191,31 +191,19 @@ export default function About() {
           viewport={{ once: true }}
           className="text-center mt-16"
         >
-          <div className="bg-gradient-to-r from-indigo-600/10 to-purple-600/10 border border-indigo-500/20 rounded-2xl p-8 backdrop-blur-xl">
+          <div className="bg-gradient-to-r from-indigo-600/10 to-purple-600/10 border border-indigo-500/20 rounded-2xl p-8 backdrop-blur-xl flex flex-col items-center">
             <h4 className="text-2xl font-bold text-white mb-4">
               {"Let's Build Something Amazing Together"}
             </h4>
-            <p className="text-lg text-gray-300 max-w-2xl mx-auto mb-6">
+            <p className="text-lg text-gray-300 max-w-3xl mx-auto mb-6">
               {"I'm always excited to take on new challenges and collaborate on innovative projects. "}
               {"Whether you need a website, web application, or technical consultation, I'm here to help."}
             </p>
-            <div className="flex flex-wrap justify-center gap-4">
-              <div className="flex items-center space-x-3 bg-gradient-to-r from-indigo-600/20 to-purple-600/20 border border-indigo-500/30 px-6 py-3 rounded-2xl backdrop-blur-xl">
-                <MapPin className="w-5 h-5 text-indigo-400" />
-                <div>
-                  <div className="text-sm font-semibold text-indigo-300">Based in</div>
-                  <div className="text-gray-300 font-medium">Addis Ababa, Ethiopia</div>
-                </div>
-              </div>
-              
-              <div className="flex items-center space-x-3 bg-gradient-to-r from-indigo-600/20 to-purple-600/20 border border-indigo-500/30 px-6 py-3 rounded-2xl backdrop-blur-xl">
-                <Mail className="w-5 h-5 text-indigo-400" />
-                <div>
-                  <div className="text-sm font-semibold text-indigo-300">Get in touch</div>
-                  <div className="text-gray-300 font-medium">biruk@example.com</div>
-                </div>
-              </div>
-            </div>
+            
+              <a href="#contact" className="text-md font-semibold bg-gradient-to-r from-indigo-600 to-purple-600 border border-indigo-600 px-12 py-3 rounded-lg  hover:backdrop-blur-xl hover:scale-105 transition ease">
+                Get in touch
+              </a>
+          
           </div>
         </motion.div>
       </div>

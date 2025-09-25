@@ -1,6 +1,6 @@
 "use client";
 import { motion } from "framer-motion";
-import { Briefcase, Calendar, MapPin, GitBranch, GitCommit, Code2 } from "lucide-react";
+import { Briefcase, Calendar, MapPin, GitBranch, GitCommit } from "lucide-react";
 
 const experiences = [
   {
