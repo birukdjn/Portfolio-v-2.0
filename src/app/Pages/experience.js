@@ -156,7 +156,7 @@ export default function Experience() {
         {/* Circuit Timeline */}
         <div className="relative">
           {/* Main Timeline Trunk */}
-          <div className="absolute md:left-1/2 transform -translate-x-1/2 w-1 h-full mt-45 bg-gradient-to-b from-indigo-500/40 to-purple-500/40 rounded-full">
+          <div className="absolute md:left-1/2 transform -translate-x-1/2 w-1 h-full mt-50 sm:mt-46 md:mt-40   bg-gradient-to-b from-indigo-500/40 to-purple-500/40 rounded-full">
             {/* Animated pulse along the trunk */}
             <motion.div
               className="absolute top-0 left-0 w-full h-8 bg-gradient-to-b from-indigo-400 to-transparent rounded-full"
@@ -184,17 +184,17 @@ export default function Experience() {
               } rounded-full`}></div>
 
               {/* Commit Node */}
-              <div className="absolute left-1/2 transform -translate-x-1/2 w-6 h-6 bg-gradient-to-r from-indigo-600 to-purple-600 rounded-full z-20 flex items-center justify-center shadow-lg shadow-indigo-500/25">
+              <div className="absolute left-0 sm:left-1/2 transform -translate-x-1/2 w-6 h-6 bg-gradient-to-r from-indigo-600 to-purple-600 rounded-full z-20 flex items-center justify-center shadow-lg shadow-indigo-500/25">
                 <GitCommit className="w-4 h-4 text-white" />
                 <motion.div
-                  className="absolute inset-0 bg-gradient-to-r from-indigo-600 to-purple-600 rounded-full"
+                  className="absolute top-10   inset-0 bg-gradient-to-r from-indigo-600 to-purple-600 rounded-full"
                   animate={{ scale: [1, 1.2, 1] }}
                   transition={{ duration: 2, repeat: Infinity, delay: index * 0.5 }}
                 />
               </div>
 
               {/* Experience Card */}
-              <div className={`w-full md:w-5/12 ${index % 2 === 0 ? 'md:pr-8' : 'md:pl-8'}`}>
+              <div className={`w-full ml-3 md:w-5/12 ${index % 2 === 0 ? 'md:pr-8' : 'md:pl-8'}`}>
                 <motion.div
                   whileHover={{ y: -5, scale: 1.02 }}
                   className="relative group"

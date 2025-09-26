@@ -206,22 +206,22 @@ useEffect(() => {
               <NavLink href="/" mobile onClick={() => setOpen(false)}>Home</NavLink>
             </li>
             <li>
-              <NavLink href="/about" mobile onClick={() => setOpen(false)}>About</NavLink>
+              <NavLink href="#about" mobile onClick={() => setOpen(false)}>About</NavLink>
             </li>
             <li>
-              <NavLink href="/skills" mobile onClick={() => setOpen(false)}>Skills</NavLink>
+              <NavLink href="#skills" mobile onClick={() => setOpen(false)}>Skills</NavLink>
             </li>
              <li>
-              <NavLink href="/projects" mobile onClick={() => setOpen(false)}>Projects</NavLink>
+              <NavLink href="#projects" mobile onClick={() => setOpen(false)}>Projects</NavLink>
             </li> 
             <li>
-              <NavLink href="/experience" mobile onClick={() => setOpen(false)}>Experience </NavLink>
+              <NavLink href="#experience" mobile onClick={() => setOpen(false)}>Experience </NavLink>
             </li> 
             <li>
-              <NavLink href="/blog" mobile onClick={() => setOpen(false)}>blog</NavLink>
+              <NavLink href="#blog" mobile onClick={() => setOpen(false)}>blog</NavLink>
             </li>
             <li>
-              <NavLink href="/contact" mobile onClick={() => setOpen(false)}>Contact</NavLink>
+              <NavLink href="#contact" mobile onClick={() => setOpen(false)}>Contact</NavLink>
             </li>
           </ul>
         </div>

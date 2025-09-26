@@ -9,7 +9,7 @@ const blogs = [
     title: "Building Scalable React Applications",
     excerpt: "Learn how to structure your React apps for scalability and maintainability with modern patterns and best practices",
     date: "2024-01-15",
-    readTime: "5 min read",
+    readTime: 5,
     category: "React",
     image: "/biruk.png",
     tags: ["React", "Architecture", "Performance"]
@@ -18,7 +18,7 @@ const blogs = [
     title: "Introduction to Next.js 14",
     excerpt: "Exploring the new features and improvements in Next.js 14 including App Router, Server Components and enhanced performance",
     date: "2024-01-10",
-    readTime: "8 min read",
+    readTime: 8,
     category: "Next.js",
     image: "⚡",
     tags: ["Next.js", "Framework", "Updates"]
@@ -27,12 +27,15 @@ const blogs = [
     title: "AI Integration in Web Apps",
     excerpt: "How to integrate AI capabilities into your web applications using modern APIs and machine learning libraries",
     date: "2024-01-05",
-    readTime: "6 min read",
+    readTime: 6 ,
     category: "AI",
     image: "🤖",
     tags: ["AI", "Integration", "Innovation"]
   }
 ];
+
+let readTime = blogs.reduce((total, blog) => total + blog.readTime, 0);
+readTime = Math.round(readTime / blogs.length);
 
 export default function Blogs() {
   return (
@@ -147,7 +150,7 @@ export default function Blogs() {
                     </div>
                     <div className="flex items-center space-x-2">
                       <Clock className="w-4 h-4" />
-                      <span>{blog.readTime}</span>
+                      <span>{blog.readTime} min read</span>
                     </div>
                   </div>
                   
@@ -218,11 +221,11 @@ export default function Blogs() {
             className="flex justify-center items-center space-x-8 mt-8 text-gray-400"
           >
             <div className="text-center">
-              <div className="text-2xl font-bold text-indigo-400">3+</div>
+              <div className="text-2xl font-bold text-indigo-400">{blogs.length}+  </div>
               <div className="text-sm">Articles Published</div>
             </div>
             <div className="text-center">
-              <div className="text-2xl font-bold text-indigo-400">5min+</div>
+              <div className="text-2xl font-bold text-indigo-400">{(readTime)} </div>
               <div className="text-sm">Avg. Read Time</div>
             </div>
             <div className="text-center">
