@@ -39,7 +39,7 @@ const contactMethods = [
     icon: MapPin,
     title: "Location",
     value: "Addis Ababa, Ethiopia",
-    link: " 2QM5+JXX, Adwa St, Addis Ababa",
+    link: "https://maps.app.goo.gl/TNa5UAdrdUPk9M1s6",
     branch: "location",
     status: "online"
   }
@@ -48,23 +48,23 @@ const contactMethods = [
 const socialPlatforms = [
   {
     name: "GitHub",
-    url: "https://github.com/biruk",
+    url: "https://github.com/birukdjn",
     icon: Github,
-    username: "@biruk",
+    username: "@birukdjn",
     commits: "1.2k+"
   },
   {
     name: "LinkedIn",
-    url: "https://linkedin.com/in/biruk",
+    url: "https://linkedin.com/in/birukdjn",
     icon: Linkedin,
-    username: "@biruk",
+    username: "@birukdjn",
     connections: "500+"
   },
   {
     name: "Twitter",
-    url: "https://twitter.com/biruk",
+    url: "https://twitter.com/birukdjn",
     icon: Twitter,
-    username: "@biruk_dev",
+    username: "@birukdjn",
     followers: "2.4k"
   }
 ];
@@ -243,7 +243,7 @@ export default function Contact() {
                     {/* Tooltip */}
                     <div className="absolute -bottom-8 left-1/2 transform -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-250">
                       <div className="bg-slate-800 text-white text-xs px-2 py-1 rounded whitespace-nowrap">
-                        {platform.name}
+                        {platform.username} • {platform.commits || platform.connections || platform.followers}
                       </div>
                     </div>
                   </motion.a>
@@ -389,7 +389,7 @@ export default function Contact() {
               <span className="text-xl font-bold text-indigo-600">~/contact-terminal</span>
             </div>
             <div className="text-gray-300 text-lg space-y-0.5 leading-snug pr-4">
-              <p><span className="text-indigo-600">$</span> git status --contact</p>
+              <p><span className="text-purple-600">$</span> git status --contact</p>
               <p><span className="text-indigo-600">→</span> Status: Available for projects</p>
               <p><span className="text-indigo-600">→</span> Response: Within 24 hours</p>
               <p className="text-indigo-400 mt-1"># {"Let's build something amazing!"} 🚀</p>
