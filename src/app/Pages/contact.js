@@ -386,12 +386,12 @@ export default function Contact() {
           <div className="bg-slate-900/60 backdrop-blur-xl border border-indigo-500/30 rounded-xl p-4 font-mono text-left hover:border-indigo-400/50 transition-all duration-250  mx-auto max-w-2xl text-xs">
             <div className="flex items-center space-x-4 text-indigo-400 mb-2">
               <div className="w-4 h-4  bg-indigo-600 rounded-full animate-pulse"></div>
-              <span className="text-xl font-bold text-indigo-600">~/contact-terminal</span>
+              <span className=" font-bold text-indigo-400">~/contact-terminal</span>
             </div>
-            <div className="text-gray-300 text-lg space-y-0.5 leading-snug pr-4">
-              <p><span className="text-purple-600">$</span> git status --contact</p>
-              <p><span className="text-indigo-600">→</span> Status: Available for projects</p>
-              <p><span className="text-indigo-600">→</span> Response: Within 24 hours</p>
+            <div className="text-gray-300  space-y-0.5 leading-snug pr-4">
+              <p><span className="text-purple-400">$</span> git status --contact</p>
+              <p><span className="text-green-400">→</span> Status: Available for projects</p>
+              <p><span className="text-green-400">→</span> Response: Within 24 hours</p>
               <p className="text-indigo-400 mt-1"># {"Let's build something amazing!"} 🚀</p>
             </div>
           </div>

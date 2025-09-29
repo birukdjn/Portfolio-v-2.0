@@ -235,12 +235,12 @@ export default function Experience() {
           viewport={{ once: true }}
           className="text-center mt-16"
         >
-          <div className="bg-slate-900/60  backdrop-blur-xl border border-indigo-500/30 rounded-2xl p-6 font-mono text-left hover:border-indigo-400/50 transition-all duration-300 max-w-2xl mx-auto">
+          <div className="bg-slate-900/60  backdrop-blur-xl border border-indigo-500/30 rounded-2xl p-6 font-mono text-left hover:border-indigo-400/50 transition-all duration-300 max-w-2xl mx-auto text-xs">
             <div className="flex items-center space-x-2 text-indigo-400 mb-3">
-              <div className="w-3 h-3 bg-green-400 rounded-full animate-pulse"></div>
-              <span className="text-sm">~/career-timeline</span>
+              <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
+              <span >~/career-timeline</span>
             </div>
-            <div className="text-gray-300 space-y-1 text-sm">
+            <div className="text-gray-300 space-y-0.5 ">
               <p><span className="text-purple-400">$</span> git log --oneline --graph --all</p>
               <p><span className="text-green-400">*</span> Sep 2025-Present: Full Stack Developer at Addis Systems Integration [main]</p>
               <p><span className="text-green-400">*</span> Jun 2025-Sep 2025: Frontend Developer Intern at Addis Systems Integration [feature/internship-tasks]</p>

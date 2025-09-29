@@ -13,11 +13,32 @@ import {
   ExternalLink,
   Heart,
   Code,
-  Calendar
+  Calendar,
+  Codepen
 } from "lucide-react";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
+
+// Custom Icons
+const StackOverflowIcon = (props) => (
+  <svg {...props} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" fill="currentColor">
+    <path d="M87 90v21H18V90h-9v30h87V90zM27 111h51V99H27v12zm56-31l2-9-46-10-2 9 46 10zm6-26l4-8-42-20-4 9 42 19zm11-23l6-7-35-30-6 7 35 30zm16-24L91 0l-5 8 25 28 5-9z"/>
+  </svg>
+);
+
+const DevToIcon = (props) => (
+  <svg {...props} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 40" fill="currentColor">
+    <path d="M7.5 0h35A7.5 7.5 0 0 1 50 7.5v25A7.5 7.5 0 0 1 42.5 40h-35A7.5 7.5 0 0 1 0 32.5v-25A7.5 7.5 0 0 1 7.5 0zm9.7 11.5h-5.4v17h5.4c2.7 0 4.8-2.2 4.8-4.8v-7.4c0-2.7-2.1-4.8-4.8-4.8zm1.6 12.4c0 0.9-0.7 1.6-1.6 1.6h-2.2V14.5h2.2c0.9 0 1.6 0.7 1.6 1.6v7.8zm9.5-8.4h-3.8v10.8h3.8c2.9 0 5.2-2.3 5.2-5.2v-0.4c0-2.9-2.3-5.2-5.2-5.2zm0 7.8h-1.2v-4.8h1.2c1.3 0 2.4 1.1 2.4 2.4v0.1c0 1.3-1.1 2.3-2.4 2.3zm12.7-9.8h-6.3v2.8h3.5v2.5h-3.5v2.8h6.3v2.5H34V13.5h7.5v2.5z"/>
+  </svg>
+);
+
+const LeetCodeIcon = (props) => (
+  <svg {...props} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor">
+    <path d="M222.3 223.3a12 12 0 0 1-17 0l-92-92a12 12 0 0 1 0-17l92-92a12 12 0 0 1 17 17L144.7 128l77.6 77.6a12 12 0 0 1 0 17zM116 196a12 12 0 0 1-8.5-3.5l-64-64a12 12 0 0 1 0-17l64-64a12 12 0 1 1 17 17L68.5 128l56 56a12 12 0 0 1-8.5 20z"/>
+  </svg>
+);
+
 
   const quickLinks = [
     { name: "Home", href: "#home", branch: "main" },
@@ -26,7 +47,8 @@ export default function Footer() {
     { name: "Projects", href: "#projects", branch: "feature/projects" },
     { name: "Experience", href: "#experience", branch: "main" },
     { name: "Blog", href: "#blogs", branch: "feature/blog" },
-    { name: "Contact", href: "#contact", branch: "main" }
+    { name: "Contact", href: "#contact", branch: "main" },
+    { name: "All Projects", href: "https://github.com/birukdjn", branch: "main" }
   ];
 
   const socialLinks = [
@@ -46,11 +68,40 @@ export default function Footer() {
     },
     { 
       name: "Twitter", 
-      href: "https://twitter.com/birukedjn", 
+      href: "https://twitter.com/birukdjn", 
       icon: Twitter, 
       username: "@birukdjn",
       followers: "2.4k"
     },
+     { 
+      name: "Stack", 
+      href: "https://stackoverflow.com/users/1234567/birukdjn", 
+      icon: StackOverflowIcon, 
+      username: "@birukdjn",
+      followers: "2.4k"
+    },
+     { 
+      name: "Dev.to", 
+      href: "https://Dev.to/birukdjn", 
+      icon: DevToIcon, 
+      username: "@birukdjn",
+      followers: "2.4k"
+    },
+     { 
+      name: "LeetCode", 
+      href: "https://leetcode.com/birukdjn/", 
+      icon: LeetCodeIcon, 
+      username: "@birukdjn",
+      followers: "2.4k"
+    },
+       { 
+      name: "CodePen", 
+      href: "https://codepen.io/birukdjn", 
+      icon: Codepen, 
+      username: "@birukdjn",
+      followers: "2.4k"
+    },
+    
     { 
       name: "Email", 
       href: "mailto:birukedjn@gmail.com", 
@@ -194,89 +245,150 @@ export default function Footer() {
                           </motion.li>
                         ))}
                       </ul>
+                      
+                    <motion.div
+                      initial={{ opacity: 0, x: 20 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      transition={{ duration: 0.5, delay: 0.2 }}
+                      viewport={{ once: true }}
+                      className="space-y-4"
+                    >
+                      <div className=" bg-slate-800/40 backdrop-blur-xl border border-indigo-500/20 rounded-xl p-4 hover:border-indigo-400/50 transition-all duration-250">
+                        <ul className="flex justify-between space-y-4 flex-wrap">
+                          <li className="flex items-start space-x-3 text-sm">
+                            <Code className="w-5 h-5 text-green-400 mt-0.5 flex-shrink-0" />
+                            <div>
+                              <span className="text-gray-300 font-mono">08:00 - 12:00</span>
+                            </div>
+                          </li>
+                          <li className="flex items-start space-x-3 text-sm">
+                            <GitPullRequest className="w-4 h-4 text-blue-400 mt-0.5 flex-shrink-0" />
+                            <div>
+                              <span className="text-gray-300 font-mono">13:00 - 17:00</span>
+                            </div>
+                          </li>
+                          <li className="flex items-start space-x-3 text-sm">
+                            <Terminal className="w-4 h-4 text-purple-400 mt-0.5 flex-shrink-0" />
+                            <div>
+                              <span className="text-gray-300 font-mono">19:00 - 21:00</span>
+                            </div>
+                          </li>
+                           <li className="flex items-start space-x-3 text-sm">
+                            <Heart className="w-4 h-4 text-red-400 mt-0.5 flex-shrink-0" />
+                            <div>
+                              <span className="text-gray-300 font-mono">23:00 onwards</span>
+                            </div>
+                          </li>
+                        </ul>
+                      </div>
                     </motion.div>
 
+                      
+                    </motion.div>
+
+                    
+
                     {/* Social Links */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.1 }}
-              viewport={{ once: true }}
-              className="space-y-4"
-            >
-              <h3 className="text-lg font-bold text-white flex items-center space-x-2 mb-4">
-                <Terminal className="w-5 h-5 text-indigo-400" />
-                <span>Connect With Me</span>
-              </h3>
-              <div className="grid grid-cols-2 gap-5">
-                {socialLinks.map((social, index) => (
-                  <motion.a
-                    key={social.name}
-                    href={social.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.4, delay: index * 0.1 }}
-                    viewport={{ once: true }}
-                    whileHover={{ scale: 1.05, y: -2 }}
-                    className="group relative"
-                  >
-                    <div className="bg-slate-800/40 backdrop-blur-xl border border-indigo-500/20 rounded-lg p-3 hover:border-indigo-400/50 transition-all duration-250">
-                      <div className="flex items-center space-x-2">
-                        <social.icon className="w-5 h-5 text-indigo-400" />
-                        <div className="flex-1 min-w-0">
-                          <div className="text-sm font-medium text-white truncate">{social.name}</div>
-                          <div className="text-sm text-gray-400 truncate">{social.username}</div>
-                        </div>
-                        <ExternalLink className="w-4 h-4 text-gray-500 group-hover:text-indigo-400 transition-colors" />
+                    <motion.div
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.5, delay: 0.1 }}
+                      viewport={{ once: true }}
+                      className="space-y-4"
+                    >
+                      <h3 className="text-lg font-bold text-white flex items-center space-x-2 mb-4">
+                        <Terminal className="w-5 h-5 text-indigo-400" />
+                        <span>Connect With Me</span>
+                      </h3>
+                      <div className="grid grid-cols-2 gap-4">
+                        {socialLinks.map((social, index) => (
+                          <motion.a
+                            key={social.name}
+                            href={social.href}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            initial={{ opacity: 0, scale: 0.9 }}
+                            whileInView={{ opacity: 1, scale: 1 }}
+                            transition={{ duration: 0.4, delay: index * 0.1 }}
+                            viewport={{ once: true }}
+                            whileHover={{ scale: 1.05, y: -2 }}
+                            className="group relative"
+                          >
+                            <div className="bg-slate-800/40 backdrop-blur-xl border border-indigo-500/20 rounded-lg p-3 hover:border-indigo-400/50 transition-all duration-250">
+                              <div className="flex items-center space-x-2">
+                                <social.icon className="w-5 h-5 text-indigo-400" />
+                                <div className="flex-1 min-w-0">
+                                  <div className="text-md font-medium text-white truncate">{social.name}</div>
+                                  <div className="text-xs text-gray-400 truncate">{social.username}</div>
+                                </div>
+                                <ExternalLink className="w-4 h-4 text-gray-500 group-hover:text-indigo-400 transition-colors" />
+                              </div>
+                            </div>
+                          </motion.a>
+                        ))}
                       </div>
-                    </div>
-                  </motion.a>
-                ))}
-              </div>
-            </motion.div>
+                    </motion.div>
 
-            {/* Git Status */}
-            <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-              viewport={{ once: true }}
-              className="space-y-4"
-            >
-              <h3 className="text-lg font-bold text-white flex items-center space-x-2 mb-4">
-                <Code className="w-5 h-5 text-indigo-400" />
-                <span>Current Status</span>
-              </h3>
-              <div className="bg-slate-800/40 backdrop-blur-xl border border-indigo-500/20 rounded-xl p-4 hover:border-indigo-400/50 transition-all duration-250">
-                <div className="space-y-3">
-                  <div className="flex items-center justify-between text-sm">
-                    <span className="text-gray-300">Availability</span>
-                    <span className="flex items-center space-x-1 text-green-400">
-                      <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
-                      <span className="font-mono">Open to work</span>
-                    </span>
-                  </div>
-                  <div className="flex items-center justify-between text-sm">
-                    <span className="text-gray-300">Response Time</span>
-                    <span className="text-indigo-300 font-mono">&lt; 24h</span>
-                  </div>
-                  <div className="flex items-center justify-between text-sm">
-                    <span className="text-gray-300">Current Focus</span>
-                    <span className="text-purple-300 font-mono">Next.js 14</span>
-                  </div>
-                  <div className="flex items-center justify-between text-sm">
-                    <span className="text-gray-300">Last Deploy</span>
-                    <span className="text-blue-300 font-mono">Today</span>
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-          </div>
-        </div>
+                                        <motion.div
+                                          initial={{ opacity: 0, x: 20 }}
+                                          whileInView={{ opacity: 1, x: 0 }}
+                                          transition={{ duration: 0.5, delay: 0.2 }}
+                                          viewport={{ once: true }}
+                                          className="space-y-4"
+                                        >
+                                          <h3 className="text-lg font-bold text-white flex items-center space-x-2 mb-4">
+                                            <Code className="w-5 h-5 text-indigo-400" />
+                                            <span>Current Status</span>
+                                          </h3>
+                                          <div className="bg-slate-800/40 backdrop-blur-xl border border-indigo-500/20 rounded-xl p-4 hover:border-indigo-400/50 transition-all duration-250">
+                                            <div className="space-y-3">
+                                              <div className="flex items-center justify-between text-sm">
+                                                <span className="text-gray-300">Availability</span>
+                                                <span className="flex items-center space-x-1 text-green-400">
+                                                  <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
+                                                  <span className="font-mono">Open to work</span>
+                                                </span>
+                                              </div>
+                                              <div className="flex items-center justify-between text-sm">
+                                                <span className="text-gray-300">Response Time</span>
+                                                <span className="text-indigo-300 font-mono">&lt; 24h</span>
+                                              </div>
+                                              <div className="flex items-center justify-between text-sm">
+                                                <span className="text-gray-300">Current Focus</span>
+                                                <span className="text-purple-300 font-mono">Next.js 14</span>
+                                              </div>
+                                              <div className="flex items-center justify-between text-sm">
+                                                <span className="text-gray-300">Preferred Stack</span>
+                                                <span className="text-gray-300 font-mono">MERN</span>
+                                              </div>
+                                              <div className="flex items-center justify-between text-sm">
+                                                <span className="text-gray-300">Learning</span>
+                                                <span className="text-gray-300 font-mono">DevOps</span>
+                                              </div>
+                                              <div className="flex items-center justify-between text-sm">
+                                                <span className="text-gray-300">Last Deploy</span>
+                                                <span className="text-blue-300 font-mono">Today</span>
+                                              </div>
+                                              <div className="flex items-center justify-between text-sm">
+                                                <span className="text-gray-300">Location</span>
+                                                <span className="text-gray-300 font-mono">Remote</span>
+                                              </div>
+                                              <div className="flex items-center justify-between text-sm">
+                                                <span className="text-gray-300">Timezone</span>
+                                                <span className="text-gray-300 font-mono">EAT (UTC+3)</span>
+                                              </div>
+                                              <div className="flex items-center justify-between text-sm">
+                                                <span className="text-gray-300">Fun Fact</span>
+                                                <span className="text-gray-300 font-mono">Loves Coffee</span>
+                                              </div>
+                                              
+                                            </div>
+                                          </div>
+                                        </motion.div>
+                                      </div>
+                            </div>
 
-        {/* Bottom Bar */}
+                            {/* Bottom Bar */}
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
