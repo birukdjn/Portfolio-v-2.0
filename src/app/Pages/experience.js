@@ -1,53 +1,7 @@
 "use client";
 import { motion } from "framer-motion";
-import { Briefcase, Calendar, MapPin, GitBranch, GitCommit, GraduationCap } from "lucide-react";
-
-const experiences = [
-  {
-    title: "Full Stack Developer",
-    company: "Addis Systems Integration",
-    period: "Sep 2025 - Present",
-    location: "Addis Ababa, Ethiopia",
-    description: "Developing and maintaining full-stack web applications. Collaborating with cross-functional teams to deliver high-quality software solutions.",
-    technologies: ["React", "Node.js", "MongoDB", "AWS", "Docker"],
-    icon: "🚀",
-    branch: "main",
-    commits: ["Full-Stack Development", "API Design", "Database Management"]
-  },
-  {
-    title: "Frontend Developer Intern",
-    company: "Addis Systems Integration",
-    period: "Jun 2025 - Sep 2025",
-    location: "Addis Ababa, Ethiopia",
-    description: "Gained hands-on experience in frontend development, contributing to user interface components and collaborating with the development team on real-world projects.",
-    technologies: ["JavaScript", "React", "CSS3", "Git", "Figma"],
-    icon: "💻",
-    branch: "feature/internship-tasks",
-    commits: ["UI Components", "Code Review", "Collaboration"]
-  },
-  {
-    title: "Self-Study & Project Work",
-    company: "Personal Development",
-    period: "Jul 2024 - Jun 2025",
-    location: "Remote",
-    description: "Dedicated a year to intensive self-learning, focusing on full-stack development, modern frameworks, and building a portfolio of personal projects.",
-    technologies: ["Next.js", "TypeScript", "Python", "Express", "PostgreSQL"],
-    icon: "🌟",
-    branch: "develop",
-    commits: ["Project Scaffolding", "Feature Implementation", "Continuous Learning"]
-  },
-  {
-    title: "BSc in Computer Science",
-    company: "Hawassa University",
-    period: "2020 - 2024",
-    location: "Hawassa, Ethiopia",
-    description: "Graduated on July 4, 2024, with a CGPA of 3.51. Acquired a strong foundation in computer science principles, algorithms, and software development.",
-    technologies: ["Java", "C++", "Data Structures", "Algorithms", "SQL"],
-    icon: <GraduationCap />,
-    branch: "education",
-    commits: ["Final Year Project", "Coursework", "Academic Excellence"]
-  },
-];
+import { Briefcase, Calendar, MapPin, GitBranch, GitCommit } from "lucide-react";
+import experiences from "../Data/experieneData";
 
 export default function Experience() {
   return (
@@ -281,7 +235,7 @@ export default function Experience() {
           viewport={{ once: true }}
           className="text-center mt-16"
         >
-          <div className="bg-slate-900/60 backdrop-blur-xl border border-indigo-500/30 rounded-2xl p-6 font-mono text-left hover:border-indigo-400/50 transition-all duration-300">
+          <div className="bg-slate-900/60  backdrop-blur-xl border border-indigo-500/30 rounded-2xl p-6 font-mono text-left hover:border-indigo-400/50 transition-all duration-300 max-w-2xl mx-auto">
             <div className="flex items-center space-x-2 text-indigo-400 mb-3">
               <div className="w-3 h-3 bg-green-400 rounded-full animate-pulse"></div>
               <span className="text-sm">~/career-timeline</span>
