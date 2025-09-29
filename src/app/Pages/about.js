@@ -328,11 +328,11 @@ export default function About() {
           <div className="bg-slate-800/40 backdrop-blur-xl border border-indigo-500/30 rounded-2xl p-6 hover:border-indigo-400/50 transition-all duration-250">
             <h4 className="text-xl font-bold text-white mb-3 flex items-center justify-center space-x-2">
               <GitPullRequest className="w-5 h-5 text-indigo-400" />
-              <span>Let's Build Something Amazing Together</span>
+              <span>{"Let's Build Something Amazing Together"}</span>
             </h4>
             <p className="text-gray-300 max-w-2xl mx-auto mb-4 text-sm">
-              I'm always excited to take on new challenges and collaborate on innovative projects. 
-              Whether you need a website, web application, or technical consultation, I'm here to help.
+              {"I'm always excited to take on new challenges and collaborate on innovative projects. "}
+             {"Whether you need a website, web application, or technical consultation, I'm here to help."}
             </p>
             
             <a 
