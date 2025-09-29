@@ -97,18 +97,7 @@ export default function Blogs() {
           viewport={{ once: true }}
           className="text-center mb-12"
         >
-          <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.4, delay: 0.1 }}
-            viewport={{ once: true }}
-            className="inline-flex items-center space-x-2 bg-slate-800/60 backdrop-blur-xl border border-indigo-500/30 rounded-full px-4 py-2 mb-4"
-          >
-            <GitBranch className="w-4 h-4 text-indigo-400" />
-            <span className="text-indigo-300 font-mono text-xs">feature/blog-posts</span>
-            <div className="w-1.5 h-1.5 bg-green-400 rounded-full animate-pulse"></div>
-          </motion.div>
-          
+              
           <h2 className="text-3xl md:text-4xl font-black text-white mb-3">
             My <span className="bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">Blog</span>
           </h2>
