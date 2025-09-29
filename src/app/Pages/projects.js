@@ -1,101 +1,63 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import { GitBranch, GitCommit, ExternalLink, Globe, Star, Eye, GitFork } from "lucide-react";
+import { useState, useEffect } from "react";
+import Image from "next/image";
+import projects from "../Data/projectsData"
 
-const projects = [
-  {
-    title: "E-Commerce Platform",
-    description: "Full-stack e-commerce solution with React, Node.js, and PostgreSQL",
-    stars: 42,
-    forks: 18,
-    watches: 25,
-    language: "TypeScript",
-    languageColor: "bg-blue-500",
-    lastCommit: "2 days ago",
-    branch: "main",
-    status: "active",
-    tags: ["React", "Node.js", "PostgreSQL", "Stripe", "AWS"],
-    repoUrl: "https://github.com/birukdjn/ecommerce-platform",
-    liveUrl: "https://ecommerce-demo.biruk.com"
-  },
-  {
-    title: "AI Content Generator",
-    description: "AI-powered content generation platform with real-time collaboration",
-    stars: 89,
-    forks: 34,
-    watches: 67,
-    language: "Python",
-    languageColor: "bg-green-500",
-    lastCommit: "1 week ago",
-    branch: "develop",
-    status: "feature",
-    tags: ["Python", "FastAPI", "React", "OpenAI", "Docker"],
-    repoUrl: "https://github.com/birukdjn/ai-content-generator",
-    liveUrl: "https://ai-demo.biruk.com"
-  },
-  {
-    title: "Portfolio CMS",
-    description: "Headless CMS specifically designed for developer portfolios",
-    stars: 156,
-    forks: 72,
-    watches: 89,
-    language: "JavaScript",
-    languageColor: "bg-yellow-500",
-    lastCommit: "3 days ago",
-    branch: "main",
-    status: "stable",
-    tags: ["Next.js", "MongoDB", "GraphQL", "Tailwind", "Vercel"],
-    repoUrl: "https://github.com/birukdjn/portfolio-cms",
-    liveUrl: "https://cms-demo.biruk.com"
-  },
-  {
-    title: "Task Management API",
-    description: "RESTful API for task management with real-time updates",
-    stars: 31,
-    forks: 12,
-    watches: 19,
-    language: "Go",
-    languageColor: "bg-cyan-500",
-    lastCommit: "5 hours ago",
-    branch: "feature/auth",
-    status: "active",
-    tags: ["Go", "Redis", "WebSocket", "JWT", "Docker"],
-    repoUrl: "https://github.com/birukdjn/task-management-api",
-    liveUrl: "https://api-docs.biruk.com"
-  },
-  {
-    title: "Data Visualization Dashboard",
-    description: "Real-time data visualization dashboard for analytics",
-    stars: 67,
-    forks: 28,
-    watches: 45,
-    language: "TypeScript",
-    languageColor: "bg-blue-500",
-    lastCommit: "1 day ago",
-    branch: "main",
-    status: "stable",
-    tags: ["D3.js", "React", "Express", "MongoDB", "WebSocket"],
-    repoUrl: "https://github.com/birukdjn/data-viz-dashboard",
-    liveUrl: "https://dashboard.biruk.com"
-  },
-  {
-    title: "Mobile Learning App",
-    description: "Cross-platform mobile application for online learning",
-    stars: 124,
-    forks: 56,
-    watches: 78,
-    language: "Dart",
-    languageColor: "bg-teal-500",
-    lastCommit: "2 weeks ago",
-    branch: "release/v1.2",
-    status: "release",
-    tags: ["Flutter", "Firebase", "GetX", "Stripe", "AWS"],
-    repoUrl: "https://github.com/birukdjn/mobile-learning-app",
-    liveUrl: "https://learn-demo.biruk.com"
+
+
+const ProjectImageCarousel = ({ images }) => {
+  const [index, setIndex] = useState(0);
+
+  useEffect(() => {
+    if (!images || images.length === 0) return;
+    const interval = setInterval(() => {
+      setIndex(prevIndex => (prevIndex + 1) % images.length);
+    }, 4000); // Change image every 4 seconds
+    return () => clearInterval(interval);
+  }, [images]);
+
+  if (!images || images.length === 0) {
+    return null;
   }
-];
+
+  return (
+    <div className="relative h-35 w-full overflow-hidden bg-slate-900/50">
+      <AnimatePresence initial={false}>
+        <motion.div
+          key={index}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.8 }}
+          className="absolute inset-0"
+        >
+          <Image
+            src={images[index]}
+            alt={`Project screenshot ${index + 1}`}
+            layout="fill"
+            objectFit="cover"
+            unoptimized
+          />
+        </motion.div>
+      </AnimatePresence>
+      <div className="absolute bottom-2 left-1/2 -translate-x-1/2 flex space-x-2">
+        {images.map((_, i) => (
+          <div
+            key={i}
+            className={`w-2 h-2 rounded-full transition-colors duration-300 ${
+              i === index ? 'bg-white' : 'bg-white/30'
+            }`}
+          />
+        ))}
+      </div>
+    </div>
+  );
+};
+
 
 export default function ProjectsSection() {
   return (
@@ -171,7 +133,7 @@ export default function ProjectsSection() {
               {/* Project Card */}
               <div className="relative bg-slate-800/60 backdrop-blur-xl border border-indigo-500/30 rounded-2xl overflow-hidden shadow-2xl hover:shadow-3xl transition-all duration-300 hover:border-indigo-400/50 h-full flex flex-col">
                 {/* Card Header */}
-                <div className="p-6 border-b border-indigo-500/20">
+                <div className="px-4 pt-4">
                   <div className="flex justify-between items-start mb-3">
                     <h3 className="text-lg font-bold text-white group-hover:text-indigo-200 transition-colors line-clamp-1">
                       {project.title}
@@ -181,14 +143,19 @@ export default function ProjectsSection() {
                       <span className="text-xs text-indigo-300 font-mono">{project.branch}</span>
                     </div>
                   </div>
-                  
+                  </div>
+                   {/* Animated Image Carousel */}
+                <ProjectImageCarousel images={project.images} />
+                <div className="p-4">
                   <p className="text-gray-300 text-sm leading-relaxed line-clamp-2">
                     {project.description}
                   </p>
                 </div>
 
+               
+
                 {/* Project Stats */}
-                <div className="p-4 bg-slate-900/30 border-b border-indigo-500/10">
+                <div className="p-4 bg-slate-900/30 border-y border-indigo-500/20">
                   <div className="flex justify-between items-center text-xs text-gray-400">
                     <div className="flex items-center space-x-4">
                       <div className="flex items-center space-x-1">
