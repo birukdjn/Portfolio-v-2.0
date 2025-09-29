@@ -165,7 +165,7 @@ export default function Experience() {
                   <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/20 to-purple-500/20 rounded-2xl blur-xl transform scale-105 group-hover:scale-110 transition-all duration-500" />
                   
                   {/* Card Content */}
-                  <div className="relative bg-slate-800/80 backdrop-blur-xl border border-indigo-500/30 rounded-2xl p-6 shadow-2xl hover:shadow-3xl transition-all duration-300 hover:border-indigo-400/50">
+                  <div className="relative bg-slate-800/60 backdrop-blur-xl border border-indigo-500/30 rounded-2xl p-6 shadow-2xl hover:shadow-3xl transition-all duration-300 hover:border-indigo-400/50">
                     {/* Header */}
                     <div className="flex flex-col items-start justify-between mb-4">
                       <div className="flex justify-between w-full">

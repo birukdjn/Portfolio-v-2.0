@@ -1,12 +1,15 @@
 "use client";
 import { motion } from "framer-motion";
-import { GitBranch, GitPullRequest, Terminal, Code, Server, Settings, Briefcase, Clock } from "lucide-react";
+import { GitBranch, GitPullRequest, Terminal, Code, Server, Settings, Briefcase, Clock, Database, Cloud, Layers } from "lucide-react";
 import skills from "../Data/skillsData";
 
 const categoryIcons = {
   "Frontend": Code,
   "Backend": Server,
-  "Tools": Settings
+  "Database": Database,
+  "DevOps & Tools": Settings,
+  "Cloud & APIs": Cloud,
+  "Fundamentals": Layers
 };
 
 export default function Skills() {
@@ -48,7 +51,7 @@ export default function Skills() {
         </div>
       </div>
 
-      <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 z-10">
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-10">
         {/* Header Section */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
@@ -57,7 +60,6 @@ export default function Skills() {
           viewport={{ once: true }}
           className="text-center mb-12"
         >
-        
           <h2 className="text-3xl md:text-4xl font-black text-white mb-3">
             My <span className="bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">Skills</span>
           </h2>
@@ -66,8 +68,8 @@ export default function Skills() {
           </p>
         </motion.div>
 
-        {/* Skills Grid */}
-        <div className="grid lg:grid-cols-3 gap-6">
+        {/* Skills Grid - Updated for 6 columns */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {Object.entries(skills).map(([category, skillsList], categoryIndex) => {
             const IconComponent = categoryIcons[category];
             return (
@@ -84,7 +86,7 @@ export default function Skills() {
                 <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/20 to-purple-500/20 rounded-2xl blur-xl transform scale-105 group-hover:scale-110 transition-all duration-300" />
                 
                 {/* Skills Card */}
-                <div className="relative bg-slate-800/60 backdrop-blur-xl border border-indigo-500/30 rounded-2xl p-6 shadow-xl hover:shadow-2xl transition-all duration-250 hover:border-indigo-400/50">
+                <div className="relative bg-slate-800/60 backdrop-blur-xl border border-indigo-500/30 rounded-2xl p-6 shadow-xl hover:shadow-2xl transition-all duration-250 hover:border-indigo-400/50 h-full">
                   {/* Category Header */}
                   <div className="text-center mb-6">
                     <div className="inline-flex items-center justify-center w-10 h-10 bg-gradient-to-br from-indigo-600 to-purple-600 rounded-xl mb-3 shadow-lg group-hover:shadow-indigo-500/25 transition-shadow">
@@ -149,8 +151,6 @@ export default function Skills() {
                             viewport={{ once: true }}
                             className="bg-gradient-to-r from-indigo-600 to-purple-600 h-2 rounded-full shadow-lg shadow-indigo-500/25 relative overflow-hidden group-hover/skill:from-indigo-500 group-hover/skill:to-purple-500 transition-colors"
                           >
-                           
-                            
                             {/* Animated Shine Effect */}
                             <motion.div
                               className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent"
@@ -204,9 +204,12 @@ export default function Skills() {
             <div className="text-gray-300 space-y-0.5">
               <p><span className="text-purple-400">$</span> git log --skills --oneline</p>
               <p><span className="text-green-400">→</span> Frontend: React, Next.js, TypeScript, Tailwind</p>
-              <p><span className="text-green-400">→</span> Backend: Node.js, Python, Express, MongoDB</p>
-              <p><span className="text-green-400">→</span> Tools: Git, Docker, AWS, Figma</p>
-              <p className="text-indigo-400 mt-1"># Always learning and committing new skills! 🚀</p>
+              <p><span className="text-green-400">→</span> Backend: Django, .NET, Java, C++</p>
+              <p><span className="text-green-400">→</span> Database: PostgreSQL, MySQL, MongoDB, Redis</p>
+              <p><span className="text-green-400">→</span> DevOps: Docker, Kubernetes, CI/CD, Git</p>
+              <p><span className="text-green-400">→</span> Cloud: Azure, REST API, WebSocket, Security</p>
+              <p><span className="text-green-400">→</span> Fundamentals: HTML, CSS, JavaScript, Figma</p>
+              <p className="text-indigo-400 mt-1"># Full-stack developer with 8+ years of experience! 🚀</p>
             </div>
           </div>
         </motion.div>
