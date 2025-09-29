@@ -3,7 +3,7 @@ import Navbar from "./Components/navbar";
 import { Providers } from "./providers";
 
 export const metadata = {
-  title: "BirukDjn Portfolio",
+  title: "BirukDjn ",
   description: "My personal portfolio website",
 };
 

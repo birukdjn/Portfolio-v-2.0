@@ -9,7 +9,7 @@ import Contact from "./Pages/contact";
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-white dark:bg-slate-900 transition-colors duration-300">
+    <div className="min-h-screen transition-colors duration-300">
       <Hero />
       <About />
       <Skills />

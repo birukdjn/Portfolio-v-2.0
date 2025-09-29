@@ -2,20 +2,14 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { Moon, Sun, Monitor, X, Menu, FileText } from "lucide-react";
-import { useTheme } from "next-themes";
+import { X, Menu, FileText, Download } from "lucide-react";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-
-
-
-
 
 const NavLink = ({ href, children, mobile = false, onClick, activeSection }) => {
   const id = href.replace("#", ""); 
   const isActive = activeSection === id;
 
-  
   if (mobile) {
     return (
       <Link 
@@ -49,31 +43,29 @@ export default function Navbar() {
   const [activeSection, setActiveSection] = useState("Home");
   const [isScrolled, setIsScrolled] = useState(false);
 
-  
-useEffect(() => {
-  const handleScroll = () => {
-    const sections = ["home", "about", "skills", "projects", "experience", "blogs", "contact"];
-    let current = "home";
+  useEffect(() => {
+    const handleScroll = () => {
+      const sections = ["home", "about", "skills", "projects", "experience", "blogs", "contact"];
+      let current = "home";
 
-    sections.forEach((id) => {
-      const el = document.getElementById(id);
-      if (el) {
-        const rect = el.getBoundingClientRect();
-        if (rect.top <= 150 && rect.bottom >= 150) {
-          current = id;
+      sections.forEach((id) => {
+        const el = document.getElementById(id);
+        if (el) {
+          const rect = el.getBoundingClientRect();
+          if (rect.top <= 150 && rect.bottom >= 150) {
+            current = id;
+          }
         }
-      }
-    });
+      });
 
-    setActiveSection(current);
-  };
+      setActiveSection(current);
+    };
 
-  window.addEventListener("scroll", handleScroll);
-  return () => window.removeEventListener("scroll", handleScroll);
-}, []);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const [open, setOpen] = useState(false);
-  const { theme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
 
   const pathname = usePathname();
@@ -99,41 +91,6 @@ useEffect(() => {
     }
   }, [open]);
 
-
-  const ThemeButton = ({ themeName, icon, label }) => (
-    <button
-      onClick={() => setTheme(themeName)}
-      className={`p-1.5 rounded-full transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 ${
-        theme === themeName
-          ? "bg-indigo-600 text-white shadow-lg"
-          : "text-gray-400 hover:bg-gray-700 hover:text-white"
-      }`}
-      aria-label={`Switch to ${label} theme`}
-    >
-      {icon}
-    </button>
-  );
-
-  const ThemeSelector = ({ mobile = false }) => mounted && (
-    <div className={`flex items-center space-x-1 bg-gray-800 rounded-full p-1 ${mobile ? "ml-2" : ""}`}>
-      <ThemeButton 
-        themeName="light" 
-        icon={<Sun className="h-4 w-4" />} 
-        label="light" 
-      />
-      <ThemeButton 
-        themeName="dark" 
-        icon={<Moon className="h-4 w-4" />} 
-        label="dark" 
-      />
-      <ThemeButton 
-        themeName="system" 
-        icon={<Monitor className="h-4 w-4" />} 
-        label="system" 
-      />
-    </div>
-  );
-
   return (
     <nav className="w-full bg-slate-900 fixed top-0 left-0 z-50 shadow-lg border-b border-gray-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
@@ -155,8 +112,6 @@ useEffect(() => {
           </Link>
 
           {/* Desktop Menu */}
-          
-
           <ul className="hidden md:flex space-x-6 font-medium text-sm">
             <li><NavLink href="#home" activeSection={activeSection}>Home</NavLink></li>
             <li><NavLink href="#about" activeSection={activeSection}>About</NavLink></li>
@@ -166,27 +121,23 @@ useEffect(() => {
             <li><NavLink href="#blogs" activeSection={activeSection}>Blogs</NavLink></li>
             <li><NavLink href="#contact" activeSection={activeSection}>Contact</NavLink></li>
           </ul>
-
         </div>
         {/* Right Section */}
-        <div className="flex items-center space-x-4">
+        <div className="flex items-center space-x-1">
            {/* Resume Download Button - Desktop */}
           <a
             href="/resume.pdf"
             download
-            className="hidden md:flex items-center space-x-2 bg-indigo-600 hover:bg-indigo-700 text-white px-3 py-1.5 rounded-md transition-colors duration-200"
+            className=" flex items-center space-x-2 bg-indigo-600 hover:bg-indigo-700 text-white px-3 py-1.5 rounded-md transition-colors duration-200"
           >
-            <FileText className="h-4 w-4" />
-            <span className="text-sm font-medium">Resume</span>
+            <span className="group flex items-center space-x-2">
+              <FileText className="h-4 w-4 group-hover:hidden" />
+              <Download className="hidden h-4 w-4 group-hover:flex" />
+              <span className="text-sm font-medium">Resume</span>
+            </span>
           </a>
-          {/* Theme Changer (Desktop) */}
-          <div className="hidden md:flex items-center">
-            <ThemeSelector />
-          </div>
           {/* Mobile Icons */}
-          <div className="flex md:hidden items-center space-x-3">
-            <ThemeSelector mobile={true} />
-          </div>
+          <div className="flex md:hidden items-center space-x-3"></div>
           {/* Mobile Menu Button */}
           <button
             onClick={() => setOpen(!open)}
@@ -201,27 +152,27 @@ useEffect(() => {
       {/* Mobile Dropdown */}
       {open && (
         <div className="md:hidden bg-gray-900 border-t border-gray-800 shadow-xl animate-in slide-in-from-top duration-300">
-          <ul className="flex flex-col py-2">
+          <ul className="flex flex-col py-2 ">
             <li>
-              <NavLink href="/" mobile onClick={() => setOpen(false)}>Home</NavLink>
+              <NavLink href="#home" mobile activeSection={activeSection} onClick={() => setOpen(false)}>Home</NavLink>
             </li>
             <li>
-              <NavLink href="#about" mobile onClick={() => setOpen(false)}>About</NavLink>
+              <NavLink href="#about" mobile activeSection={activeSection} onClick={() => setOpen(false)}>About</NavLink>
             </li>
             <li>
-              <NavLink href="#skills" mobile onClick={() => setOpen(false)}>Skills</NavLink>
+              <NavLink href="#skills" mobile activeSection={activeSection} onClick={() => setOpen(false)}>Skills</NavLink>
             </li>
              <li>
-              <NavLink href="#projects" mobile onClick={() => setOpen(false)}>Projects</NavLink>
+              <NavLink href="#projects" mobile activeSection={activeSection} onClick={() => setOpen(false)}>Projects</NavLink>
             </li> 
             <li>
-              <NavLink href="#experience" mobile onClick={() => setOpen(false)}>Experience </NavLink>
+              <NavLink href="#experience" mobile activeSection={activeSection} onClick={() => setOpen(false)}>Experience </NavLink>
             </li> 
             <li>
-              <NavLink href="#blog" mobile onClick={() => setOpen(false)}>blog</NavLink>
+              <NavLink href="#blogs" mobile activeSection={activeSection} onClick={() => setOpen(false)}>Blogs</NavLink>
             </li>
             <li>
-              <NavLink href="#contact" mobile onClick={() => setOpen(false)}>Contact</NavLink>
+              <NavLink href="#contact" mobile activeSection={activeSection} onClick={() => setOpen(false)}>Contact</NavLink>
             </li>
           </ul>
         </div>
