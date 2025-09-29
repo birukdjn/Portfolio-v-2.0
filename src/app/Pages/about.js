@@ -32,7 +32,7 @@ export default function About() {
       icon: Trophy,
       label: "Projects",
       value: "20+ Completed",
-      branch: "feature/projects",
+      branch: "projects",
       commits: "856+",
       description: "Successful deployments"
     },
@@ -40,15 +40,15 @@ export default function About() {
       icon: Award,
       label: "Certifications",
       value: "10+",
-      branch: "develop",
+      branch: "main",
       commits: "342+",
       description: "Skills validated"
     },
     {
       icon: Code,
-      label: "GitHub Repos",
+      label: "Repos",
       value: "100+",
-      branch: "main",
+      branch: "develop",
       commits: "2.1k+",
       description: "Open source contributions"
     }
