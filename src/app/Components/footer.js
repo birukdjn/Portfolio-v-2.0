@@ -168,10 +168,10 @@ const LeetCodeIcon = (props) => (
           >
                       
             <h2 className="text-2xl md:text-3xl font-black text-white mb-3">
-              Let's <span className="bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">Collaborate</span>
+              {"Let's"} <span className="bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">Collaborate</span>
             </h2>
             <p className="text-gray-300 max-w-md mx-auto text-sm">
-              Ready to bring your next project to life? Let's connect and build something amazing together.
+              {"Ready to bring your next project to life? Let's connect and build something amazing together."}
             </p>
           </motion.div>
 
@@ -371,7 +371,7 @@ const LeetCodeIcon = (props) => (
                                               </div>
                                               <div className="flex items-center justify-between text-sm">
                                                 <span className="text-gray-300">Location</span>
-                                                <span className="text-gray-300 font-mono">Remote</span>
+                                                <span className="text-gray-300 font-mono">Addis Ababa, Ethiopia</span>
                                               </div>
                                               <div className="flex items-center justify-between text-sm">
                                                 <span className="text-gray-300">Timezone</span>
