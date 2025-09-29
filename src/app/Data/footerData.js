@@ -28,7 +28,7 @@ const LeetCodeIcon = (props) => (
     { name: "Experience", href: "#experience", branch: "main" },
     { name: "Blog", href: "#blogs", branch: "feature/blog" },
     { name: "Contact", href: "#contact", branch: "main" },
-    { name: "All Projects", href: "https://github.com/birukdjn", branch: "main" }
+    { name: "All Projects", href: "https://github.com/birukdjn", branch: "Projects" }
   ];
 
   
@@ -57,7 +57,7 @@ const LeetCodeIcon = (props) => (
     },
      { 
       name: "Stack", 
-      href: "https://stackoverflow.com/users/1234567/birukdjn", 
+      href: "https://stackoverflow.com/users/30361757/birukdjn", 
       icon: StackOverflowIcon, 
       username: "@birukdjn",
       followers: "2.4k"
