@@ -383,7 +383,7 @@ export default function Contact() {
           viewport={{ once: true }}
           className="text-center mt-12"
         >
-          <div className="bg-slate-900/60 backdrop-blur-xl border border-indigo-500/30 rounded-xl p-4 font-mono text-left hover:border-indigo-400/50 transition-all duration-250  mx-auto text-xs">
+          <div className="bg-slate-900/60 backdrop-blur-xl border border-indigo-500/30 rounded-xl p-4 font-mono text-left hover:border-indigo-400/50 transition-all duration-250  mx-auto max-w-2xl text-xs">
             <div className="flex items-center space-x-4 text-indigo-400 mb-2">
               <div className="w-4 h-4  bg-indigo-600 rounded-full animate-pulse"></div>
               <span className="text-xl font-bold text-indigo-600">~/contact-terminal</span>

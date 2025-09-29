@@ -25,7 +25,7 @@ const ProjectImageCarousel = ({ images }) => {
   }
 
   return (
-    <div className="relative h-35 w-full overflow-hidden bg-slate-900/50">
+    <div className="relative h-45 w-full overflow-hidden bg-slate-900/50">
       <AnimatePresence initial={false}>
         <motion.div
           key={index}
@@ -132,27 +132,26 @@ export default function ProjectsSection() {
               
               {/* Project Card */}
               <div className="relative bg-slate-800/60 backdrop-blur-xl border border-indigo-500/30 rounded-2xl overflow-hidden shadow-2xl hover:shadow-3xl transition-all duration-300 hover:border-indigo-400/50 h-full flex flex-col">
-                {/* Card Header */}
-                <div className="px-4 pt-4">
-                  <div className="flex justify-between items-start mb-3">
-                    <h3 className="text-lg font-bold text-white group-hover:text-indigo-200 transition-colors line-clamp-1">
-                      {project.title}
-                    </h3>
-                    <div className="flex items-center space-x-1 bg-slate-700/50 px-2 py-1 rounded-full">
-                      <GitBranch className="w-3 h-3 text-indigo-400" />
-                      <span className="text-xs text-indigo-300 font-mono">{project.branch}</span>
-                    </div>
+                {/* Image and Branch Info Container */}
+                <div className="relative">
+                  {/* Animated Image Carousel */}
+                  <ProjectImageCarousel images={project.images} />
+                  {/* Branch Info Overlay */}
+                  <div className="absolute top-2 right-2 flex items-center space-x-1 bg-slate-700/50 px-2 py-1 rounded-full z-10">
+                    <GitBranch className="w-3 h-3 text-indigo-400" />
+                    <span className="text-xs text-indigo-300 font-mono">{project.branch}</span>
                   </div>
-                  </div>
-                   {/* Animated Image Carousel */}
-                <ProjectImageCarousel images={project.images} />
+                </div>
+
+                {/* Card Content */}
                 <div className="p-4">
+                  <h3 className="text-lg font-bold text-white group-hover:text-indigo-200 transition-colors line-clamp-1 mb-2">
+                    {project.title}
+                  </h3>
                   <p className="text-gray-300 text-sm leading-relaxed line-clamp-2">
                     {project.description}
                   </p>
                 </div>
-
-               
 
                 {/* Project Stats */}
                 <div className="p-4 bg-slate-900/30 border-y border-indigo-500/20">
