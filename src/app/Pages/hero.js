@@ -103,7 +103,7 @@ export default function HeroSection() {
             transition={{ duration: 0.6, delay: 1.3 }}
           >
             <Link
-              href="/projects"
+              href="#projects"
               className="group w-full sm:w-auto inline-flex items-center justify-center px-6 py-3  hover:to-purple-700 text-white font-bold rounded-lg transition-all duration-300 transform hover:scale-105 shadow-2xl  bg-gradient-to-r from-indigo-600 to-purple-600 "
             >
               <Code className="w-5 h-5 mr-2 group-hover:rotate-12 transition-transform" />
