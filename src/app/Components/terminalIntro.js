@@ -3,12 +3,14 @@ import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 export default function TerminalIntro({ onFinish }) {
-  const commands = [
-    "$ git clone birukdjn/portfolio",
-    "$ cd portfolio",
-    "$ npm run start",
-  ];
-
+   
+const commands = [
+  "$ git clone https://github.com/birukdjn/portfolio.git",
+  "$ cd portfolio",
+  "$ npm install",
+  "$ npm run build",
+  "$ npm run start"
+];
   const [displayed, setDisplayed] = useState([]); // finished lines
   const [currentLine, setCurrentLine] = useState(""); // typing line
   const [finished, setFinished] = useState(false);
