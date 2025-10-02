@@ -9,11 +9,12 @@ export default function TerminalIntro({ onFinish }) {
     "$ npm run start",
   ];
 
-  const [displayed, setDisplayed] = useState([]);   // finished lines
+  const [displayed, setDisplayed] = useState([]); // finished lines
   const [currentLine, setCurrentLine] = useState(""); // typing line
   const [finished, setFinished] = useState(false);
-  const [bootDots, setBootDots] = useState("");       // for boot message
+  const [bootDots, setBootDots] = useState(""); // booting dots animation
 
+  // Typing effect
   useEffect(() => {
     let lineIndex = 0;
     let charIndex = 0;
@@ -31,7 +32,7 @@ export default function TerminalIntro({ onFinish }) {
             setCurrentLine("");
             charIndex = 0;
             lineIndex++;
-            setTimeout(typeLine, 800); // wait before next command
+            setTimeout(typeLine, 800); // wait before next line
           }
         }, 50); // typing speed
       } else {
@@ -42,16 +43,16 @@ export default function TerminalIntro({ onFinish }) {
     typeLine();
   }, []);
 
-  // Animate booting dots: ".", "..", "..."
+  // Animate booting dots
   useEffect(() => {
     if (finished) {
       let dots = 0;
       const interval = setInterval(() => {
-        dots = (dots + 1) % 4; // cycle through 0-3
+        dots = (dots + 1) % 4; // cycle 0-3
         setBootDots(".".repeat(dots));
       }, 500);
 
-      // after 2s, transition to portfolio
+      // After 2 seconds, remove intro and show portfolio
       const timeout = setTimeout(() => {
         clearInterval(interval);
         onFinish();
@@ -67,39 +68,41 @@ export default function TerminalIntro({ onFinish }) {
   return (
     <AnimatePresence>
       <motion.div
-        className="bg-black text-green-400 font-mono rounded-lg shadow-lg max-w-xl mx-auto mt-20 text-left overflow-hidden"
+        className="fixed inset-0 z-50 flex justify-center items-center bg-black"
         initial={{ opacity: 1 }}
-        exit={{ opacity: 0, y: -50, transition: { duration: 1 } }}
+        exit={{ opacity: 0, transition: { duration: 1 } }}
       >
-        {/* Terminal Header */}
-        <div className="flex items-center gap-2 bg-gray-800 px-3 py-2">
-          <span className="w-3 h-3 rounded-full bg-red-500"></span>
-          <span className="w-3 h-3 rounded-full bg-yellow-400"></span>
-          <span className="w-3 h-3 rounded-full bg-green-500"></span>
-          <span className="ml-3 text-gray-300 text-sm">birukdjn@portfolio: ~</span>
-        </div>
+        <div className="w-[90%] max-w-xl rounded-lg overflow-hidden shadow-lg">
+          {/* Terminal Header */}
+          <div className="flex items-center gap-2 bg-gray-800 px-3 py-2">
+            <span className="w-3 h-3 rounded-full bg-red-500"></span>
+            <span className="w-3 h-3 rounded-full bg-yellow-400"></span>
+            <span className="w-3 h-3 rounded-full bg-green-500"></span>
+            <span className="ml-3 text-gray-300 text-sm">birukdjn@portfolio: ~</span>
+          </div>
 
-        {/* Terminal Body */}
-        <div className="p-6">
-          {/* Render finished lines */}
-          {displayed.map((line, idx) => (
-            <p key={idx}>{line}</p>
-          ))}
+          {/* Terminal Body */}
+          <div className="bg-black text-green-400 font-mono p-6 text-left min-h-[200px]">
+            {/* Finished lines */}
+            {displayed.map((line, idx) => (
+              <p key={idx}>{line}</p>
+            ))}
 
-          {/* Current typing line */}
-          {!finished && (
-            <p>
-              {currentLine}
-              <span className="animate-pulse">▮</span>
-            </p>
-          )}
+            {/* Current typing line */}
+            {!finished && (
+              <p>
+                {currentLine}
+                <span className="animate-pulse">▮</span>
+              </p>
+            )}
 
-          {/* Booting with dots */}
-          {finished && (
-            <p className="mt-4 text-green-300">
-              🚀 Booting portfolio{bootDots}
-            </p>
-          )}
+            {/* Booting message */}
+            {finished && (
+              <p className="mt-4 text-green-300">
+                🚀 Booting portfolio{bootDots}
+              </p>
+            )}
+          </div>
         </div>
       </motion.div>
     </AnimatePresence>
