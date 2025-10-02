@@ -8,8 +8,7 @@ const commands = [
   "$ git clone https://github.com/birukdjn/portfolio.git",
   "$ cd portfolio",
   "$ npm install",
-  "$ npm run build",
-  "$ npm run start"
+  "$ npm run dev"
 ];
   const [displayed, setDisplayed] = useState([]); // finished lines
   const [currentLine, setCurrentLine] = useState(""); // typing line
@@ -74,7 +73,7 @@ const commands = [
         initial={{ opacity: 1 }}
         exit={{ opacity: 0, transition: { duration: 1 } }}
       >
-        <div className="w-[90%] max-w-xl rounded-lg overflow-hidden shadow-lg">
+        <div className="w-[90%] h-[80%] max-w-2xl rounded-lg overflow-hidden shadow-lg">
           {/* Terminal Header */}
           <div className="flex items-center gap-2 bg-gray-800 px-3 py-2">
             <span className="w-3 h-3 rounded-full bg-red-500"></span>
