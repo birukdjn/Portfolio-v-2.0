@@ -5,7 +5,7 @@ import Projects from "./Pages/projects";
 import Experience from "./Pages/experience";
 import Blogs from "./Pages/blogs";
 import Contact from "./Pages/contact";
-import TerminalIntro from "./components/terminalIntro";
+import TerminalIntro from "./components/terminallntro";
 
 
 export default function Home() {
