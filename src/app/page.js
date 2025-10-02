@@ -8,7 +8,7 @@ import Projects from "./Pages/projects";
 import Experience from "./Pages/experience";
 import Blogs from "./Pages/blogs";
 import Contact from "./Pages/contact";
-import TerminalIntro from "./components/TerminalIntro";
+import TerminalIntro from "./components/terminalIntro";
 
 export default function Home() {
   const [showPortfolio, setShowPortfolio] = useState(false);
