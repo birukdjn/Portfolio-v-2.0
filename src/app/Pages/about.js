@@ -1,5 +1,6 @@
 "use client";
 import { motion } from "framer-motion";
+
 import { 
   GitBranch, 
   GitCommit, 
@@ -23,7 +24,7 @@ export default function About() {
     {
       icon: Calendar,
       label: "Experience",
-      value: "2+ Years",
+      value: new Date().getFullYear() -2022+"+ Years",
       branch: "main",
       commits: "1.2k+",
       description: "Active development"
