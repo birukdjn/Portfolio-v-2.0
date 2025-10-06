@@ -5,8 +5,8 @@ import { motion, AnimatePresence } from "framer-motion";
 export default function TerminalIntro({ onFinish }) {
    
 const commands = [
-  "$ git clone https://github.com/birukdjn/portfolio.git",
-  "$ cd portfolio",
+  "$ git clone https://github.com/birukdjn/portfolio-v-2.0.git",
+  "$ cd portfolio-v-2.0",
   "$ npm install",
   "$ npm run dev"
 ];
@@ -79,7 +79,7 @@ const commands = [
             <span className="w-3 h-3 rounded-full bg-red-500"></span>
             <span className="w-3 h-3 rounded-full bg-yellow-400"></span>
             <span className="w-3 h-3 rounded-full bg-green-500"></span>
-            <span className="ml-3 text-gray-300 text-sm">birukdjn@portfolio: ~</span>
+            <span className="ml-3 text-gray-300 text-sm">birukdjn@portfolio-v-2.0: ~</span>
           </div>
 
           {/* Terminal Body */}
@@ -100,7 +100,7 @@ const commands = [
             {/* Booting message */}
             {finished && (
               <p className="mt-4 text-green-300">
-                🚀 Booting portfolio{bootDots}
+                🚀 Booting portfolio-v-2.0{bootDots}
               </p>
             )}
           </div>
