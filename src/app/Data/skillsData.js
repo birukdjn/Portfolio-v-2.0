@@ -6,14 +6,14 @@ const skills = {
     { name: "Tailwind CSS", level: 95, branch: "main", projects: 20, experience: `${new Date().getFullYear() - 2023} years` }
   ],
   "Backend": [
-    { name: "Django", level: 85, branch: "feature/api", projects: 7, experience: `${new Date().getFullYear() - 2022} years` },
-    { name: ".NET", level: 80, branch: "main", projects: 6, experience: `${new Date().getFullYear() - 2024} years` },
+    { name: "Django", level: 85, branch: "main", projects: 7, experience: `${new Date().getFullYear() - 2022} years` },
+    { name: ".NET", level: 80, branch: "feature/api", projects: 6, experience: `${new Date().getFullYear() - 2024} years` },
     { name: "Java", level: 75, branch: "feature/enterprise", projects: 5, experience: `${new Date().getFullYear() - 2022} years` },
     { name: "C++", level: 70, branch: "feature/system", projects: 4, experience: `${new Date().getFullYear() - 2021} years` }
   ],
   "Database": [
-    { name: "PostgreSQL", level: 85, branch: "feature/db", projects: 8, experience: `${new Date().getFullYear() - 2023} years` },
-    { name: "MySQL", level: 80, branch: "feature/relational", projects: 7, experience: `${new Date().getFullYear() - 2021} years` },
+    { name: "PostgreSQL", level: 85, branch: "main", projects: 6, experience: `${new Date().getFullYear() - 2023} years` },
+    { name: "MySQL", level: 90, branch: "feature/relational", projects: 9, experience: `${new Date().getFullYear() - 2021} years` },
     { name: "MongoDB", level: 75, branch: "feature/nosql", projects: 6, experience: `${new Date().getFullYear() - 2023} years` },
     { name: "Redis", level: 80, branch: "feature/cache", projects: 5, experience: `${new Date().getFullYear() - 2024} years` }
   ],
@@ -24,8 +24,8 @@ const skills = {
     { name: "Git", level: 90, branch: "main", projects: 50, experience: `${new Date().getFullYear() - 2022} years` }
   ],
   "Cloud & APIs": [
-    { name: "Azure", level: 80, branch: "feature/cloud", projects: 7, experience: `${new Date().getFullYear() - 2024} years` },
     { name: "REST API", level: 90, branch: "main", projects: 18, experience: `${new Date().getFullYear() - 2023} years` },
+    { name: "Azure", level: 80, branch: "feature/cloud", projects: 7, experience: `${new Date().getFullYear() - 2024} years` },
     { name: "WebSocket", level: 75, branch: "feature/realtime", projects: 5, experience: `${new Date().getFullYear() - 2023} years` },
     { name: "Security", level: 80, branch: "feature/security", projects: 6, experience: `${new Date().getFullYear() - 2022} years` }
   ],

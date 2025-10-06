@@ -1,22 +1,22 @@
-"use client"; // ✅ this makes it a Client Component
+// "use client"; // ✅ this makes it a Client Component
 
-import { ThemeProvider } from "next-themes";
-import { useEffect, useState } from "react";
+// import { ThemeProvider } from "next-themes";
+// import { useEffect, useState } from "react";
 
-export function Providers({ children }) {
-  const [mounted, setMounted] = useState(false);
+// export function Providers({ children }) {
+//   const [mounted, setMounted] = useState(false);
 
-  useEffect(() => {
-    setMounted(true);
-  }, []);
+//   useEffect(() => {
+//     setMounted(true);
+//   }, []);
 
-  if (!mounted) {
-    return null; // prevents hydration mismatch
-  }
+//   if (!mounted) {
+//     return null; // prevents hydration mismatch
+//   }
 
-  return (
-    <ThemeProvider attribute="class" enableSystem={true}>
-      {children}
-    </ThemeProvider>
-  );
-}
+//   return (
+//     <ThemeProvider attribute="class" enableSystem={true}>
+//       {children}
+//     </ThemeProvider>
+//   );
+// }

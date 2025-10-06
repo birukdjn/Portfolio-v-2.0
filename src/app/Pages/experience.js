@@ -99,7 +99,7 @@ export default function Experience() {
           className="text-center mb-16"
         >
           
-          <h2 className="text-4xl md:text-5xl font-black text-white mb-4">
+          <h2 className="text-3xl md:text-4xl font-black text-white mb-4">
             Work <span className="bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">Experience</span>
           </h2>
           <p className="text-xl text-gray-300 max-w-xl mx-auto">
@@ -242,11 +242,11 @@ export default function Experience() {
             </div>
             <div className="text-gray-300 space-y-0.5 ">
               <p><span className="text-purple-400">$</span> git log --oneline --graph --all</p>
-              <p><span className="text-green-400">*</span> Sep 2025-Present: Full Stack Developer at Addis Systems Integration [main]</p>
-              <p><span className="text-green-400">*</span> Jun 2025-Sep 2025: Frontend Developer Intern at Addis Systems Integration [feature/internship-tasks]</p>
-              <p><span className="text-green-400">*</span> Jul 2024-Jun 2025: Self-Study & Project Work [develop]</p>
-              <p><span className="text-green-400">*</span> Sep 2020-jul 2024: BSc in Computer Science at Hawassa University [education]</p>
-              <p className="text-indigo-400"> Continue coding...</p>
+              <p><span className="text-green-400">→</span> Sep 2025-Present: Full Stack Developer at Addis Systems Integration [main]</p>
+              <p><span className="text-green-400">→</span> Jun 2025-Sep 2025: Frontend Developer Intern at Addis Systems Integration [feature/internship-tasks]</p>
+              <p><span className="text-green-400">→</span> Jul 2024-Jun 2025: Self-Study & Project Work [develop]</p>
+              <p><span className="text-green-400">→</span> Sep 2020-jul 2024: BSc in Computer Science at Hawassa University [education]</p>
+              <p className="text-indigo-400"># Continue coding...</p>
             </div>
           </div>
         </motion.div>

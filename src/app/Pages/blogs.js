@@ -51,7 +51,7 @@ readTime = Math.round(readTime / blogs.length);
 
 export default function Blogs() {
   return (
-    <section id="blogs" className="relative py-16 bg-gradient-to-br from-slate-950 via-indigo-950 to-slate-950 text-white overflow-hidden">
+    <section id="blogs" className="relative py-20 bg-gradient-to-br from-slate-950 via-indigo-950 to-slate-950 text-white overflow-hidden">
       {/* Consistent Animated Background */}
       <div className="absolute inset-0 overflow-hidden">
         {/* Animated Gradient Orbs */}
@@ -95,7 +95,7 @@ export default function Blogs() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="text-center mb-12"
+          className="text-center mb-16"
         >
               
           <h2 className="text-3xl md:text-4xl font-black text-white mb-3">

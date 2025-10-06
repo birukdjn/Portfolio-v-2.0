@@ -14,7 +14,7 @@ const categoryIcons = {
 
 export default function Skills() {
   return (
-    <section id="skills" className="relative py-16 bg-gradient-to-br from-slate-950 via-indigo-950 to-slate-950 text-white overflow-hidden">
+    <section id="skills" className="relative py-20 bg-gradient-to-br from-slate-950 via-indigo-950 to-slate-950 text-white overflow-hidden">
       {/* Enhanced Animated Background */}
       <div className="absolute inset-0 overflow-hidden">
         {/* Animated Gradient Orbs */}
@@ -58,7 +58,7 @@ export default function Skills() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="text-center mb-12"
+          className="text-center mb-16"
         >
           <h2 className="text-3xl md:text-4xl font-black text-white mb-3">
             My <span className="bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">Skills</span>
@@ -209,7 +209,7 @@ export default function Skills() {
               <p><span className="text-green-400">→</span> DevOps: Docker, Kubernetes, CI/CD, Git</p>
               <p><span className="text-green-400">→</span> Cloud: Azure, REST API, WebSocket, Security</p>
               <p><span className="text-green-400">→</span> Fundamentals: HTML, CSS, JavaScript, Figma</p>
-              <p className="text-indigo-400 mt-1"># Full-stack developer with 8+ years of experience! 🚀</p>
+              <p className="text-indigo-400 mt-1"># Full-stack developer with {new Date().getFullYear() - 2022}+ years of experience! 🚀</p>
             </div>
           </div>
         </motion.div>

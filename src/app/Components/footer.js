@@ -108,217 +108,210 @@ export default function Footer() {
           </motion.div>
 
         {/* Links Grid */}
-                  <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
-                    {/* Quick Links */}
-                    <motion.div
-                      initial={{ opacity: 0, x: -20 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      transition={{ duration: 0.5 }}
-                      viewport={{ once: true }}
-                      className="space-y-4"
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+            {/* Quick Links */}
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.5 }}
+              viewport={{ once: true }}
+              className="space-y-4"
+            >
+              <h3 className="text-lg font-bold text-white flex items-center space-x-2 mb-4">
+                <GitPullRequest className="w-5 h-5 text-indigo-400" />
+                <span>Quick Links</span>
+              </h3>
+              <ul className="grid grid-cols-2 gap-x-4 gap-y-2">
+                {quickLinks.map((link, index) => (
+                  <motion.li
+                    key={link.name}
+                    initial={{ opacity: 0, x: -10 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.4, delay: index * 0.05 }}
+                    viewport={{ once: true }}
+                  >
+                    <Link
+                      href={link.href}
+                      className="group flex items-center justify-between py-2 text-gray-300 hover:text-white transition-colors duration-200"
                     >
-                      <h3 className="text-lg font-bold text-white flex items-center space-x-2 mb-4">
-                        <GitPullRequest className="w-5 h-5 text-indigo-400" />
-                        <span>Quick Links</span>
-                      </h3>
-                      <ul className="grid grid-cols-2 gap-x-4 gap-y-2">
-                        {quickLinks.map((link, index) => (
-                          <motion.li
-                            key={link.name}
-                            initial={{ opacity: 0, x: -10 }}
-                            whileInView={{ opacity: 1, x: 0 }}
-                            transition={{ duration: 0.4, delay: index * 0.05 }}
-                            viewport={{ once: true }}
-                          >
-                            <Link
-                              href={link.href}
-                              className="group flex items-center justify-between py-2 text-gray-300 hover:text-white transition-colors duration-200"
-                            >
-                              <span className="flex items-center space-x-2">
-                                <GitBranch className="w-3 h-3 text-indigo-400" />
-                                <span>{link.name}</span>
-                              </span>
-                              <span className="text-xs text-indigo-300 font-mono opacity-0 group-hover:opacity-100 transition-opacity">
-                                {link.branch}
-                              </span>
-                            </Link>
-                          </motion.li>
-                        ))}
-                      </ul>
-                      
-                    <motion.div
-                      initial={{ opacity: 0, x: 20 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      transition={{ duration: 0.5, delay: 0.2 }}
-                      viewport={{ once: true }}
-                      className="space-y-4"
-                    >
-                      <div className=" bg-slate-800/40 backdrop-blur-xl border border-indigo-500/20 rounded-xl p-4 hover:border-indigo-400/50 transition-all duration-250">
-                        <ul className="flex justify-between space-y-4 flex-wrap">
-  <li className="flex items-start space-x-3 text-sm">
-    <Code className="w-5 h-5 text-green-400 mt-0.5 flex-shrink-0" />
-    <div>
-      <span className="text-gray-300 font-mono">08:30 - 17:00</span>
-    </div>
-  </li>
-  <li className="flex items-start space-x-3 text-sm">
-    <User className="w-4 h-4 text-blue-400 mt-0.5 flex-shrink-0" />
-    <div>
-      <span className="text-gray-300 font-mono">17:00 - 20:00</span>
-    </div>
-  </li>
-  <li className="flex items-start space-x-3 text-sm">
-    <BookOpen className="w-4 h-4 text-purple-400 mt-0.5 flex-shrink-0" />
-    <div>
-      <span className="text-gray-300 font-mono">20:00 - 00:00</span>
-    </div>
-  </li>
-  <li className="flex items-start space-x-3 text-sm">
-    <Moon className="w-4 h-4 text-indigo-400 mt-0.5 flex-shrink-0" />
-    <div>
-      <span className="text-gray-300 font-mono">00:00 - 06:00</span>
-    </div>
-  </li>
-</ul>
-                      </div>
-                    </motion.div>
-
-                      
-                    </motion.div>
-
-                    
-
-                    {/* Social Links */}
-                    <motion.div
-                      initial={{ opacity: 0, y: 20 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.5, delay: 0.1 }}
-                      viewport={{ once: true }}
-                      className="space-y-4"
-                    >
-                      <h3 className="text-lg font-bold text-white flex items-center space-x-2 mb-4">
-                        <Terminal className="w-5 h-5 text-indigo-400" />
-                        <span>Connect With Me</span>
-                      </h3>
-                      <div className="grid grid-cols-2 gap-4">
-                        {socialLinks.map((social, index) => (
-                          <motion.a
-                            key={social.name}
-                            href={social.href}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            initial={{ opacity: 0, scale: 0.9 }}
-                            whileInView={{ opacity: 1, scale: 1 }}
-                            transition={{ duration: 0.4, delay: index * 0.1 }}
-                            viewport={{ once: true }}
-                            whileHover={{ scale: 1.05, y: -2 }}
-                            className="group relative"
-                          >
-                            <div className="bg-slate-800/40 backdrop-blur-xl border border-indigo-500/20 rounded-lg p-3 hover:border-indigo-400/50 transition-all duration-250">
-                              <div className="flex items-center space-x-2">
-                                <social.icon className="w-5 h-5 text-indigo-400" />
-                                <div className="flex-1 min-w-0">
-                                  <div className="text-md font-medium text-white truncate">{social.name}</div>
-                                  <div className="text-xs text-gray-400 truncate">{social.username}</div>
-                                </div>
-                                <ExternalLink className="w-4 h-4 text-gray-500 group-hover:text-indigo-400 transition-colors" />
-                              </div>
-                            </div>
-                          </motion.a>
-                        ))}
-                      </div>
-                    </motion.div>
-
-                                        <motion.div
-                                          initial={{ opacity: 0, x: 20 }}
-                                          whileInView={{ opacity: 1, x: 0 }}
-                                          transition={{ duration: 0.5, delay: 0.2 }}
-                                          viewport={{ once: true }}
-                                          className="space-y-4"
-                                        >
-                                          <h3 className="text-lg font-bold text-white flex items-center space-x-2 mb-4">
-                                            <Code className="w-5 h-5 text-indigo-400" />
-                                            <span>Current Status</span>
-                                          </h3>
-                                          <div className="bg-slate-800/40 backdrop-blur-xl border border-indigo-500/20 rounded-xl p-4 hover:border-indigo-400/50 transition-all duration-250">
-                                            <div className="space-y-3">
-                                              <div className="flex items-center justify-between text-sm">
-                                                <span className="text-gray-300">Availability</span>
-                                                <span className="flex items-center space-x-1 text-green-400">
-                                                  <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
-                                                  <span className="font-mono">Open to work</span>
-                                                </span>
-                                              </div>
-                                              <div className="flex items-center justify-between text-sm">
-                                                <span className="text-gray-300">Response Time</span>
-                                                <span className="text-indigo-300 font-mono">&lt; 24h</span>
-                                              </div>
-                                              <div className="flex items-center justify-between text-sm">
-                                                <span className="text-gray-300">Current Focus</span>
-                                                <span className="text-purple-300 font-mono">Next.js 14</span>
-                                              </div>
-                                              <div className="flex items-center justify-between text-sm">
-                                                <span className="text-gray-300">Preferred Stack</span>
-                                                <span className="text-gray-300 font-mono">MERN</span>
-                                              </div>
-                                              <div className="flex items-center justify-between text-sm">
-                                                <span className="text-gray-300">Learning</span>
-                                                <span className="text-gray-300 font-mono">DevOps</span>
-                                              </div>
-                                              <div className="flex items-center justify-between text-sm">
-                                                <span className="text-gray-300">Last Deploy</span>
-                                                <span className="text-blue-300 font-mono">Today</span>
-                                              </div>
-                                              <div className="flex items-center justify-between text-sm">
-                                                <span className="text-gray-300">Location</span>
-                                                <span className="text-gray-300 font-mono">Addis Ababa, Ethiopia</span>
-                                              </div>
-                                              <div className="flex items-center justify-between text-sm">
-                                                <span className="text-gray-300">Timezone</span>
-                                                <span className="text-gray-300 font-mono">EAT (UTC+3)</span>
-                                              </div>
-                                              <div className="flex items-center justify-between text-sm">
-                                                <span className="text-gray-300">Fun Fact</span>
-                                                <span className="text-gray-300 font-mono">Loves Coffee</span>
-                                              </div>
-                                              
-                                            </div>
-                                          </div>
-                                        </motion.div>
-                                      </div>
-                            </div>
-
-                            {/* Bottom Bar */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.6, delay: 0.6 }}
-          viewport={{ once: true }}
-          className="border-t border-indigo-500/20 py-6"
-        >
-          <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-            <div className="flex items-center space-x-2 text-gray-400 text-sm">
-              <Calendar className="w-4 h-4" />
-              <span>© {currentYear} Biruk. All rights reserved.</span>
-            </div>
-            
-            <div className="flex items-center space-x-4 text-gray-400 text-sm">
-              <div className="flex items-center space-x-1">
-                <Code className="w-4 h-4" />
-                <span>Built with</span>
+                      <span className="flex items-center space-x-2">
+                        <GitBranch className="w-3 h-3 text-indigo-400" />
+                        <span>{link.name}</span>
+                      </span>
+                      <span className="text-xs text-indigo-300 font-mono opacity-0 group-hover:opacity-100 transition-opacity">
+                        {link.branch}
+                      </span>
+                    </Link>
+                  </motion.li>
+                ))}
+              </ul>
+              
+            <motion.div
+              initial={{ opacity: 0, x: 20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              viewport={{ once: true }}
+              className="space-y-4"
+            >
+              <div className=" bg-slate-800/40 backdrop-blur-xl border border-indigo-500/20 rounded-xl p-4 hover:border-indigo-400/50 transition-all duration-250">
+                <ul className="flex justify-between space-y-4 flex-wrap">
+                  <li className="flex items-start space-x-3 text-sm">
+                  <Code className="w-5 h-5 text-green-400 mt-0.5 flex-shrink-0" />
+                  <div>
+                  <span className="text-gray-300 font-mono">08:30 - 17:00</span>
+                  </div>
+                  </li>
+                  <li className="flex items-start space-x-3 text-sm">
+                  <User className="w-4 h-4 text-blue-400 mt-0.5 flex-shrink-0" />
+                  <div>
+                  <span className="text-gray-300 font-mono">17:00 - 20:00</span>
+                  </div>
+                  </li>
+                  <li className="flex items-start space-x-3 text-sm">
+                  <BookOpen className="w-4 h-4 text-purple-400 mt-0.5 flex-shrink-0" />
+                  <div>
+                  <span className="text-gray-300 font-mono">20:00 - 00:00</span>
+                  </div>
+                  </li>
+                  <li className="flex items-start space-x-3 text-sm">
+                  <Moon className="w-4 h-4 text-indigo-400 mt-0.5 flex-shrink-0" />
+                  <div>
+                  <span className="text-gray-300 font-mono">00:00 - 06:00</span>
+                  </div>
+                  </li>
+                </ul>
               </div>
-              <div className="flex items-center space-x-1 text-indigo-400">
-                <Heart className="w-4 h-4 fill-current" />
-                <span>by Biruk</span>
+            </motion.div>
+          </motion.div>
+
+          {/* Social Links */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            viewport={{ once: true }}
+            className="space-y-4"
+          >
+            <h3 className="text-lg font-bold text-white flex items-center space-x-2 mb-4">
+              <Terminal className="w-5 h-5 text-indigo-400" />
+              <span>Connect With Me</span>
+            </h3>
+            <div className="grid grid-cols-2 gap-4">
+              {socialLinks.map((social, index) => (
+                <motion.a
+                  key={social.name}
+                  href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.4, delay: index * 0.1 }}
+                  viewport={{ once: true }}
+                  whileHover={{ scale: 1.05, y: -2 }}
+                  className="group relative"
+                >
+                  <div className="bg-slate-800/40 backdrop-blur-xl border border-indigo-500/20 rounded-lg p-3 hover:border-indigo-400/50 transition-all duration-250">
+                    <div className="flex items-center space-x-2">
+                      <social.icon className="w-5 h-5 text-indigo-400" />
+                      <div className="flex-1 min-w-0">
+                        <div className="text-md font-medium text-white truncate">{social.name}</div>
+                        <div className="text-xs text-gray-400 truncate">{social.username}</div>
+                      </div>
+                      <ExternalLink className="w-4 h-4 text-gray-500 group-hover:text-indigo-400 transition-colors" />
+                    </div>
+                  </div>
+                </motion.a>
+              ))}
+            </div>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            viewport={{ once: true }}
+            className="space-y-4"
+          >
+            <h3 className="text-lg font-bold text-white flex items-center space-x-2 mb-4">
+              <Code className="w-5 h-5 text-indigo-400" />
+              <span>Current Status</span>
+            </h3>
+            <div className="bg-slate-800/40 backdrop-blur-xl border border-indigo-500/20 rounded-xl p-4 hover:border-indigo-400/50 transition-all duration-250">
+              <div className="space-y-3">
+                <div className="flex items-center justify-between text-sm">
+                  <span className="text-gray-300">Availability</span>
+                  <span className="flex items-center space-x-1 text-green-400">
+                    <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
+                    <span className="font-mono">Open to work</span>
+                  </span>
+                </div>
+                <div className="flex items-center justify-between text-sm">
+                  <span className="text-gray-300">Response Time</span>
+                  <span className="text-indigo-300 font-mono">&lt; 24h</span>
+                </div>
+                <div className="flex items-center justify-between text-sm">
+                  <span className="text-gray-300">Current Focus</span>
+                  <span className="text-purple-300 font-mono">Next.js 14</span>
+                </div>
+                <div className="flex items-center justify-between text-sm">
+                  <span className="text-gray-300">Preferred Stack</span>
+                  <span className="text-gray-300 font-mono">API</span>
+                </div>
+                <div className="flex items-center justify-between text-sm">
+                  <span className="text-gray-300">Learning</span>
+                  <span className="text-gray-300 font-mono">ASP.NET core</span>
+                </div>
+                <div className="flex items-center justify-between text-sm">
+                  <span className="text-gray-300">Last Deploy</span>
+                  <span className="text-blue-300 font-mono">Today</span>
+                </div>
+                <div className="flex items-center justify-between text-sm">
+                  <span className="text-gray-300">Location</span>
+                  <span className="text-gray-300 font-mono">Addis Ababa, Ethiopia</span>
+                </div>
+                <div className="flex items-center justify-between text-sm">
+                  <span className="text-gray-300">Timezone</span>
+                  <span className="text-gray-300 font-mono">EAT (UTC+3)</span>
+                </div>
+                <div className="flex items-center justify-between text-sm">
+                  <span className="text-gray-300">Fun Fact</span>
+                  <span className="text-gray-300 font-mono">Loves Coffee</span>
+                </div>                
               </div>
             </div>
-            
-            <div className="flex items-center space-x-2 text-gray-400 text-sm">
-              <GitCommit className="w-4 h-4" />
-              <span className="font-mono">v1.0.0</span>
+          </motion.div>
+        </div>
+      </div>
+
+      {/* Bottom Bar */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ duration: 0.6, delay: 0.6 }}
+        viewport={{ once: true }}
+        className="border-t border-indigo-500/20 py-6"
+      >
+        <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+          <div className="flex items-center space-x-2 text-gray-400 text-sm">
+            <Calendar className="w-4 h-4" />
+            <span>© {currentYear} Biruk. All rights reserved.</span>
+          </div>          
+          <div className="flex items-center space-x-4 text-gray-400 text-sm">
+            <div className="flex items-center space-x-1">
+              <Code className="w-4 h-4" />
+              <span>Built with</span>
+            </div>
+            <div className="flex items-center space-x-1 text-indigo-400">
+              <Heart className="w-4 h-4 fill-current" />
+              <span>by Birukdjn</span>
             </div>
           </div>
-        </motion.div>
+          <div className="flex items-center space-x-2 text-gray-400 text-sm">
+            <GitCommit className="w-4 h-4" />
+            <span className="font-mono">v1.0.0</span>
+          </div>
+        </div>
+      </motion.div>
       </div>
     </footer>
   );
