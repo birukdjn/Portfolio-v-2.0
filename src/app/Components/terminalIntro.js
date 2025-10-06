@@ -34,11 +34,11 @@ export default function TerminalIntro({ onFinish }) {
             setCurrentLine("");
             charIndex = 0;
             lineIndex++;
-            setTimeout(typeLine, 800); // wait before next line
+            setTimeout(typeLine, 300); // wait before next line
           }
-        }, 50); // typing speed
+        }, 25); // typing speed
       } else {
-        setTimeout(() => setFinished(true), 1000); // after all commands
+        setTimeout(() => setFinished(true), 100); // after all commands
       }
     }
 
@@ -52,13 +52,12 @@ export default function TerminalIntro({ onFinish }) {
       const interval = setInterval(() => {
         dots = (dots + 1) % 4; // cycle 0-3
         setBootDots(".".repeat(dots));
-      }, 500);
+      }, 300);
 
-      // After 2 seconds, remove intro and show portfolio
       const timeout = setTimeout(() => {
         clearInterval(interval);
         onFinish();
-      }, 2000);
+      }, 1000);
 
       return () => {
         clearInterval(interval);

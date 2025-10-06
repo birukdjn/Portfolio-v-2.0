@@ -4,6 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { Code, Download, ArrowRight } from "lucide-react";
+import birukImage from '../../../public/biruk.webp';
 
 export default function HeroSection() {
   return (
@@ -147,12 +148,15 @@ export default function HeroSection() {
             {/* Image Container */}
             <div className="relative z-10 flex items-center justify-center w-full h-full">
                <Image
-                 src="/biruk.png" // IMPORTANT: Replace with your image path
-                 alt="Biruk - Full Stack Developer"
+                 src={birukImage}
+                 alt="Birukdjn"
                  width={600}
                  height={600}
                  className="rounded-full object-cover w-full h-full p-2 border-4 border-slate-800/50"
                  priority
+                 placeholder="blur"
+                 blurDataURL="/biruk.png"
+                 sizes="(max-width:768px)320px,480px"
                />
             </div>
           </div>
