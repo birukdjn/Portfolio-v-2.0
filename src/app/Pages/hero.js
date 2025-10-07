@@ -8,7 +8,7 @@ import birukImage from '../../../public/biruk.webp';
 
 export default function HeroSection() {
   return (
-    <section className="relative flex flex-col-reverse lg:flex-row w-full min-h-screen bg-gradient-to-br from-slate-950 via-indigo-950 to-slate-950 text-white flex items-center justify-center overflow-hidden">
+    <section className="relative flex-col-reverse lg:flex-row w-full min-h-screen bg-gradient-to-br from-slate-950 via-indigo-950 to-slate-950 text-white flex items-center justify-center overflow-hidden">
       {/* Enhanced Animated Background */}
       <div className="absolute inset-0 overflow-hidden">
         {/* Animated Gradient Orbs */}

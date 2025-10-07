@@ -1,22 +1,24 @@
+const PROJECTIMAGES = "/projects/"
+
 const projects = [
   {
-    title: "E-Commerce Platform",
-    description: "Full-stack e-commerce solution with React, Node.js, and PostgreSQL",
+    title: "AI News Hub",
+    description: "Smart AI-powered platform that curates and summarizes global news in real time.",
     stars: 42,
     forks: 18,
     watches: 25,
-    language: "TypeScript",
-    languageColor: "bg-blue-500",
+    language: "JavaScript",
+    languageColor: "bg-yellow-500",
     lastCommit: "2 days ago",
     branch: "main",
     status: "active",
-    tags: ["React", "Node.js", "PostgreSQL", "Stripe", "AWS"],
-    repoUrl: "https://github.com/birukdjn/ecommerce-platform",
-    liveUrl: "https://ecommerce-demo.biruk.com",
+    tags: ["Next.js", "Tailwind", "OpenAI", "Vercel","Redis" ],
+    repoUrl: "https://github.com/birukdjn/ai-news-hub",
+    liveUrl: "https://ai-news-hub-livid.vercel.app",
     images: [
-      "https://placehold.co/600x400/1e293b/93c5fd?text=Product+Grid",
-      "https://placehold.co/600x400/1e293b/a5b4fc?text=Checkout",
-      "https://placehold.co/600x400/1e293b/818cf8?text=Admin+Dashboard"
+      `${PROJECTIMAGES}ai-news-hub1.png`,
+      `${PROJECTIMAGES}ai-news-hub4.png`,
+      `${PROJECTIMAGES}ai-news-hub2.png`
     ]
   },
   {
