@@ -113,7 +113,7 @@ export default function Navbar() {
 
           {/* Desktop Menu */}
           <ul className="hidden md:flex space-x-6 font-medium text-sm">
-            <li><NavLink href="#home" activeSection={activeSection}>Home</NavLink></li>
+            <li><NavLink href="/" activeSection={activeSection}>Home</NavLink></li>
             <li><NavLink href="#about" activeSection={activeSection}>About</NavLink></li>
             <li><NavLink href="#skills" activeSection={activeSection}>Skills</NavLink></li>
             <li><NavLink href="#projects" activeSection={activeSection}>Projects</NavLink></li>

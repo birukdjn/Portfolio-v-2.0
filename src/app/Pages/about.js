@@ -1,5 +1,7 @@
 "use client";
 import { motion } from "framer-motion";
+import Link from "next/link";
+import { useState } from "react";
 
 import { 
   GitBranch, 
@@ -16,42 +18,103 @@ import {
   Trophy,
   BookOpen,
   Zap,
-  Shield
+  Shield,
 } from "lucide-react";
 
+const EyeIcon = () => (
+  // Replace this SVG with your actual icon component or SVG code
+  <svg 
+    xmlns="http://www.w3.org/2000/svg" 
+    fill="none" 
+    viewBox="0 0 24 24" 
+    strokeWidth={1.5} 
+    stroke="currentColor" 
+    className="w-5 h-5 inline-block mr-1 align-middle"
+  >
+    <path 
+      strokeLinecap="round" 
+      strokeLinejoin="round" 
+      d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.437 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z" 
+    />
+    <path 
+      strokeLinecap="round" 
+      strokeLinejoin="round" 
+      d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" 
+    />
+  </svg>
+);
+
 export default function About() {
+  const [isHovered, setIsHovered] = useState(null);
   const stats = [
     {
+      id: 1,
       icon: Calendar,
       label: "Experience",
       value: new Date().getFullYear() -2022+"+ Years",
       branch: "main",
       commits: "1.2k+",
-      description: "Active development"
+      description: "Active development",
+      linkto: "#experience",
+      goto:(
+      <>
+        <EyeIcon />
+        <span className="text-indigo-400">View Experience</span>
+      </>
+    ),
+      openInNewTab: false
+
     },
     {
+      id: 2,
       icon: Trophy,
       label: "Projects",
       value: "20+ Completed",
       branch: "projects",
       commits: "856+",
-      description: "Successful deployments"
+      description: "Successful deployments",
+      linkto: "#projects",
+      goto:( <>
+      <EyeIcon />
+        <span className="text-indigo-400">View Projects</span>
+        </>),
+      openInNewTab: false
+      
+
     },
     {
+      id: 3,
       icon: Award,
       label: "Certifications",
       value: "10+",
       branch: "main",
       commits: "342+",
-      description: "Skills validated"
+      description: "Skills validated",
+      linkto: "/certifications",
+      goto: (
+        <>
+          <EyeIcon />
+          <span className="text-indigo-400">View Certifications</span>
+        </>
+      ),
+      openInNewTab: false
+
     },
     {
+      id: 4,
       icon: Code,
       label: "Repos",
       value: "100+",
       branch: "develop",
       commits: "2.1k+",
-      description: "Open source contributions"
+      description: "Open source contributions",
+      linkto: "https://github.com/birukdjn",
+      goto:(
+      <>
+        <EyeIcon />
+        <span className="text-indigo-400">Visite github</span>
+      </>),
+      openInNewTab: true
     }
   ];
 
@@ -233,11 +296,18 @@ export default function About() {
                 >
                   <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/10 to-purple-500/10 rounded-xl blur-lg transform scale-105 group-hover:scale-110 transition-all duration-300" />
                   
-                  <div className="relative bg-slate-800/40 backdrop-blur-xl border border-indigo-500/20 rounded-xl p-3 hover:border-indigo-400/50 transition-all duration-250">
-                    <div className="flex items-start justify-between mb-2">
+                  <div className="relative bg-slate-800/40 backdrop-blur-xl border border-indigo-500/20 rounded-xl p-3 hover:border-indigo-400/50 transition-all duration-250 cursor-pointer"
+                  onMouseEnter={() => setIsHovered(stat.id)}
+                  onMouseLeave={() => setIsHovered(null)}
+                  >
+                    <Link href={stat.linkto} target={stat.openInNewTab ? "_blank" : "_self"}
+                    >
+                     
+                    <div className="flex items-start justify-between mb-2"
+                    >
                       <div className="flex items-center space-x-2">
                         <stat.icon className="w-4 h-4 text-indigo-400" />
-                        <span className="text-xs font-semibold text-indigo-300">{stat.label}</span>
+                        <span className="text-xs font-semibold text-indigo-300 ">{stat.label}</span>
                       </div>
                       <div className="flex items-center space-x-1 bg-slate-700/50 px-1.5 py-0.5 rounded text-xs">
                         <GitBranch className="w-2.5 h-2.5 text-indigo-400" />
@@ -245,7 +315,7 @@ export default function About() {
                       </div>
                     </div>
                     
-                    <div className="text-lg font-bold text-white mb-1">{stat.value}</div>
+                    <div className="text-lg font-bold text-white mb-1 hover:text-xl ease-out ">{isHovered===stat.id ? stat.goto:stat.value}</div>
                     
                     <div className="flex items-center justify-between text-xs text-gray-400">
                       <div className="flex items-center space-x-1">
@@ -254,6 +324,7 @@ export default function About() {
                       </div>
                       <span>{stat.description}</span>
                     </div>
+                    </Link>
                   </div>
                 </motion.div>
               ))}
@@ -279,10 +350,10 @@ export default function About() {
                 className="group relative"
               >
                 <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/15 to-purple-500/15 rounded-xl blur-lg transform scale-105 group-hover:scale-110 transition-all duration-300" />
-                
                 <div className="relative bg-slate-800/60 backdrop-blur-xl border border-indigo-500/30 rounded-xl p-4 shadow-lg hover:shadow-xl hover:border-indigo-400/50 transition-all duration-250">
                   {/* Value Header with Git Info */}
-                  <div className="flex items-start justify-between mb-3">
+                  <div className="flex items-start justify-between mb-3 ">
+
                     <div className="flex items-center space-x-3">
                       <div className="p-2 bg-gradient-to-r from-indigo-600/20 to-purple-600/20 rounded-lg border border-indigo-500/20">
                         <value.icon className="w-4 h-4 text-white" />

@@ -6,18 +6,32 @@ const commands = [
   "$ git clone https://github.com/birukdjn/portfolio-v-2.0.git",
   "$ cd portfolio-v-2.0",
   "$ npm install",
-  "$ npm run dev"
+  "$ npm run dev",
 ];
 
-
 export default function TerminalIntro({ onFinish }) {
-  const [displayed, setDisplayed] = useState([]); // finished lines
-  const [currentLine, setCurrentLine] = useState(""); // typing line
+  const [displayed, setDisplayed] = useState([]);
+  const [currentLine, setCurrentLine] = useState("");
   const [finished, setFinished] = useState(false);
-  const [bootDots, setBootDots] = useState(""); // booting dots animation
+  const [bootDots, setBootDots] = useState("");
+  const [shouldShow, setShouldShow] = useState(false);
 
-  // Typing effect
+  // ✅ Show only once per session unless refreshed
   useEffect(() => {
+    const shown = sessionStorage.getItem("introShown");
+    if (!shown) {
+      setShouldShow(true);
+      sessionStorage.setItem("introShown", "true");
+    } else {
+      // Skip intro if already shown
+      onFinish?.();
+    }
+  }, [onFinish]);
+
+  // Typing effect (only if shouldShow is true)
+  useEffect(() => {
+    if (!shouldShow) return;
+
     let lineIndex = 0;
     let charIndex = 0;
 
@@ -34,29 +48,29 @@ export default function TerminalIntro({ onFinish }) {
             setCurrentLine("");
             charIndex = 0;
             lineIndex++;
-            setTimeout(typeLine, 300); // wait before next line
+            setTimeout(typeLine, 300);
           }
-        }, 25); // typing speed
+        }, 25);
       } else {
-        setTimeout(() => setFinished(true), 100); // after all commands
+        setTimeout(() => setFinished(true), 100);
       }
     }
 
     typeLine();
-  }, []);
+  }, [shouldShow]);
 
-  // Animate booting dots
+  // Booting animation
   useEffect(() => {
     if (finished) {
       let dots = 0;
       const interval = setInterval(() => {
-        dots = (dots + 1) % 4; // cycle 0-3
+        dots = (dots + 1) % 4;
         setBootDots(".".repeat(dots));
       }, 300);
 
       const timeout = setTimeout(() => {
         clearInterval(interval);
-        onFinish();
+        onFinish?.();
       }, 1000);
 
       return () => {
@@ -65,6 +79,8 @@ export default function TerminalIntro({ onFinish }) {
       };
     }
   }, [finished, onFinish]);
+
+  if (!shouldShow) return null;
 
   return (
     <AnimatePresence>
@@ -79,17 +95,17 @@ export default function TerminalIntro({ onFinish }) {
             <span className="w-3 h-3 rounded-full bg-red-500"></span>
             <span className="w-3 h-3 rounded-full bg-yellow-400"></span>
             <span className="w-3 h-3 rounded-full bg-green-500"></span>
-            <span className="ml-3 text-gray-300 text-sm">birukdjn@portfolio-v-2.0: ~</span>
+            <span className="ml-3 text-gray-300 text-sm">
+              birukdjn@portfolio-v-2.0: ~
+            </span>
           </div>
 
           {/* Terminal Body */}
           <div className="bg-black text-green-400 font-mono p-6 text-left min-h-[200px]">
-            {/* Finished lines */}
             {displayed.map((line, idx) => (
               <p key={idx}>{line}</p>
             ))}
 
-            {/* Current typing line */}
             {!finished && (
               <p>
                 {currentLine}
@@ -97,7 +113,6 @@ export default function TerminalIntro({ onFinish }) {
               </p>
             )}
 
-            {/* Booting message */}
             {finished && (
               <p className="mt-4 text-green-300">
                 🚀 Booting portfolio-v-2.0{bootDots}
