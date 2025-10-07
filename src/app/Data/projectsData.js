@@ -22,8 +22,8 @@ const projects = [
     ]
   },
   {
-    title: "AI Content Generator",
-    description: "AI-powered content generation platform with real-time collaboration",
+    title: "University Cafe Acces Control",
+    description: "Smart café access system for universities with secure entry built using Next.js, Django, and PostgreSQL",
     stars: 89,
     forks: 34,
     watches: 67,
@@ -32,13 +32,13 @@ const projects = [
     lastCommit: "1 week ago",
     branch: "develop",
     status: "feature",
-    tags: ["Python", "FastAPI", "React", "OpenAI", "Docker"],
-    repoUrl: "https://github.com/birukdjn/ai-content-generator",
-    liveUrl: "https://ai-demo.biruk.com",
+    tags: ["Python", "RestAPI", "Nextjs", "PostgreSQL", "Redis"],
+    repoUrl: "https://github.com/birukdjn/University-Cafe-System",
+    liveUrl: "https://cafe-system-rt4e.onrender.com/",
     images: [
-      "https://placehold.co/600x400/1e293b/6ee7b7?text=Editor",
-      "https://placehold.co/600x400/1e293b/a7f3d0?text=History",
-      "https://placehold.co/600x400/1e293b/34d399?text=Settings"
+      `${PROJECTIMAGES}cafe4.png`,
+      `${PROJECTIMAGES}cafe1.png`,
+      `${PROJECTIMAGES}cafe3.png`
     ]
   },
   {
