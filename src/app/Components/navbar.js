@@ -2,12 +2,12 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { X, Menu, FileText, Download } from "lucide-react";
+import { X, Menu, FileText, Download, Award } from "lucide-react";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 
 const NavLink = ({ href, children, mobile = false, onClick, activeSection }) => {
-  const id = href.replace("#", ""); 
+  const id = href.replace("/#", ""); 
   const isActive = activeSection === id;
 
   if (mobile) {
@@ -45,7 +45,7 @@ export default function Navbar() {
 
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ["home", "about", "skills", "projects", "experience", "blogs", "contact"];
+      const sections = ["home", "about", "skills", "projects", "experience", "blogs", "contact","certifications"];
       let current = "home";
 
       sections.forEach((id) => {
@@ -114,21 +114,30 @@ export default function Navbar() {
           {/* Desktop Menu */}
           <ul className="hidden md:flex space-x-6 font-medium text-sm">
             <li><NavLink href="/" activeSection={activeSection}>Home</NavLink></li>
-            <li><NavLink href="#about" activeSection={activeSection}>About</NavLink></li>
-            <li><NavLink href="#skills" activeSection={activeSection}>Skills</NavLink></li>
-            <li><NavLink href="#projects" activeSection={activeSection}>Projects</NavLink></li>
-            <li><NavLink href="#experience" activeSection={activeSection}>Experience</NavLink></li>
-            <li><NavLink href="#blogs" activeSection={activeSection}>Blogs</NavLink></li>
-            <li><NavLink href="#contact" activeSection={activeSection}>Contact</NavLink></li>
+            <li><NavLink href="/#about" activeSection={activeSection}>About</NavLink></li>
+            <li><NavLink href="/#skills" activeSection={activeSection}>Skills</NavLink></li>
+            <li><NavLink href="/#projects" activeSection={activeSection}>Projects</NavLink></li>
+            <li><NavLink href="/#experience" activeSection={activeSection}>Experience</NavLink></li>
+            <li><NavLink href="/#blogs" activeSection={activeSection}>Blogs</NavLink></li>
+            <li><NavLink href="/#contact" activeSection={activeSection}>Contact</NavLink></li>
           </ul>
         </div>
-        {/* Right Section */}
+
+        {/* Right Section */}   
         <div className="flex items-center space-x-1">
-           {/* Resume Download Button - Desktop */}
+           <a
+            href="/certifications"
+            className="hidden md:flex items-center space-x-2 border-1 border-white hover:bg-slate-200 text-white hover:text-indigo-600 px-3 py-1.5 rounded-sm transition-colors duration-200"
+          >
+            <span className="group flex items-center space-x-2">
+              <Award className="h-4 w-4" />
+              <span className="text-sm font-medium">Certifications</span>
+            </span>
+          </a>
           <a
             href="/resume.pdf"
             download
-            className=" flex items-center space-x-2 bg-indigo-600 hover:bg-indigo-700 text-white px-3 py-1.5 rounded-md transition-colors duration-200"
+            className=" flex items-center space-x-2 bg-indigo-600 hover:bg-indigo-700 text-white px-3 py-1.5 rounded-sm transition-colors duration-200"
           >
             <span className="group flex items-center space-x-2">
               <FileText className="h-4 w-4 group-hover:hidden" />
@@ -138,7 +147,6 @@ export default function Navbar() {
           </a>
           {/* Mobile Icons */}
           <div className="flex md:hidden items-center space-x-3"></div>
-          {/* Mobile Menu Button */}
           <button
             onClick={() => setOpen(!open)}
             className="md:hidden text-gray-400 focus:outline-none hover:text-white p-2 rounded-lg hover:bg-gray-800 transition-colors"
@@ -147,32 +155,37 @@ export default function Navbar() {
           >
             {open ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
           </button>
+          
         </div>
+        
       </div>
       {/* Mobile Dropdown */}
       {open && (
         <div className="md:hidden bg-gray-900 border-t border-gray-800 shadow-xl animate-in slide-in-from-top duration-300">
           <ul className="flex flex-col py-2 ">
             <li>
-              <NavLink href="#home" mobile activeSection={activeSection} onClick={() => setOpen(false)}>Home</NavLink>
+              <NavLink href="/" mobile activeSection={activeSection} onClick={() => setOpen(false)}>Home</NavLink>
             </li>
             <li>
-              <NavLink href="#about" mobile activeSection={activeSection} onClick={() => setOpen(false)}>About</NavLink>
+              <NavLink href="/#about" mobile activeSection={activeSection} onClick={() => setOpen(false)}>About</NavLink>
             </li>
             <li>
-              <NavLink href="#skills" mobile activeSection={activeSection} onClick={() => setOpen(false)}>Skills</NavLink>
+              <NavLink href="/#skills" mobile activeSection={activeSection} onClick={() => setOpen(false)}>Skills</NavLink>
             </li>
              <li>
-              <NavLink href="#projects" mobile activeSection={activeSection} onClick={() => setOpen(false)}>Projects</NavLink>
+              <NavLink href="/#projects" mobile activeSection={activeSection} onClick={() => setOpen(false)}>Projects</NavLink>
             </li> 
             <li>
-              <NavLink href="#experience" mobile activeSection={activeSection} onClick={() => setOpen(false)}>Experience </NavLink>
+              <NavLink href="/#experience" mobile activeSection={activeSection} onClick={() => setOpen(false)}>Experience </NavLink>
             </li> 
             <li>
-              <NavLink href="#blogs" mobile activeSection={activeSection} onClick={() => setOpen(false)}>Blogs</NavLink>
+              <NavLink href="/#blogs" mobile activeSection={activeSection} onClick={() => setOpen(false)}>Blogs</NavLink>
             </li>
             <li>
-              <NavLink href="#contact" mobile activeSection={activeSection} onClick={() => setOpen(false)}>Contact</NavLink>
+              <NavLink href="/#contact" mobile activeSection={activeSection} onClick={() => setOpen(false)}>Contact</NavLink>
+            </li>
+            <li>
+              <NavLink href="/certifications" mobile activeSection={activeSection} onClick={() => setOpen(false)}>certifications</NavLink>
             </li>
           </ul>
         </div>

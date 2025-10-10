@@ -71,7 +71,7 @@ export default function About() {
       label: "Projects",
       value: "20+ Completed",
       branch: "projects",
-      commits: "856+",
+      commits: "15+",
       description: "Successful deployments",
       linkto: "#projects",
       goto:( <>

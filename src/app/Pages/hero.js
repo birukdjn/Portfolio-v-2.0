@@ -4,7 +4,6 @@ import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { Code, Download, ArrowRight } from "lucide-react";
-import birukImage from '../../../public/biruk.webp';
 
 export default function HeroSection() {
   return (
@@ -148,7 +147,7 @@ export default function HeroSection() {
             {/* Image Container */}
             <div className="relative z-10 flex items-center justify-center w-full h-full">
                <Image
-                 src={birukImage}
+                 src="/biruk.webp"
                  alt="Birukdjn"
                  width={600}
                  height={600}
@@ -156,7 +155,7 @@ export default function HeroSection() {
                  priority
                  placeholder="blur"
                  blurDataURL="/biruk.png"
-                 sizes="(max-width:768px)320px,480px"
+                 
                />
             </div>
           </div>
@@ -165,7 +164,7 @@ export default function HeroSection() {
 
       {/* Enhanced Scroll Indicator */}
       <motion.a
-        href="#about"
+        href="/#about"
         className="absolute hidden md:flex md:bottom-30 left-1/2 transform -translate-x-1/2 z-20"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}

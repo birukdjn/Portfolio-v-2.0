@@ -27,11 +27,11 @@ export default function Certificates() {
   const [selectedCertificate, setSelectedCertificate] = useState(null);
   const [filter, setFilter] = useState("all");
 
-  const categories = ["all", "Frontend", "Backend", "Cloud", "Data Science", "DevOps", "Full Stack"];
+  const categories = ["all", "Frontend", "Backend", "Cloud", "Framework", "Programing", "DevOps", "Full Stack"];
 
-  const filteredCertificates = certificatesData.filter(cert => 
-    filter === "all" || cert.tags.some(tag => tag.toLowerCase() === filter.toLowerCase())
-  );
+ const filteredCertificates = certificatesData.filter(cert => 
+  filter === "all" || cert.tags.map(tag => tag.toLowerCase()).includes(filter.toLowerCase())
+);
 
   const stats = {
     total: certificatesData.length,
@@ -181,8 +181,18 @@ export default function Certificates() {
               {/* Certificate Card */}
               <div className="relative bg-slate-800/60 backdrop-blur-xl border border-indigo-500/30 rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-250 hover:border-indigo-400/50 h-full flex flex-col">
                 {/* Certificate Image */}
+                
                 <div className="relative h-48 bg-gradient-to-br from-indigo-600 to-purple-600 overflow-hidden">
                   <div className="absolute inset-0 bg-black/20 group-hover:bg-black/30 transition-colors" />
+                  
+                  {/* Certificate Image */}
+                  <Image
+                    src={cert.image}
+                    alt={cert.title}
+                    layout="fill"
+                    objectFit="cover"
+                    className="object-cover"
+                  />
                   
                   {/* Branch Label */}
                   <div className="absolute top-3 left-3 flex items-center space-x-1 bg-slate-800/80 backdrop-blur-sm px-2 py-1 rounded-full border border-indigo-500/30">
@@ -353,8 +363,15 @@ export default function Certificates() {
                 <div className="grid lg:grid-cols-2 gap-8">
                   {/* Certificate Image */}
                   <div className="relative">
-                    <div className="bg-gradient-to-br from-indigo-600 to-purple-600 rounded-xl p-8 aspect-video flex items-center justify-center">
-                      <Award className="w-24 h-24 text-white/20" />
+                    <div className="relative bg-gradient-to-br from-indigo-600 to-purple-600 rounded-xl p-8 flex items-center justify-center w-full h-70">
+                      <Image
+                        src={selectedCertificate.image}
+                        alt={selectedCertificate.title}
+                        layout="fill"
+                        objectFit="cover"
+                        className="object-cover rounded-xl "
+                      />
+                  
                     </div>
                     <div className="flex gap-3 mt-4">
                       <a
@@ -366,10 +383,16 @@ export default function Certificates() {
                         <ExternalLink className="w-4 h-4" />
                         <span>Verify Credential</span>
                       </a>
-                      <button className="flex-1 inline-flex items-center justify-center space-x-2 bg-slate-800 hover:bg-slate-700 text-gray-300 px-4 py-2 rounded-lg font-medium transition-colors border border-indigo-500/20">
+                      <a 
+                        href={selectedCertificate.image}
+                        download
+                        className="flex-1 inline-flex items-center justify-center space-x-2 bg-slate-800 hover:bg-slate-700 text-gray-300 px-4 py-2 rounded-lg font-medium transition-colors border border-indigo-500/20"
+                         target="_blank"
+                         rel="noopener noreferrer"
+                      >
                         <Download className="w-4 h-4" />
                         <span>Download</span>
-                      </button>
+                      </a>
                     </div>
                   </div>
 

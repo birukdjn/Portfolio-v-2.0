@@ -28,7 +28,7 @@ const LeetCodeIcon = (props) => (
     { name: "Experience", href: "#experience", branch: "main" },
     { name: "Blog", href: "#blogs", branch: "feature/blog" },
     { name: "Contact", href: "#contact", branch: "main" },
-    { name: "All Projects", href: "https://github.com/birukdjn", branch: "Projects" }
+    { name: "Certifications", href: "/certifications", branch: "Certifications" }
   ];
 
   
@@ -92,12 +92,13 @@ const LeetCodeIcon = (props) => (
       status: "active"
     }
   ];
+const currentYear = new Date().getFullYear();
 
   const stats = [
     { label: "Projects Completed", value: "20+", branch: "main" },
     { label: "Code Commits", value: "1.2k+", branch: "develop" },
-    { label: "Years Coding", value: "2+", branch: "feature/experience" },
-    { label: "Technologies", value: "15+", branch: "main" }
+    { label: "Years Coding", value: currentYear-2022+"+" , branch: "feature/experience" },
+    { label: "Technologies", value: "20+", branch: "main" }
   ];
 
   export {stats, socialLinks, quickLinks}

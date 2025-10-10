@@ -81,7 +81,7 @@ export default function Footer() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
             viewport={{ once: true }}
-            className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-12"
+            className="grid grid-cols-2 lg:grid-cols-4 gap-6 mb-12"
           >
             {stats.map((stat, index) => (
               <motion.div
@@ -254,7 +254,7 @@ export default function Footer() {
                   <span className="text-purple-300 font-mono">Next.js 14</span>
                 </div>
                 <div className="flex items-center justify-between text-sm">
-                  <span className="text-gray-300">Preferred Stack</span>
+                  <span className="text-gray-300">Preferred </span>
                   <span className="text-gray-300 font-mono">API</span>
                 </div>
                 <div className="flex items-center justify-between text-sm">
@@ -262,7 +262,7 @@ export default function Footer() {
                   <span className="text-gray-300 font-mono">ASP.NET core</span>
                 </div>
                 <div className="flex items-center justify-between text-sm">
-                  <span className="text-gray-300">Last Deploy</span>
+                  <span className="text-gray-300">Last Commit</span>
                   <span className="text-blue-300 font-mono">Today</span>
                 </div>
                 <div className="flex items-center justify-between text-sm">
@@ -275,7 +275,7 @@ export default function Footer() {
                 </div>
                 <div className="flex items-center justify-between text-sm">
                   <span className="text-gray-300">Fun Fact</span>
-                  <span className="text-gray-300 font-mono">Loves Coffee</span>
+                  <span className="text-gray-300 font-mono">Loves Piano</span>
                 </div>                
               </div>
             </div>

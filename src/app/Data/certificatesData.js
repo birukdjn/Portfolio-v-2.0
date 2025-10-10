@@ -1,3 +1,6 @@
+const CERTIFICATIONSIMAGES = "/certifications/"
+
+
 const certificatesData = [
   {
     id: 1,
@@ -7,7 +10,7 @@ const certificatesData = [
     duration: "6 months",
     level: "Advanced",
     skills: ["React", "Node.js", "MongoDB", "Express"],
-    image: "/certificates/meta-fullstack.jpg",
+    image: null,
     description: "Comprehensive full-stack development certification covering modern web technologies and best practices.",
     branch: "feature/fullstack",
     commits: 24,
@@ -23,7 +26,7 @@ const certificatesData = [
     duration: "3 months",
     level: "Associate",
     skills: ["AWS", "Cloud Architecture", "DevOps", "Security"],
-    image: "/certificates/aws-solutions-architect.jpg",
+    image: null,
     description: "AWS Certified Solutions Architect focusing on cloud infrastructure design and implementation.",
     branch: "feature/cloud",
     commits: 18,
@@ -39,7 +42,7 @@ const certificatesData = [
     duration: "300 hours",
     level: "Intermediate",
     skills: ["React", "JavaScript", "Redux", "Testing"],
-    image: "/certificates/react-certification.jpg",
+    image: null,
     description: "Frontend development certification with focus on React ecosystem and modern JavaScript.",
     branch: "feature/react",
     commits: 32,
@@ -55,7 +58,7 @@ const certificatesData = [
     duration: "2 months",
     level: "Intermediate",
     skills: ["Node.js", "Express", "REST APIs", "Authentication"],
-    image: "/certificates/nodejs-backend.jpg",
+    image: null,
     description: "Backend development with Node.js, covering API development, authentication, and deployment.",
     branch: "feature/backend",
     commits: 16,
@@ -71,16 +74,32 @@ const certificatesData = [
     duration: "4 months",
     level: "Intermediate",
     skills: ["Python", "Pandas", "NumPy", "Data Analysis"],
-    image: "/certificates/python-data-science.jpg",
+    image: null,
     description: "Data science certification focusing on Python programming and data analysis techniques.",
     branch: "feature/data-science",
     commits: 21,
     status: "verified",
-    credentialUrl: "https://grow.google/certificates/",
-    tags: ["Data Science", "Python", "Analysis"]
+    credentialUrl: null,
+    tags: ["Data Science", "Python", "Analysis","DevOps"]
+  },
+   {
+    id: 6,
+    title: "Foundational C# with Microsoft",
+    issuer: "freeCodeCamp",
+    date: "2025-10-10",
+    duration: "6 months",
+    level: "Advanced",
+    skills: ["C#", ".NET", "Programing","Debugging"],
+    image:  `${CERTIFICATIONSIMAGES}csharp.png`,
+    description: "A joint certification by Microsoft and freeCodeCamp that covers C# programming fundamentals, including syntax, logic, loops, methods, data types, and debugging using .NET and Visual Studio Code.",
+    branch: "feature/Csharp",
+    commits: 24,
+    status: "verified",
+    credentialUrl: "https://freecodecamp.org/certification/birukdjn/foundational-c-sharp-with-microsoft",
+    tags: ["Programing", "C#", "ASP.NET","Microsoft"]
   },
   {
-    id: 6,
+    id: 7,
     title: "DevOps Engineering",
     issuer: "Microsoft",
     date: "2023-03-15",
@@ -92,7 +111,7 @@ const certificatesData = [
     branch: "feature/devops",
     commits: 28,
     status: "verified",
-    credentialUrl: "https://microsoft.com/learn/",
+    credentialUrl: null,
     tags: ["DevOps", "Docker", "CI/CD"]
   }
 ];
