@@ -1,6 +1,6 @@
 // app/layout.jsx
 import "./globals.css";
-import RootClient from "./Components/RootClient"; // we’ll make this next
+import RootClient from "./Components/RootClient"; 
 
 export const metadata = {
   title: "Birukdjn",
