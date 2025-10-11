@@ -15,12 +15,7 @@ export default function Home() {
 
   return (
     <div className="min-h-screen transition-colors duration-300">
-      {!showPortfolio && (
-        <TerminalIntro onFinish={() => setShowPortfolio(true)} />
-      )}
-
-      {showPortfolio && (
-        <>
+        
           <Hero />
           <About />
           <Skills />
@@ -28,8 +23,7 @@ export default function Home() {
           <Experience />
           <Blogs />
           <Contact />
-        </>
-      )}
+        
     </div>
   );
 }

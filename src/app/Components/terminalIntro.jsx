@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const commands = [
@@ -17,8 +17,13 @@ export default function TerminalIntro({ onFinish }) {
   const [bootDots, setBootDots] = useState("");
   const [visible, setVisible] = useState(true);
 
+  const hasRun = useRef(false);
+
   // Typing effect
   useEffect(() => {
+    if (hasRun.current) return;
+    hasRun.current = true;
+
     let lineIndex = 0;
     let charIndex = 0;
 
