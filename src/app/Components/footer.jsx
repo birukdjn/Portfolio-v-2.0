@@ -308,7 +308,7 @@ export default function Footer() {
           </div>
           <div className="flex items-center space-x-2 text-gray-400 text-sm">
             <GitCommit className="w-4 h-4" />
-            <span className="font-mono">v1.0.0</span>
+            <span className="font-mono">v2.0.0</span>
           </div>
         </div>
       </motion.div>
