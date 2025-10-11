@@ -107,7 +107,7 @@ export default function About() {
       value: "100+",
       branch: "develop",
       commits: "2.1k+",
-      description: "Open source contributions",
+      description: " contributions",
       linkto: "https://github.com/birukdjn",
       goto:(
       <>
