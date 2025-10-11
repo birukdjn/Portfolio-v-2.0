@@ -280,7 +280,7 @@ export default function Contact() {
               <div className="space-y-4">
                 <div className="grid md:grid-cols-2 gap-4">
                   <div>
-                    <label htmlFor="name" className="block text-xs font-medium text-gray-300 mb-1 flex items-center space-x-1">
+                    <label htmlFor="name" className=" text-xs font-medium text-gray-300 mb-1 flex items-center space-x-1">
                       <User className="w-3 h-3" />
                       <span>Your Name</span>
                     </label>
@@ -296,7 +296,7 @@ export default function Contact() {
                     />
                   </div>
                   <div>
-                    <label htmlFor="email" className="block text-xs font-medium text-gray-300 mb-1 flex items-center space-x-1">
+                    <label htmlFor="email" className="text-xs font-medium text-gray-300 mb-1 flex items-center space-x-1">
                       <Mail className="w-3 h-3" />
                       <span>Email Address</span>
                     </label>
@@ -314,7 +314,7 @@ export default function Contact() {
                 </div>
 
                 <div>
-                  <label htmlFor="subject" className="block text-xs font-medium text-gray-300 mb-1 flex items-center space-x-1">
+                  <label htmlFor="subject" className=" text-xs font-medium text-gray-300 mb-1 flex items-center space-x-1">
                     <FileText className="w-3 h-3" />
                     <span>Subject</span>
                   </label>
@@ -331,7 +331,7 @@ export default function Contact() {
                 </div>
 
                 <div>
-                  <label htmlFor="message" className="block text-xs font-medium text-gray-300 mb-1 flex items-center space-x-1">
+                  <label htmlFor="message" className="text-xs font-medium text-gray-300 mb-1 flex items-center space-x-1">
                     <MessageCircle className="w-3 h-3" />
                     <span>Message</span>
                   </label>

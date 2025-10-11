@@ -1,18 +1,17 @@
+// app/layout.jsx
 import "./globals.css";
-import Navbar from "./Components/navbar";
-import Footer from "./Components/footer";
+import RootClient from "./Components/RootClient"; // we’ll make this next
 
 export const metadata = {
-  title: "Birukdjn ",
+  title: "Birukdjn",
   description: "My personal portfolio website",
 };
+
 export default function RootLayout({ children }) {
   return (
     <html lang="en" suppressHydrationWarning>
       <body>
-          <Navbar />
-          <main className="pt-20">{children}</main>
-          <Footer />
+        <RootClient>{children}</RootClient>
       </body>
     </html>
   );

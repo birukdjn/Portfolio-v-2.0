@@ -1,4 +1,5 @@
 "use client";
+
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -14,31 +15,17 @@ export default function TerminalIntro({ onFinish }) {
   const [currentLine, setCurrentLine] = useState("");
   const [finished, setFinished] = useState(false);
   const [bootDots, setBootDots] = useState("");
-  const [shouldShow, setShouldShow] = useState(false);
+  const [visible, setVisible] = useState(true);
 
-  // ✅ Show only once per session unless refreshed
+  // Typing effect
   useEffect(() => {
-    const shown = sessionStorage.getItem("introShown");
-    if (!shown) {
-      setShouldShow(true);
-      sessionStorage.setItem("introShown", "true");
-    } else {
-      // Skip intro if already shown
-      onFinish?.();
-    }
-  }, [onFinish]);
-
-  // Typing effect (only if shouldShow is true)
-  useEffect(() => {
-    if (!shouldShow) return;
-
     let lineIndex = 0;
     let charIndex = 0;
 
     function typeLine() {
       if (lineIndex < commands.length) {
-        let line = commands[lineIndex];
-        let typing = setInterval(() => {
+        const line = commands[lineIndex];
+        const typing = setInterval(() => {
           if (charIndex < line.length) {
             setCurrentLine((prev) => prev + line[charIndex]);
             charIndex++;
@@ -52,14 +39,14 @@ export default function TerminalIntro({ onFinish }) {
           }
         }, 25);
       } else {
-        setTimeout(() => setFinished(true), 100);
+        setTimeout(() => setFinished(true), 200);
       }
     }
 
     typeLine();
-  }, [shouldShow]);
+  }, []);
 
-  // Booting animation
+  // Booting animation and fade out
   useEffect(() => {
     if (finished) {
       let dots = 0;
@@ -70,8 +57,10 @@ export default function TerminalIntro({ onFinish }) {
 
       const timeout = setTimeout(() => {
         clearInterval(interval);
-        onFinish?.();
-      }, 1000);
+        // Smooth fade out before showing portfolio
+        setVisible(false);
+        setTimeout(() => onFinish?.(), 800);
+      }, 1500);
 
       return () => {
         clearInterval(interval);
@@ -80,16 +69,18 @@ export default function TerminalIntro({ onFinish }) {
     }
   }, [finished, onFinish]);
 
-  if (!shouldShow) return null;
+  if (!visible) return null;
 
   return (
     <AnimatePresence>
       <motion.div
+        key="intro"
         className="fixed inset-0 z-50 flex justify-center items-center bg-black"
         initial={{ opacity: 1 }}
+        animate={{ opacity: 1 }}
         exit={{ opacity: 0, transition: { duration: 1 } }}
       >
-        <div className="w-[90%] h-[80%] max-w-2xl rounded-lg overflow-hidden shadow-lg">
+        <div className="w-[90%] h-[80%] max-w-2xl rounded-lg overflow-hidden shadow-lg border border-gray-700">
           {/* Terminal Header */}
           <div className="flex items-center gap-2 bg-gray-800 px-3 py-2">
             <span className="w-3 h-3 rounded-full bg-red-500"></span>
