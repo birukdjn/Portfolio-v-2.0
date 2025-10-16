@@ -19,7 +19,7 @@ import {
   Zap
 } from "lucide-react";
 import Image from "next/image";
-import certificatesData from '../Data/certificatesData';
+import certificatesData from '../../Data/certificatesData';
 
 
 

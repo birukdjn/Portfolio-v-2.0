@@ -1,6 +1,7 @@
 // app/layout.jsx
 import "./globals.css";
 import RootClient from "./Components/RootClient"; 
+import { Suspense } from "react";
 
 export const metadata = {
   title: "Birukdjn",
@@ -10,9 +11,13 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en" suppressHydrationWarning>
+
       <body>
-        <RootClient>{children}</RootClient>
+        <Suspense fallback={<div />}>
+          <RootClient>{children}</RootClient>
+        </Suspense>
       </body>
+
     </html>
   );
 }

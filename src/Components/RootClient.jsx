@@ -1,9 +1,11 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import TerminalIntro from "./terminalIntro";
-import Navbar from "./navbar";
-import Footer from "./footer";
+import dynamic from "next/dynamic";
+import { useEffect, useState, Suspense } from "react";
+const TerminalIntro = dynamic(() => import("./terminalIntro"), { ssr: false });
+const Navbar = dynamic(() => import("./navbar"), { ssr: false });
+const Footer = dynamic(() => import("./footer"), { ssr: false });
+
 
 export default function RootClient({ children }) {
   const [showContent, setShowContent] = useState(false);
@@ -31,13 +33,18 @@ export default function RootClient({ children }) {
         <TerminalIntro onFinish={handleFinish} />
       )}
 
-      {showContent && (
-        <>
-          <Navbar />
-          <main className="pt-20">{children}</main>
-          <Footer />
-        </>
-      )}
+      <Suspense fallback={<div />}>
+  <div
+    className={`transition-opacity duration-700 ${
+      showContent ? "opacity-100" : "opacity-0"
+    }`}
+  >
+    <Navbar />
+    <main className="pt-20">{children}</main>
+    <Footer />
+  </div>
+</Suspense>
+
     </>
   );
 }
