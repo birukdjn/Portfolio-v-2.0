@@ -58,8 +58,8 @@ export default function About() {
       linkto: "#experience",
       goto:(
       <>
-        <EyeIcon />
-        <span className="text-indigo-400">View Experience</span>
+        
+        <span className="text-indigo-400"> <EyeIcon />Experience</span>
       </>
     ),
       openInNewTab: false
@@ -74,10 +74,9 @@ export default function About() {
       commits: "15+",
       description: "Successful deployments",
       linkto: "#projects",
-      goto:( <>
-      <EyeIcon />
-        <span className="text-indigo-400">View Projects</span>
-        </>),
+      goto:(       
+        <span className="text-indigo-400"><EyeIcon />Projects</span>
+        ),
       openInNewTab: false
       
 
@@ -92,10 +91,7 @@ export default function About() {
       description: "Skills validated",
       linkto: "/certifications",
       goto: (
-        <>
-          <EyeIcon />
-          <span className="text-indigo-400">View Certifications</span>
-        </>
+          <span className="text-indigo-400"><EyeIcon />Certificates</span>
       ),
       openInNewTab: false
 
@@ -110,10 +106,8 @@ export default function About() {
       description: " contributions",
       linkto: "https://github.com/birukdjn",
       goto:(
-      <>
-        <EyeIcon />
-        <span className="text-indigo-400">Visite github</span>
-      </>),
+        <span className="text-indigo-400"> <EyeIcon />github</span>
+    ),
       openInNewTab: true
     }
   ];
@@ -300,9 +294,11 @@ export default function About() {
                   onMouseEnter={() => setIsHovered(stat.id)}
                   onMouseLeave={() => setIsHovered(null)}
                   >
-                    <Link href={stat.linkto} target={stat.openInNewTab ? "_blank" : "_self"}
+                    <Link 
+                      href={stat.linkto} 
+                      target={stat.openInNewTab ? "_blank" : "_self"}
                     >
-                     
+
                     <div className="flex items-start justify-between mb-2"
                     >
                       <div className="flex items-center space-x-2">
@@ -314,8 +310,25 @@ export default function About() {
                         <span className="text-indigo-300 font-mono">{stat.branch}</span>
                       </div>
                     </div>
-                    
-                    <div className="text-lg font-bold text-white mb-1 hover:text-xl ease-out ">{isHovered===stat.id ? stat.goto:stat.value}</div>
+
+                    {/* --- UPDATED LOGIC HERE (For value and goto) --- */}
+                    <div className="flex justify-between text-md md:text-lg font-bold text-white mb-1 ease-out items-center">
+                        {/* Value Display: Show short version on hover, full version otherwise */}
+                        {isHovered === stat.id ? (
+                            <span className="text-white text-md md:text-lg transition-opacity duration-200">
+                                {`${stat.value.substring(0, 4)}...`}
+                            </span>
+                        ) : (
+                            <span className="text-white text-md md:text-lg transition-opacity duration-200">
+                                {stat.value}
+                            </span>
+                        )}
+                        {isHovered === stat.id && (
+                            <span className="text-indigo-400 text-sm md:text-md flex items-center space-x-1 transition-opacity duration-200">
+                                {stat.goto}
+                            </span>
+                        )}
+                    </div>
                     
                     <div className="flex items-center justify-between text-xs text-gray-400">
                       <div className="flex items-center space-x-1">

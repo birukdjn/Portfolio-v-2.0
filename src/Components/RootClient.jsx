@@ -34,17 +34,16 @@ export default function RootClient({ children }) {
       )}
 
       <Suspense fallback={<div />}>
-  <div
-    className={`transition-opacity duration-700 ${
-      showContent ? "opacity-100" : "opacity-0"
-    }`}
-  >
-    <Navbar />
-    <main className="pt-20">{children}</main>
-    <Footer />
-  </div>
-</Suspense>
-
+        <div
+          className={`transition-opacity duration-300 ${
+            showContent ? "opacity-100" : "opacity-0"
+          }`}
+        >
+          <Navbar />
+          <main className="pt-20">{children}</main>
+          <Footer />
+        </div>
+      </Suspense>
     </>
   );
 }

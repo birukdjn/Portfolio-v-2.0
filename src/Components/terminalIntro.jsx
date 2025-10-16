@@ -4,8 +4,8 @@ import { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const commands = [
-  "$ git clone https://github.com/birukdjn/portfolio-v-2.0.git",
-  "$ cd portfolio-v-2.0",
+  "$ git clone https://github.com/birukdjn/portfolio-v2.0.0.git",
+  "$ cd portfolio-v2.0.0",
   "$ npm install",
   "$ npm run dev",
 ];
@@ -40,11 +40,11 @@ export default function TerminalIntro({ onFinish }) {
             setCurrentLine("");
             charIndex = 0;
             lineIndex++;
-            setTimeout(typeLine, 300);
+            setTimeout(typeLine, 100);
           }
-        }, 25);
+        }, 10);
       } else {
-        setTimeout(() => setFinished(true), 200);
+        setTimeout(() => setFinished(true), 100);
       }
     }
 
@@ -65,7 +65,7 @@ export default function TerminalIntro({ onFinish }) {
         // Smooth fade out before showing portfolio
         setVisible(false);
         setTimeout(() => onFinish?.(), 800);
-      }, 1500);
+      }, 1000);
 
       return () => {
         clearInterval(interval);

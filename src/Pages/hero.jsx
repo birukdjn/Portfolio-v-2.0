@@ -154,7 +154,7 @@ export default function HeroSection() {
                  className="rounded-full object-cover w-full h-full p-2 border-4 border-slate-800/50"
                  priority
                  placeholder="blur"
-                 blurDataURL="/biruk.png"
+                 blurDataURL="/biruk.webp"
                  
                />
             </div>

@@ -11,7 +11,7 @@ const blogs = [
     date: "2024-01-15",
     readTime: 5,
     category: "React",
-    image: "/biruk.png",
+    image: "/biruk.webp",
     tags: ["React", "Architecture", "Performance"],
     branch: "feature/react-patterns",
     commits: 12,
