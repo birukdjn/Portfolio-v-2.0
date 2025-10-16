@@ -183,7 +183,6 @@ export default function Footer() {
               </div>
             </motion.div>
           </motion.div>
-
           {/* Social Links */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -224,7 +223,6 @@ export default function Footer() {
               ))}
             </div>
           </motion.div>
-
           <motion.div
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -259,7 +257,7 @@ export default function Footer() {
                 </div>
                 <div className="flex items-center justify-between text-sm">
                   <span className="text-gray-300">Learning</span>
-                  <span className="text-gray-300 font-mono">ASP.NET core</span>
+                  <span className="text-gray-300 font-mono">.NET core</span>
                 </div>
                 <div className="flex items-center justify-between text-sm">
                   <span className="text-gray-300">Last Commit</span>
@@ -275,14 +273,13 @@ export default function Footer() {
                 </div>
                 <div className="flex items-center justify-between text-sm">
                   <span className="text-gray-300">Fun Fact</span>
-                  <span className="text-gray-300 font-mono">Loves Piano</span>
+                  <span className="text-gray-300 font-mono">Love Piano</span>
                 </div>                
               </div>
             </div>
           </motion.div>
         </div>
       </div>
-
       {/* Bottom Bar */}
       <motion.div
         initial={{ opacity: 0 }}
