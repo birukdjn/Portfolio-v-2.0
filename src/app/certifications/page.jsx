@@ -186,7 +186,7 @@ export default function Certificates() {
                   <div className="absolute inset-0 bg-black/20 group-hover:bg-black/30 transition-colors" />
                   
                   {/* Certificate Image */}
-                  <Image
+                  <Image 
                     src={cert.image}
                     alt={cert.title}
                     layout="fill"

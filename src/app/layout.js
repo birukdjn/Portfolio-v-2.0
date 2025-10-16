@@ -1,6 +1,6 @@
 // app/layout.jsx
 import "./globals.css";
-import RootClient from "./Components/RootClient"; 
+import RootClient from "../Components/RootClient"; 
 import { Suspense } from "react";
 
 export const metadata = {
