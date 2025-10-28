@@ -2,6 +2,24 @@ const PROJECTIMAGES = "/projects/"
 
 const projects = [
   {
+    title: "Movies Store",
+    description: "MoviesStore is a web application with a backend API to manage movies. You can perform CRUD and AUth operations.",
+    stars: 42,
+    forks: 18,
+    watches: 25,
+    language: "C#",
+    languageColor: "bg-green-500",
+    lastCommit: "2 days ago",
+    branch: "main",
+    status: "active",
+    tags: ["REST API", ".NET Web API", "C#","SQL Server" ],
+    repoUrl: "https://github.com/birukdjn/moviesStore",
+    liveUrl: "https://github.com/birukdjn/MoviesStore/blob/master/README.md",
+    images: [
+      `${PROJECTIMAGES}MoviesStore.png`,
+    ]
+  },
+  {
     title: "AI News Hub",
     description: "Smart AI-powered platform that curates and summarizes global news in real time.",
     stars: 42,
@@ -16,9 +34,7 @@ const projects = [
     repoUrl: "https://github.com/birukdjn/ai-news-hub",
     liveUrl: "https://ai-news-hub-livid.vercel.app",
     images: [
-      `${PROJECTIMAGES}ai-news-hub1.png`,
-      `${PROJECTIMAGES}ai-news-hub4.png`,
-      `${PROJECTIMAGES}ai-news-hub2.png`
+      `${PROJECTIMAGES}ai-news-hub1.png`
     ]
   },
   {
@@ -37,10 +53,10 @@ const projects = [
     liveUrl: "https://cafe-system-rt4e.onrender.com/",
     images: [
       `${PROJECTIMAGES}cafe4.png`,
-      `${PROJECTIMAGES}cafe1.png`,
-      `${PROJECTIMAGES}cafe3.png`
     ]
   },
+
+  
   {
     title: "Portfolio CMS",
     description: "Headless CMS specifically designed for developer portfolios",

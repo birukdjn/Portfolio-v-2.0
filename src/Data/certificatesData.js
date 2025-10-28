@@ -50,22 +50,29 @@ const certificatesData = [
     credentialUrl: "https://freecodecamp.org/certification/",
     tags: ["Frontend", "React", "JavaScript"]
   },
-  {
-    id: 4,
-    title: "Node.js Backend Development",
-    issuer: "Udemy",
-    date: "2023-07-05",
-    duration: "2 months",
-    level: "Intermediate",
-    skills: ["Node.js", "Express", "REST APIs", "Authentication"],
-    image: null,
-    description: "Backend development with Node.js, covering API development, authentication, and deployment.",
-    branch: "feature/backend",
-    commits: 16,
-    status: "verified",
-    credentialUrl: "https://udemy.com/certificate/",
-    tags: ["Backend", "Node.js", "API"]
-  },
+ {
+  id: 4,
+  title: "Oracle Cloud Infrastructure 2025 Certified Foundations Associate",
+  issuer: "Oracle",
+  date: "2025-10-24",
+  duration: "2 months",
+  level: "Foundational",
+  skills: [
+    "Basic cloud concepts",
+    "Core OCI services ",
+    "OCI security and identity model",
+    "Compliance structure",
+    "OCI billing and cost management",
+    "Governance and administration"
+  ],
+  image:  `${CERTIFICATIONSIMAGES}oracle1.png`,
+  description: "This certification validates fundamental knowledge of Oracle Cloud Infrastructure (OCI) services for both technical and non-technical professionals.",
+  branch: "feature/cloud",
+  commits: 10,
+  status: "verified",
+  credentialUrl: "https://catalog-education.oracle.com/pls/certview/sharebadge?id=35AE59554F84E8546F79A280D3C6BF4DB8A357446232C88681EC5978023757AF",
+  tags: ["Cloud", "Oracle", "OCI", "Foundational"]
+},
   {
     id: 5,
     title: "Python for Data Science",
