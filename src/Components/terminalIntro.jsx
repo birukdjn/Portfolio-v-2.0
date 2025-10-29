@@ -97,9 +97,9 @@ export default function TerminalIntro({ onFinish }) {
           </div>
 
           {/* Terminal Body */}
-          <div className="bg-black text-green-400 font-mono p-6 text-left min-h-[200px]">
+          <div className="bg-black text-green-400 font-mono md:p-6 p-3 text-wrap text-left min-h-[200px]">
             {displayed.map((line, idx) => (
-              <p key={idx}>{line}</p>
+              <p className="text-wrap" key={idx}>{line}</p>
             ))}
 
             {!finished && (

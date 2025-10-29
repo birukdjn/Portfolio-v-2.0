@@ -103,7 +103,7 @@ const certificatesData = [
     commits: 24,
     status: "verified",
     credentialUrl: "https://freecodecamp.org/certification/birukdjn/foundational-c-sharp-with-microsoft",
-    tags: ["Programing", "C#", "ASP.NET","Microsoft"]
+    tags: ["Programing","backend", "C#", "ASP.NET","Microsoft"]
   },
   {
     id: 7,
