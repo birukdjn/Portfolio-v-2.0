@@ -115,7 +115,7 @@ useEffect(() => {
       label: "Repos",
       value: "100+",
       branch: "develop",
-      commits: total,
+      commits: total+"+",
       description: " contributions",
       linkto: "https://github.com/birukdjn",
       goto:(
