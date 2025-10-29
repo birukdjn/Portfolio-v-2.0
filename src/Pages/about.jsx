@@ -1,7 +1,7 @@
 "use client";
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useEffect, useMemo } from "react";
 
 import { 
   GitBranch, 
@@ -46,7 +46,17 @@ const EyeIcon = () => (
 
 export default function About() {
   const [isHovered, setIsHovered] = useState(null);
-  const stats = [
+  const [total, setTotal] = useState(0);
+
+
+useEffect(() => {
+  fetch("/api/contributions")
+    .then(res => res.json())
+    .then(data => setTotal(data.totalContributions))
+    .catch(err => console.error(err));
+}, []);
+ 
+  const stats = useMemo(() => [
     {
       id: 1,
       icon: Calendar,
@@ -102,7 +112,7 @@ export default function About() {
       label: "Repos",
       value: "100+",
       branch: "develop",
-      commits: "2.1k+",
+      commits: total,
       description: " contributions",
       linkto: "https://github.com/birukdjn",
       goto:(
@@ -110,7 +120,7 @@ export default function About() {
     ),
       openInNewTab: true
     }
-  ];
+  ], [total]);
 
   const values = [
     {
