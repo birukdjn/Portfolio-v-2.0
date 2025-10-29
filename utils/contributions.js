@@ -1,5 +1,4 @@
-// src/utils/contributions.js
-
+// utils/contributions.js
 /**
  * Fetch total GitHub contributions (all-time) for a user.
  * Uses GitHub GraphQL API.
@@ -8,13 +7,12 @@
 export async function getTotalContributions() {
   try {
     const token = process.env.GITHUB_TOKEN; // Your GitHub Personal Access Token
-    const username = "birukdjn"; // Replace with your GitHub username
+    const username = "birukdjn"; // Your GitHub username
 
     if (!token) {
       throw new Error("GITHUB_TOKEN not found in environment variables");
     }
 
-    // GraphQL query: get total contributions from contributionCalendar
     const query = `
       query {
         user(login: "${username}") {
@@ -41,13 +39,10 @@ export async function getTotalContributions() {
     }
 
     const data = await response.json();
-
-    // Return total contributions or 0 if undefined
-    const total = data?.data?.user?.contributionsCollection?.contributionCalendar?.totalContributions || 0;
-    return total;
+    return data?.data?.user?.contributionsCollection?.contributionCalendar?.totalContributions || 0;
 
   } catch (error) {
     console.error("Error fetching GitHub contributions:", error.message);
-    return 0; // fallback
+    return 0;
   }
 }

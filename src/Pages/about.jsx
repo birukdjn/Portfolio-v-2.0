@@ -46,15 +46,18 @@ const EyeIcon = () => (
 
 export default function About() {
   const [isHovered, setIsHovered] = useState(null);
-  const [total, setTotal] = useState(0);
+  const [total, setTotal] = useState("Loading...");
 
 
 useEffect(() => {
-  fetch("/api/contributions")
-    .then(res => res.json())
-    .then(data => setTotal(data.totalContributions))
-    .catch(err => console.error(err));
-}, []);
+    fetch("/api/contributions")
+      .then(res => res.json())
+      .then(data => setTotal(data.totalContributions))
+      .catch(err => {
+        console.error(err);
+        setTotal(total); // fallback on error
+      });
+  }, []);
  
   const stats = useMemo(() => [
     {
