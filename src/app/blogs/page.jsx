@@ -2,68 +2,52 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
-import {
-  GitBranch,
-  GitCommit,
-  GitPullRequest,
-  Terminal,
-  Calendar,
-  Clock,
-  ArrowRight,
-  ExternalLink,
-  BookOpen,
-  Eye,
-} from "lucide-react";
-import blogs from "../Data/blogsData";
-
-const latestBlogs = blogs.slice(0, 3);
+import { GitBranch, GitCommit, GitPullRequest, Terminal, Calendar, Clock, ArrowRight, ExternalLink, BookOpen, Eye } from "lucide-react";
+import blogs from "../../Data/blogsData";
 
 let readTime = blogs.reduce((total, blog) => total + blog.readTime, 0);
 readTime = Math.round(readTime / blogs.length);
 
 export default function Blogs() {
   return (
-    <section
-      id="blogs"
-      className="relative py-20 bg-gradient-to-br from-slate-950 via-indigo-950 to-slate-950 text-white overflow-hidden"
-    >
+    <section id="blogs" className="relative py-20 bg-gradient-to-br from-slate-950 via-indigo-950 to-slate-950 text-white overflow-hidden">
       {/* Consistent Animated Background */}
       <div className="absolute inset-0 overflow-hidden">
         {/* Animated Gradient Orbs */}
         <div className="absolute top-20 left-10 w-64 h-64 bg-gradient-to-r from-indigo-600/15 to-purple-600/15 rounded-full blur-3xl animate-float-slow"></div>
         <div className="absolute bottom-32 right-20 w-72 h-72 bg-gradient-to-r from-blue-600/10 to-indigo-600/10 rounded-full blur-3xl animate-float-medium delay-1000"></div>
         <div className="absolute top-1/2 left-1/3 w-56 h-56 bg-gradient-to-r from-purple-600/8 to-pink-600/8 rounded-full blur-3xl animate-float-fast delay-500"></div>
-
+        
         {/* Grid Pattern */}
         <div className="absolute inset-0 bg-[linear-gradient(rgba(99,102,241,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(99,102,241,0.03)_1px,transparent_1px)] bg-[size:64px_64px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,black,transparent)]"></div>
-
+        
         {/* Animated Particles */}
         <div className="absolute inset-0">
           {[...Array(12)].map((_, i) => (
             <motion.div
               key={i}
               className="absolute w-1 h-1 bg-indigo-400/20 rounded-full"
-              initial={{
+              initial={{ 
                 opacity: 0,
                 x: Math.random() * 1000,
-                y: Math.random() * 1000,
+                y: Math.random() * 1000 
               }}
-              animate={{
+              animate={{ 
                 opacity: [0, 0.5, 0],
                 y: [0, -60],
               }}
-              transition={{
+              transition={{ 
                 duration: 3 + Math.random() * 2,
                 repeat: Infinity,
                 delay: Math.random() * 2,
-                ease: "easeInOut",
+                ease: "easeInOut"
               }}
             />
           ))}
         </div>
       </div>
 
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-10">
+      <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 z-10">
         {/* Header Section */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
@@ -72,21 +56,18 @@ export default function Blogs() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
+              
           <h2 className="text-3xl md:text-4xl font-black text-white mb-3">
-            My{" "}
-            <span className="bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
-              Blog
-            </span>
+            My <span className="bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">Blog</span>
           </h2>
           <p className="text-lg text-gray-300 max-w-xl mx-auto">
-            Sharing insights, tutorials, and thoughts about web development and
-            modern technologies
+            Sharing insights, tutorials, and thoughts about web development and modern technologies
           </p>
         </motion.div>
 
         {/* Blogs Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
-          {latestBlogs.map((blog, index) => (
+          {blogs.map((blog, index) => (
             <motion.article
               key={blog.title}
               initial={{ opacity: 0, y: 30, scale: 0.95 }}
@@ -98,29 +79,27 @@ export default function Blogs() {
             >
               {/* Background Glow Effect */}
               <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/20 to-purple-500/20 rounded-2xl blur-xl transform scale-105 group-hover:scale-110 transition-all duration-300" />
-
+              
               {/* Blog Card */}
               <div className="relative bg-slate-800/60 backdrop-blur-xl border border-indigo-500/30 rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-250 hover:border-indigo-400/50 h-full flex flex-col">
                 {/* Blog Header with Git Info */}
                 <div className="relative h-40 bg-gradient-to-br from-indigo-600 to-purple-600 overflow-hidden">
                   <div className="absolute inset-0 bg-black/20 group-hover:bg-black/30 transition-colors" />
-
+                  
                   {/* Branch Label */}
                   <div className="absolute top-3 left-3 flex items-center space-x-1 bg-slate-800/80 backdrop-blur-sm px-2 py-1 rounded-full border border-indigo-500/30">
                     <GitBranch className="w-3 h-3 text-indigo-400" />
-                    <span className="text-xs font-mono text-indigo-300">
-                      {blog.branch}
-                    </span>
+                    <span className="text-xs font-mono text-indigo-300">{blog.branch}</span>
                   </div>
-
+                  
                   {/* Category Badge */}
                   <div className="absolute top-3 right-3">
                     <span className="bg-white/90 text-indigo-600 px-2 py-1 rounded-full text-xs font-semibold backdrop-blur-sm">
                       {blog.category}
                     </span>
                   </div>
-
-                  {blog.image && blog.image.startsWith("/") ? (
+                  
+                  {blog.image && blog.image.startsWith('/') ? (
                     <Image
                       src={blog.image}
                       alt={blog.title}
@@ -135,7 +114,7 @@ export default function Blogs() {
                     </div>
                   )}
 
-                  <motion.div
+                  <motion.div 
                     className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent"
                     initial={{ x: "-100%" }}
                     whileHover={{ x: "100%" }}
@@ -162,11 +141,11 @@ export default function Blogs() {
                       <span>{blog.lastCommit}</span>
                     </div>
                   </div>
-
+                  
                   <h3 className="text-lg font-bold text-white mb-2 line-clamp-2 group-hover:text-indigo-200 transition-colors leading-tight">
                     {blog.title}
                   </h3>
-
+                  
                   <p className="text-gray-300 text-sm mb-3 line-clamp-2 flex-1 leading-relaxed">
                     {blog.excerpt}
                   </p>
@@ -197,9 +176,7 @@ export default function Blogs() {
 
                   {/* Read More Link - Git Inspired */}
                   <Link
-                    href={`/blogs/${blog.title
-                      .toLowerCase()
-                      .replace(/\s+/g, "-")}`}
+                    href={`/blogs/${blog.title.toLowerCase().replace(/\s+/g, '-')}`}
                     className="inline-flex items-center justify-between group/link text-indigo-400 hover:text-indigo-300 font-medium text-sm transition-colors mt-auto pt-3 border-t border-indigo-500/20"
                   >
                     <span className="flex items-center space-x-1.5">
@@ -226,19 +203,7 @@ export default function Blogs() {
           transition={{ duration: 0.4, delay: 0.4 }}
           viewport={{ once: true }}
           className="text-center"
-        >
-          <Link
-            href="/blogs"
-            className="group relative inline-flex items-center space-x-2 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white px-6 py-3 rounded-xl font-semibold text-sm transition-all duration-250 shadow-lg hover:shadow-xl overflow-hidden"
-          >
-            {/* Background Animation */}
-            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent transform -skew-x-12 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000" />
-
-            <GitBranch className="w-4 h-4 relative" />
-            <span className="relative">View All Articles</span>
-            <ExternalLink className="w-4 h-4 relative" />
-          </Link>
-
+        >          
           {/* Stats */}
           <motion.div
             initial={{ opacity: 0 }}
@@ -285,20 +250,11 @@ export default function Blogs() {
               <span>~/blog-terminal</span>
             </div>
             <div className="text-gray-300 space-y-0.5">
-              <p>
-                <span className="text-purple-400">$</span> git log
-                --lattest-blogs --oneline
-              </p>
-
-              {latestBlogs.map((blog, index) => (
-                <p>
-                  <span className="text-green-400">→</span> {blog.title}{" "}
-                  {blog.branch}
-                </p>
+              <p><span className="text-purple-400">$</span> git log --blog --oneline</p>
+              {blogs.map((blog, index) => (
+              <p><span className="text-green-400">→</span> {blog.title} {blog.branch}</p>
               ))}
-              <p className="text-indigo-400 mt-1">
-                # Sharing knowledge through commits! 📝
-              </p>
+              <p className="text-indigo-400 mt-1"># Sharing knowledge through commits! 📝</p>
             </div>
           </div>
         </motion.div>
