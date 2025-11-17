@@ -13,12 +13,32 @@ const projects = [
     branch: "main",
     status: "active",
     tags: ["REST API", ".NET Web API", "C#","SQL Server" ],
-    repoUrl: "https://github.com/birukdjn/moviesStore",
-    liveUrl: "https://github.com/birukdjn/MoviesStore/blob/master/README.md",
+    repoUrl: "https://github.com/birukdjn/moviesApi",
+    liveUrl: "https://github.com/birukdjn/MoviesApi/blob/master/README.md",
     images: [
       `${PROJECTIMAGES}MoviesStore.png`,
     ]
   },
+
+   {
+    title: "Netflix-Clone",
+    description: "netflix clone is a Netflix-like web application built with Next.js using api from moviesApi.",
+    stars: 42,
+    forks: 18,
+    watches: 25,
+    language: "js",
+    languageColor: "bg-green-500",
+    lastCommit: "2 days ago",
+    branch: "main",
+    status: "active",
+    tags: ["Next.js", "React", "Authentication"],
+    repoUrl: "https://github.com/birukdjn/netflix-clone",
+    liveUrl: "https://github.com/birukdjn/",
+    images: [
+      `${PROJECTIMAGES}netflix-clone.png`,
+        ]
+  },
+
   {
     title: "AI News Hub",
     description: "Smart AI-powered platform that curates and summarizes global news in real time.",
@@ -96,47 +116,8 @@ const projects = [
       "https://placehold.co/600x400/1e293b/a5f3fc?text=Swagger+UI",
       "https://placehold.co/600x400/1e293b/22d3ee?text=Real-time+Logs"
     ]
-  },
-  {
-    title: "Data Visualization Dashboard",
-    description: "Real-time data visualization dashboard for analytics",
-    stars: 67,
-    forks: 28,
-    watches: 45,
-    language: "TypeScript",
-    languageColor: "bg-blue-500",
-    lastCommit: "1 day ago",
-    branch: "main",
-    status: "stable",
-    tags: ["D3.js", "React", "Express", "MongoDB", "WebSocket"],
-    repoUrl: "https://github.com/birukdjn/data-viz-dashboard",
-    liveUrl: "https://dashboard.biruk.com",
-    images: [
-      "https://placehold.co/600x400/1e293b/93c5fd?text=Main+Chart",
-      "https://placehold.co/600x400/1e293b/a5b4fc?text=Live+Data",
-      "https://placehold.co/600x400/1e293b/818cf8?text=Filters"
-    ]
-  },
-  {
-    title: "Mobile Learning App",
-    description: "Cross-platform mobile application for online learning",
-    stars: 124,
-    forks: 56,
-    watches: 78,
-    language: "Dart",
-    languageColor: "bg-teal-500",
-    lastCommit: "2 weeks ago",
-    branch: "release/v1.2",
-    status: "release",
-    tags: ["Flutter", "Firebase", "GetX", "Stripe", "AWS"],
-    repoUrl: "https://github.com/birukdjn/mobile-learning-app",
-    liveUrl: "https://learn-demo.biruk.com",
-    images: [
-      "https://placehold.co/600x400/1e293b/5eead4?text=Course+List",
-      "https://placehold.co/600x400/1e293b/99f6e4?text=Video+Player",
-      "https://placehold.co/600x400/1e293b/2dd4bf?text=Profile"
-    ]
   }
+  
 ];
 
 export default projects;
