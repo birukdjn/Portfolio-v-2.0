@@ -50,13 +50,22 @@ export default function About() {
 
 
 useEffect(() => {
+  let isMounted = true; 
     fetch("/api/contributions")
       .then(res => res.json())
-      .then(data => setTotal(data.totalContributions))
-      .catch(err => {
-        console.error(err);
-        setTotal(total); // fallback on error
+      .then(data => {
+        if (isMounted) {
+          setTotal(data.totalContributions || "0");
+        }
+      })
+      .catch(() => {
+        if (isMounted) {
+          setTotal("0");
+        };
       });
+    return () => {
+      isMounted = false; 
+    };
   }, []);
  
   const stats = useMemo(() => [

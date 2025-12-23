@@ -290,8 +290,8 @@ export default function Blogs() {
                 --lattest-blogs --oneline
               </p>
 
-              {latestBlogs.map((blog, index) => (
-                <p>
+              {latestBlogs.map((blog, title) => (
+                <p key={title}>
                   <span className="text-green-400">→</span> {blog.title}{" "}
                   {blog.branch}
                 </p>

@@ -1,7 +1,5 @@
 "use client";
 
-
-import { useState } from "react";
 import dynamic from "next/dynamic";
 const Hero = dynamic(() => import("../Pages/hero"), { ssr: false });
 const About = dynamic(() => import("../Pages/about"), { ssr: false });
