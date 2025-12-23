@@ -304,7 +304,7 @@ export default function Certificates() {
 
                 {/* CTA */}
                 <a
-                  href="https://learn.microsoft.com/en-us/users/birukdejene-3431/"
+                  href="https://learn.microsoft.com/en-us/users/birukdjn/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-indigo-700 to-purple-900 text-white px-6 py-3 rounded-lg font-medium transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-blue-500/25 whitespace-nowrap"
