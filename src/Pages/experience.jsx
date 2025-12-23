@@ -1,7 +1,7 @@
 "use client";
 import { motion } from "framer-motion";
 import { Briefcase, Calendar, MapPin, GitBranch, GitCommit } from "lucide-react";
-import experiences from "../Data/experieneData";
+import experiences from "../Data/experienceData";
 
 export default function Experience() {
   return (

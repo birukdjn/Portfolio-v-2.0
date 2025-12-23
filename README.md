@@ -1,36 +1,201 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# 🚀 Modern Dev Portfolio | Next.js 16 & Turbopack
 
-## Getting Started
+A high-performance, Git-inspired professional portfolio and blog featuring a unique **Terminal-style UI**, real-time **GitHub API integration**, and smooth motion design.  
+Built for developers who value **clean architecture, performance, and aesthetics**.
 
-First, run the development server:
+---
+
+## 🌐 Live Demo
+
+- 🔗 **Live Site:** https://Birukdjn.vercel.app  
+- 📦 **Repository:** https://github.com/Birukdjn/portfolio-v2  
+- ⚡ **Performance:** 100% Lighthouse score
+
+---
+
+## ✨ Key Features
+
+- 🖥 **Terminal-Inspired Interface**  
+  Git-style logs, commits, and command-line aesthetics
+
+- 🐙 **GitHub API Integration**  
+  Live repositories, contributions, stars, and commits
+
+- ⚡ **Performance First**  
+  Turbopack-enabled builds, dynamic imports, optimized images
+
+- 🎨 **Modern UI & Animations**  
+  Tailwind CSS, Framer Motion, glassmorphism effects
+
+- 📱 **Fully Responsive**  
+  Works seamlessly on desktop, tablet, and mobile
+
+---
+
+## 🛠 Tech Stack
+
+| Layer | Technology |
+|-----|-----------|
+| Framework | Next.js 16 (App Router) |
+| Bundler | Turbopack |
+| Styling | Tailwind CSS |
+| Animations | Framer Motion |
+| Icons | Lucide React |
+| API | GitHub REST API |
+| Deployment | Vercel |
+
+---
+
+## 📂 Project Structure
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+├── public/
+│   ├── certifications/        # Certification images
+│   └── projects/              # Project screenshots & assets
+│
+├── src/
+│   ├── app/                   # Next.js App Router
+│   │   ├── api/
+│   │   │   └── contributions/
+│   │   │       └── route.js   # GitHub contributions API
+│   │   ├── blogs/
+│   │   │   └── page.js
+│   │   ├── certifications/
+│   │   │   └── page.js
+│   │   ├── page.js            # Home page
+│   │   ├── layout.js          # Root layout
+│   │   ├── globals.css        # Global styles
+│   │   └── favicon.ico
+│   │
+│   ├── components/            # Reusable UI components
+│   │   ├── navbar.jsx
+│   │   ├── footer.jsx
+│   │   ├── terminalIntro.jsx
+│   │   ├── rootclient.jsx
+│   │   └── seo-config.jsx
+│   │
+│   ├── Data/                  # Centralized content data
+│   │   ├── blogsdata.js
+│   │   ├── certificatesdata.js
+│   │   ├── experiencedata.js
+│   │   ├── projectsdata.js
+│   │   └── skillsdata.js
+│   │
+│   └── pages/                 # Section-based UI components
+│       ├── hero.jsx
+│       ├── about.jsx
+│       ├── skills.jsx
+│       ├── projects.jsx
+│       ├── experience.jsx
+│       ├── blogs.jsx
+│       └── contact.jsx
+│
+├── next.config.mjs             # Next.js & Turbopack config
+└── tailwind.config.js          # Tailwind theme & animations
+ ```
+## 📡 API Integration
+
+### 🐙 GitHub Contributions API
+
+The portfolio uses a custom **Next.js API route** to fetch real-time GitHub data:
+
+## /api/contributions
+
+This endpoint provides:
+- GitHub contribution statistics
+- Repository stars and forks
+- Commit activity and recent updates
+
+The API layer keeps external logic isolated while ensuring fast, secure data access.
+
+---
+
+## 🚀 Getting Started
+
+### Prerequisites
+- Node.js **18+**
+- npm, yarn, or pnpm
+
+### Installation
+
+Clone the repository and install dependencies:
+
+```bash
+git clone https://github.com/Birukdjn/portfolio-v2.git
+cd portfolio-v2
+npm install
 ```
+## Environment Variables (Optional)
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+For higher GitHub API rate limits, create a .env.local file:
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+```bash
+GITHUB_TOKEN=your_github_token
+GITHUB_USERNAME=your_username
+```
+## Run Development Server
+```bash
+npm run dev
+```
+Visit: http://localhost:3000
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## ⚙️ Customization Guide
 
-## Learn More
+### Update portfolio content easily from the centralized Data folder:
 
-To learn more about Next.js, take a look at the following resources:
+- Projects: src/Data/projectsdata.js
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- Experience: src/Data/experiencedata.js
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- Skills: src/Data/skillsdata.js
 
-## Deploy on Vercel
+- Blogs: src/Data/blogsdata.js
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Certifications
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Data: src/Data/certificatesdata.js
+
+- Images: public/certifications/
+
+No database required — all content is data-driven and easy to maintain.
+
+## 🧠 Architecture Notes
+
+- App Router used for routing and layout management
+
+- Data-driven sections powered by the centralized Data directory
+
+- Client-heavy components isolated for optimal performance
+
+- SEO configuration handled via seo-config.jsx
+
+## 🤝 Contributing
+
+This is a personal portfolio, but contributions are welcome.
+
+1. Fork the repository
+
+2. Create a feature branch:
+
+    ```bash
+    git checkout -b feature/your-feature
+    ```
+3. Commit your changes
+
+4. Push to your branch and open a Pull Request
+
+## 📄 License
+
+- Licensed under the MIT License.
+- You are free to use this project as a base for your own portfolio.
+- Attribution is appreciated.
+
+# 👤 Author
+
+### Biruk Dejene
+Built with 💻 and ☕
+linkedin: https://linkedin.com/in/birukdjn
+
+GitHub: https://github.com/Birukdjn
+
+Portfolio: https://birukdjn.vercel.app
