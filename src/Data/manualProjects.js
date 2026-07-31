@@ -108,7 +108,7 @@ export const manualProjects = [
     liveUrl: "https://github.com/birukdjn/Ethiopia.ECommerce/blob/main/README.md",
     images: ["/projects/Ethiopia.ECommerce.png"],
     branch: "main",
-    tags: ["C#", ".NET Core", "Web API", "E-Commerce", "Payment Gateway"],
+    tags: ["C#", ".NET Core", "Web API", "E-Commerce", "MySQL", "Payment Gateway"],
     status: "stable",
   },
   {

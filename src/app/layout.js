@@ -122,6 +122,7 @@ const jsonLd = {
         "React & Next.js",
         "TypeScript",
         "PostgreSQL & Database Design",
+        "MySQL & Relational Database Design",
         "Microservices Architecture",
         "Docker & CI/CD",
         "OWASP & Application Security"

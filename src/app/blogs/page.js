@@ -11,23 +11,36 @@ import {
   Calendar,
   Clock,
   ArrowRight,
-  ExternalLink,
   BookOpen,
   Eye,
   X,
-  User,
   Share2,
-  Check
+  Check,
+  Search,
+  Home
 } from "lucide-react";
-import blogs from "../Data/blogsData";
+import blogs from "../../Data/blogsData";
 
-const latestBlogs = blogs.slice(0, 6);
-
-export default function Blogs() {
+export default function BlogsPage() {
   const [activeArticle, setActiveArticle] = useState(null);
+  const [selectedCategory, setSelectedCategory] = useState("All");
+  const [searchQuery, setSearchQuery] = useState("");
   const [copied, setCopied] = useState(false);
 
-  const handleShare = (blog) => {
+  const categories = ["All", ".NET 10", "Docker", "Spring Boot", "Redis", "Security", "Kafka", "System Design", "Performance", "Deployment"];
+
+  const filteredBlogs = blogs.filter((blog) => {
+    const matchesCat = selectedCategory === "All" || blog.category === selectedCategory;
+    const query = searchQuery.toLowerCase().trim();
+    const matchesSearch =
+      !query ||
+      blog.title.toLowerCase().includes(query) ||
+      blog.excerpt.toLowerCase().includes(query) ||
+      blog.tags.some((t) => t.toLowerCase().includes(query));
+    return matchesCat && matchesSearch;
+  });
+
+  const handleShare = () => {
     if (navigator.clipboard) {
       navigator.clipboard.writeText(window.location.href);
       setCopied(true);
@@ -36,10 +49,7 @@ export default function Blogs() {
   };
 
   return (
-    <section
-      id="blogs"
-      className="relative py-14 sm:py-20 bg-gradient-to-br from-slate-950 via-indigo-950 to-slate-950 text-white overflow-hidden"
-    >
+    <main className="relative py-24 sm:py-28 bg-slate-950 text-white min-h-screen overflow-hidden">
       {/* Background Orbs */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-20 left-10 w-64 h-64 bg-gradient-to-r from-indigo-600/15 to-purple-600/15 rounded-full blur-3xl animate-float-slow"></div>
@@ -47,45 +57,92 @@ export default function Blogs() {
         <div className="absolute inset-0 bg-[linear-gradient(rgba(99,102,241,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(99,102,241,0.03)_1px,transparent_1px)] bg-[size:64px_64px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,black,transparent)]"></div>
       </div>
 
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-10">
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-10 space-y-10">
+        {/* Navigation back */}
+        <div className="flex justify-between items-center">
+          <Link
+            href="/"
+            className="inline-flex items-center space-x-2 text-xs font-mono text-indigo-400 hover:text-indigo-300 bg-slate-900 border border-slate-800 px-3.5 py-2 rounded-xl transition-all"
+          >
+            <Home className="w-3.5 h-3.5" />
+            <span>Back to Portfolio</span>
+          </Link>
+        </div>
+
         {/* Header Section */}
         <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-          className="text-center mb-10 sm:mb-16"
+          className="text-center space-y-3"
         >
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-black text-white mb-2 sm:mb-3">
-            Engineering{" "}
-            <span className="bg-gradient-to-r from-indigo-400 to-purple-300 bg-clip-text text-transparent">
-              Articles &amp; Insights
-            </span>
-          </h2>
-          <p className="text-sm sm:text-base text-gray-300 max-w-xl mx-auto px-2">
-            Technical write-ups on .NET 10 microservices, Docker containerization, Redis edge caching, OWASP security, and system architecture.
+          <div className="inline-flex items-center space-x-2 px-3 py-1.5 rounded-full bg-indigo-950/80 border border-indigo-500/30 text-indigo-300 text-xs font-mono mb-2">
+            <BookOpen className="w-3.5 h-3.5 text-indigo-400" />
+            <span>Technical Write-ups &amp; System Architecture</span>
+          </div>
+
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-black text-white">
+            Engineering <span className="bg-gradient-to-r from-indigo-400 to-purple-300 bg-clip-text text-transparent">Articles &amp; Benchmarks</span>
+          </h1>
+          <p className="text-sm sm:text-base text-gray-300 max-w-2xl mx-auto px-2">
+            In-depth guides on building high-throughput .NET 10 microservices, Docker containerization, Spring Boot, Redis caching, OWASP security, and event-driven architecture.
           </p>
+
+          {/* Search & Filters */}
+          <div className="max-w-2xl mx-auto pt-4 space-y-4">
+            <div className="relative">
+              <Search className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
+              <input
+                type="text"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                placeholder="Search articles by keyword (Kafka, Security, Docker, .NET 10)..."
+                className="w-full pl-10 pr-9 py-3 bg-slate-900 border border-slate-800 focus:border-indigo-500 rounded-xl text-xs sm:text-sm text-slate-200 placeholder-slate-500 focus:outline-none transition-colors"
+              />
+              {searchQuery && (
+                <button
+                  onClick={() => setSearchQuery("")}
+                  className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-white"
+                  aria-label="Clear search"
+                >
+                  <X className="w-4 h-4" />
+                </button>
+              )}
+            </div>
+
+            <div className="flex flex-wrap justify-center gap-1.5">
+              {categories.map((cat) => (
+                <button
+                  key={cat}
+                  onClick={() => setSelectedCategory(cat)}
+                  className={`px-3 py-1 rounded-full text-xs font-mono transition-all ${
+                    selectedCategory === cat
+                      ? "bg-indigo-600 text-white shadow-md shadow-indigo-600/30"
+                      : "bg-slate-900 border border-slate-800 text-slate-300 hover:border-slate-700"
+                  }`}
+                >
+                  {cat}
+                </button>
+              ))}
+            </div>
+          </div>
         </motion.div>
 
         {/* Blogs Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6 mb-10 sm:mb-12">
-          {latestBlogs.map((blog, index) => (
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {filteredBlogs.map((blog, index) => (
             <motion.article
               key={blog.title}
-              initial={{ opacity: 0, y: 30, scale: 0.95 }}
-              whileInView={{ opacity: 1, y: 0, scale: 1 }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              viewport={{ once: true }}
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.4, delay: index * 0.05 }}
               className="group relative cursor-pointer"
               onClick={() => setActiveArticle(blog)}
             >
-              {/* Background Glow Effect */}
               <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/20 to-purple-500/20 rounded-2xl blur-xl transform scale-105 group-hover:scale-110 transition-all duration-300" />
 
-              {/* Blog Card */}
               <div className="relative bg-slate-900/90 backdrop-blur-xl border border-indigo-500/30 rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-250 hover:border-indigo-400/50 h-full flex flex-col">
-                {/* Blog Header with Unsplash Image */}
-                <div className="relative h-44 bg-slate-950 overflow-hidden">
+                <div className="relative h-48 bg-slate-950 overflow-hidden">
                   <Image
                     src={blog.image}
                     alt={blog.title}
@@ -96,7 +153,6 @@ export default function Blogs() {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent" />
 
-                  {/* Branch Label */}
                   <div className="absolute top-3 left-3 flex items-center space-x-1 bg-slate-900/90 backdrop-blur-md px-2.5 py-1 rounded-full border border-indigo-500/30">
                     <GitBranch className="w-3 h-3 text-indigo-400" />
                     <span className="text-[11px] font-mono text-indigo-300">
@@ -104,7 +160,6 @@ export default function Blogs() {
                     </span>
                   </div>
 
-                  {/* Category Badge */}
                   <div className="absolute top-3 right-3">
                     <span className="bg-indigo-600/90 text-white px-2.5 py-1 rounded-full text-xs font-semibold backdrop-blur-md border border-indigo-400/30">
                       {blog.category}
@@ -112,45 +167,41 @@ export default function Blogs() {
                   </div>
                 </div>
 
-                {/* Blog Content */}
-                <div className="p-4 sm:p-5 flex-1 flex flex-col">
-                  {/* Git Stats */}
-                  <div className="flex justify-between items-center mb-3 text-xs text-gray-400">
+                <div className="p-5 flex-1 flex flex-col space-y-3">
+                  <div className="flex justify-between items-center text-xs text-slate-400">
                     <div className="flex items-center space-x-3">
-                      <div className="flex items-center space-x-1">
-                        <GitCommit className="w-3 h-3 text-emerald-400" />
-                        <span className="font-mono">{blog.commits} commits</span>
-                      </div>
-                      <div className="flex items-center space-x-1">
-                        <Eye className="w-3 h-3 text-indigo-400" />
-                        <span className="font-mono">{blog.views} views</span>
-                      </div>
+                      <span className="flex items-center space-x-1 font-mono text-emerald-400">
+                        <GitCommit className="w-3 h-3" />
+                        <span>{blog.commits} commits</span>
+                      </span>
+                      <span className="flex items-center space-x-1 font-mono text-indigo-400">
+                        <Eye className="w-3 h-3" />
+                        <span>{blog.views} views</span>
+                      </span>
                     </div>
                   </div>
 
-                  <h3 className="text-base sm:text-lg font-bold text-white mb-2 line-clamp-2 group-hover:text-indigo-300 transition-colors leading-snug">
+                  <h3 className="text-base sm:text-lg font-bold text-white group-hover:text-indigo-300 transition-colors leading-snug">
                     {blog.title}
                   </h3>
 
-                  <p className="text-slate-300 text-xs sm:text-sm mb-4 line-clamp-3 flex-1 leading-relaxed">
+                  <p className="text-slate-300 text-xs sm:text-sm leading-relaxed line-clamp-3 flex-1">
                     {blog.excerpt}
                   </p>
 
-                  {/* Read Time & Date */}
-                  <div className="flex justify-between items-center mb-3 text-[11px] text-slate-400 font-mono">
-                    <div className="flex items-center space-x-1.5">
+                  <div className="flex justify-between items-center text-[11px] text-slate-400 font-mono pt-1">
+                    <span className="flex items-center space-x-1">
                       <Calendar className="w-3 h-3 text-indigo-400" />
-                      <time>{blog.date}</time>
-                    </div>
-                    <div className="flex items-center space-x-1.5">
+                      <span>{blog.date}</span>
+                    </span>
+                    <span className="flex items-center space-x-1">
                       <Clock className="w-3 h-3 text-indigo-400" />
                       <span>{blog.readTime} min read</span>
-                    </div>
+                    </span>
                   </div>
 
-                  {/* Tags */}
-                  <div className="flex flex-wrap gap-1.5 mb-3">
-                    {blog.tags.slice(0, 3).map((tag) => (
+                  <div className="flex flex-wrap gap-1.5 pt-1">
+                    {blog.tags.map((tag) => (
                       <span
                         key={tag}
                         className="px-2 py-0.5 bg-indigo-950/60 text-indigo-300 rounded-md text-[10px] border border-indigo-500/20 font-mono"
@@ -160,8 +211,7 @@ export default function Blogs() {
                     ))}
                   </div>
 
-                  {/* Read Article Trigger */}
-                  <div className="inline-flex items-center justify-between text-indigo-400 group-hover:text-indigo-300 font-semibold text-xs transition-colors mt-auto pt-3 border-t border-slate-800">
+                  <div className="inline-flex items-center justify-between text-indigo-400 group-hover:text-indigo-300 font-semibold text-xs transition-colors pt-3 border-t border-slate-800">
                     <span className="flex items-center space-x-1.5">
                       <BookOpen className="w-3.5 h-3.5" />
                       <span>Read Full Article</span>
@@ -172,18 +222,6 @@ export default function Blogs() {
               </div>
             </motion.article>
           ))}
-        </div>
-
-        {/* CTA Button */}
-        <div className="text-center">
-          <Link
-            href="/blogs"
-            className="inline-flex items-center space-x-2 bg-slate-900 border border-indigo-500/30 hover:border-indigo-500 text-slate-200 hover:text-white px-6 py-3 rounded-xl font-mono text-xs sm:text-sm transition-all shadow-lg"
-          >
-            <GitBranch className="w-4 h-4 text-indigo-400" />
-            <span>Explore All Engineering Articles</span>
-            <ExternalLink className="w-4 h-4" />
-          </Link>
         </div>
       </div>
 
@@ -215,7 +253,6 @@ export default function Blogs() {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/60 to-transparent" />
 
-                {/* Close Button */}
                 <button
                   onClick={() => setActiveArticle(null)}
                   className="absolute top-4 right-4 p-2 bg-slate-900/80 hover:bg-slate-800 text-white rounded-full transition-colors border border-slate-700 z-10"
@@ -224,7 +261,6 @@ export default function Blogs() {
                   <X className="w-5 h-5" />
                 </button>
 
-                {/* Cover Details */}
                 <div className="absolute bottom-4 left-4 right-4 space-y-2">
                   <div className="flex flex-wrap items-center gap-2">
                     <span className="px-2.5 py-1 bg-indigo-600 text-white text-xs font-bold rounded-md">
@@ -242,9 +278,8 @@ export default function Blogs() {
                 </div>
               </div>
 
-              {/* Modal Article Body */}
+              {/* Modal Body */}
               <div className="p-6 sm:p-8 overflow-y-auto space-y-6 flex-1">
-                {/* Author Info */}
                 <div className="flex items-center justify-between pb-4 border-b border-slate-800">
                   <div className="flex items-center space-x-3">
                     <div className="w-10 h-10 rounded-full bg-indigo-950 border border-indigo-500/30 flex items-center justify-center text-indigo-400 font-bold text-sm">
@@ -257,7 +292,7 @@ export default function Blogs() {
                   </div>
 
                   <button
-                    onClick={() => handleShare(activeArticle)}
+                    onClick={handleShare}
                     className="p-2 bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white rounded-lg transition-colors flex items-center space-x-1.5 text-xs"
                   >
                     {copied ? <Check className="w-4 h-4 text-emerald-400" /> : <Share2 className="w-4 h-4" />}
@@ -265,7 +300,6 @@ export default function Blogs() {
                   </button>
                 </div>
 
-                {/* Article Text */}
                 <div className="prose prose-invert max-w-none space-y-4 text-slate-200 text-sm sm:text-base leading-relaxed">
                   <div dangerouslySetInnerHTML={{ __html: formatMarkdown(activeArticle.content) }} />
                 </div>
@@ -274,11 +308,10 @@ export default function Blogs() {
           </motion.div>
         )}
       </AnimatePresence>
-    </section>
+    </main>
   );
 }
 
-// Simple Helper to format markdown headings, codeblocks, and lists
 function formatMarkdown(content) {
   if (!content) return "";
   return content

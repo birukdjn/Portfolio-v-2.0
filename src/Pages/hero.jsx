@@ -3,7 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { Code, Download, ArrowRight, Globe, Terminal, ShieldCheck } from "lucide-react";
+import { Code, Download, ArrowRight, Globe, Terminal, ShieldCheck, Clock, CalendarCheck } from "lucide-react";
 
 const GithubIcon = (props) => (
   <svg {...props} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -47,20 +47,32 @@ export default function HeroSection() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, ease: "easeOut" }}
         >
-          {/* Availability Status Badge */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-            className="inline-flex items-center space-x-2 px-3 py-1.5 rounded-full bg-slate-900/90 border border-emerald-500/30 text-emerald-400 text-xs sm:text-sm font-mono shadow-sm"
-          >
-            <span className="relative flex h-2.5 w-2.5">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
-            </span>
-            <Globe className="w-3.5 h-3.5 text-emerald-400" />
-            <span>Open for Remote Software Engineering Roles</span>
-          </motion.div>
+          {/* Availability & Timezone Badges */}
+          <div className="flex flex-wrap items-center justify-center lg:justify-start gap-2">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+              className="inline-flex items-center space-x-2 px-3 py-1.5 rounded-full bg-slate-900/90 border border-emerald-500/30 text-emerald-400 text-xs sm:text-sm font-mono shadow-sm"
+            >
+              <span className="relative flex h-2.5 w-2.5">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
+              </span>
+              <Globe className="w-3.5 h-3.5 text-emerald-400" />
+              <span>Available for Global Remote Engineering Roles</span>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.5, delay: 0.15 }}
+              className="inline-flex items-center space-x-1.5 px-3 py-1.5 rounded-full bg-indigo-950/80 border border-indigo-500/30 text-indigo-300 text-xs font-mono"
+            >
+              <Clock className="w-3.5 h-3.5 text-indigo-400" />
+              <span>UTC+3 (EU &amp; US East Coast Overlap)</span>
+            </motion.div>
+          </div>
 
           {/* Main Heading & Subheadline */}
           <div className="space-y-3">
@@ -91,7 +103,7 @@ export default function HeroSection() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.4 }}
             >
-              Building <span className="font-semibold text-indigo-400">secure, scalable payment systems</span> and high-performance backend microservices for enterprise &amp; global applications.
+              Architecting <span className="font-semibold text-indigo-400">high-throughput payment engines</span>, resilient .NET microservices, and modern full-stack web platforms for global enterprise clients.
             </motion.p>
           </div>
 
@@ -112,14 +124,14 @@ export default function HeroSection() {
             ))}
           </motion.div>
 
-          {/* Professional Context */}
+          {/* Professional Impact Context */}
           <motion.p 
             className="text-xs sm:text-sm text-slate-400 leading-relaxed max-w-2xl mx-auto lg:mx-0"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.55 }}
           >
-            Software Engineer at <strong className="text-slate-200 font-semibold">Arifpay Financial Technologies</strong> with experience architecting payment gateways, JWT authenticated APIs, and PostgreSQL EF Core microservices.
+            Software Engineer at <strong className="text-slate-200 font-semibold">Arifpay Financial Technologies</strong> delivering zero-downtime payment gateways, JWT security, and high-concurrency microservices with asynchronous engineering rigor.
           </motion.p>       
 
           {/* Responsive CTA Buttons */}
@@ -129,22 +141,30 @@ export default function HeroSection() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.6 }}
           >
+            <a
+              href="mailto:birukdejene45@gmail.com?subject=Software%20Engineering%20Opportunity"
+              className="group w-full sm:w-auto inline-flex items-center justify-center px-6 py-3.5 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 text-white font-bold rounded-xl transition-all shadow-lg shadow-indigo-600/25 text-sm cursor-pointer"
+            >
+              <CalendarCheck className="w-4 h-4 mr-2 group-hover:scale-110 transition-transform text-emerald-400" />
+              <span>Schedule Interview / Hire</span>
+              <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+            </a>
+
             <Link
               href="#projects"
-              className="group w-full sm:w-auto inline-flex items-center justify-center px-6 py-3.5 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 text-white font-bold rounded-xl transition-all shadow-lg shadow-indigo-600/25 text-sm"
+              className="group w-full sm:w-auto inline-flex items-center justify-center px-5 py-3.5 bg-slate-900 border border-slate-700 hover:border-indigo-500 hover:bg-slate-800 text-slate-200 font-bold rounded-xl transition-all text-sm"
             >
-              <Code className="w-4 h-4 mr-2 group-hover:rotate-12 transition-transform" />
-              <span>View Featured Projects</span>
-              <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+              <Code className="w-4 h-4 mr-2 text-indigo-400 group-hover:rotate-12 transition-transform" />
+              <span>Explore Work</span>
             </Link>
 
             <Link
               href="/resume.pdf"
               download
-              className="group w-full sm:w-auto inline-flex items-center justify-center space-x-2 px-6 py-3.5 bg-slate-900 border border-slate-700 hover:border-indigo-500 hover:bg-slate-800 text-slate-200 font-bold rounded-xl transition-all text-sm"
+              className="group w-full sm:w-auto inline-flex items-center justify-center space-x-2 px-5 py-3.5 bg-slate-900 border border-slate-700 hover:border-indigo-500 hover:bg-slate-800 text-slate-200 font-bold rounded-xl transition-all text-sm"
             >
               <Download className="w-4 h-4 text-indigo-400" />
-              <span>Download Resume</span>
+              <span>Resume</span>
             </Link>
 
             <div className="flex items-center space-x-2 pt-2 sm:pt-0">

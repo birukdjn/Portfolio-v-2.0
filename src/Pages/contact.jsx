@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Mail, MapPin, Send, CheckCircle2, MessageSquare, Copy, Check } from "lucide-react";
+import { Mail, MapPin, Send, CheckCircle2, MessageSquare, Copy, Check, Clock, CalendarCheck } from "lucide-react";
 
 const GithubIcon = (props) => (
   <svg {...props} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -37,7 +37,7 @@ export default function Contact() {
     if (formData.name && formData.email && formData.message) {
       setSubmitted(true);
       // Open email client with prefilled parameters
-      const subject = encodeURIComponent(`Portfolio Inquiry from ${formData.name}`);
+      const subject = encodeURIComponent(`Software Engineering Opportunity from ${formData.name}`);
       const body = encodeURIComponent(`Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`);
       window.location.href = `mailto:${emailAddress}?subject=${subject}&body=${body}`;
 
@@ -81,7 +81,7 @@ export default function Contact() {
             Get In <span className="bg-gradient-to-r from-indigo-400 to-purple-300 bg-clip-text text-transparent">Touch</span>
           </h2>
           <p className="text-sm sm:text-base text-slate-400 max-w-xl mx-auto px-2">
-            Available for remote software engineering roles, full-stack development contracts, and technical consulting.
+            Available for remote software engineering positions, full-stack development contracts, and payment system consulting.
           </p>
         </motion.div>
 
@@ -116,7 +116,7 @@ export default function Contact() {
                       <Mail className="w-4 h-4" />
                     </div>
                     <div>
-                      <div className="text-xs text-slate-400 font-mono">Email (Click to Copy)</div>
+                      <div className="text-xs text-slate-400 font-mono">Direct Email (Click to Copy)</div>
                       <div className="font-semibold text-white group-hover:text-indigo-300 transition-colors">
                         {emailAddress}
                       </div>
@@ -166,16 +166,34 @@ export default function Contact() {
 
                 <div className="flex items-center space-x-3 p-3 bg-slate-950 border border-slate-800 rounded-xl">
                   <div className="p-2 bg-indigo-950 border border-indigo-500/30 rounded-lg text-indigo-400">
-                    <MapPin className="w-4 h-4" />
+                    <Clock className="w-4 h-4" />
                   </div>
                   <div>
-                    <div className="text-xs text-slate-400 font-mono">Location &amp; Availability</div>
+                    <div className="text-xs text-slate-400 font-mono">Timezone Availability</div>
                     <div className="font-semibold text-white">
-                      Addis Ababa, Ethiopia (UTC+3) • Open to Remote
+                      Addis Ababa, Ethiopia (UTC+3) • Full EU &amp; US East Coast Overlap
                     </div>
                   </div>
                 </div>
               </div>
+            </div>
+
+            {/* Quick Hire CTA Box */}
+            <div className="bg-gradient-to-r from-indigo-950/80 to-purple-950/80 border border-indigo-500/30 rounded-2xl p-6 space-y-3">
+              <div className="flex items-center space-x-2 text-indigo-300 font-bold text-sm">
+                <CalendarCheck className="w-4 h-4 text-emerald-400" />
+                <span>Ready to Interview?</span>
+              </div>
+              <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                Looking for a senior-level software engineer for your remote team? Send me an email or submit a message to schedule an initial interview call.
+              </p>
+              <a
+                href={`mailto:${emailAddress}?subject=Technical%20Interview%20Request%20-%20Software%20Engineer`}
+                className="inline-flex items-center space-x-2 bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-xs px-4 py-2.5 rounded-xl transition-all shadow-md"
+              >
+                <Mail className="w-3.5 h-3.5" />
+                <span>Schedule Interview via Email</span>
+              </a>
             </div>
           </motion.div>
 
@@ -234,7 +252,7 @@ export default function Contact() {
                   rows={4}
                   value={formData.message}
                   onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                  placeholder="Hello Biruk, I saw your portfolio and would like to discuss a software engineering opportunity..."
+                  placeholder="Hello Biruk, I saw your portfolio and would like to discuss a remote software engineering role..."
                   className="w-full px-4 py-3 bg-slate-950 border border-slate-800 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:border-indigo-500 transition-colors text-sm resize-none"
                 />
               </div>

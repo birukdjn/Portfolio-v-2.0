@@ -16,6 +16,7 @@ const skills = {
   ],
   "Databases & Storage": [
     { name: "PostgreSQL & Entity Framework Core", level: 90, category: "Database", experience: "Production" },
+    { name: "MySQL / Relational Databases", level: 86, category: "Database", experience: "Production" },
     { name: "SQL Server (T-SQL)", level: 88, category: "Database", experience: "Production" },
     { name: "Redis Caching & Performance", level: 85, category: "Database", experience: "Production" },
     { name: "MongoDB / NoSQL", level: 80, category: "Database", experience: "Projects" }
