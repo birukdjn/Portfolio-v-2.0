@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { X, Menu, FileText, Download, Award } from "lucide-react";
+import { X, Menu, FileText, Download, Award, Clock } from "lucide-react";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 
@@ -39,13 +39,31 @@ const NavLink = ({ href, children, mobile = false, onClick, activeSection }) => 
 };
 
 export default function Navbar() {
-
   const [activeSection, setActiveSection] = useState("Home");
-  const [isScrolled, setIsScrolled] = useState(false);
+  const [open, setOpen] = useState(false);
+  const [time, setTime] = useState("");
+  const pathname = usePathname();
+
+  // Real-time clock in UTC+3 (Addis Ababa)
+  useEffect(() => {
+    const updateTime = () => {
+      const options = {
+        timeZone: "Africa/Addis_Ababa",
+        hour: "2-digit",
+        minute: "2-digit",
+        hour12: false,
+      };
+      setTime(new Date().toLocaleTimeString("en-US", options));
+    };
+
+    updateTime();
+    const interval = setInterval(updateTime, 30000);
+    return () => clearInterval(interval);
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ["home", "about", "skills", "projects", "experience", "blogs", "contact","certifications"];
+      const sections = ["home", "about", "skills", "projects", "experience", "blogs", "contact", "certifications"];
       let current = "home";
 
       sections.forEach((id) => {
@@ -65,19 +83,10 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const [open, setOpen] = useState(false);
-  const [mounted, setMounted] = useState(false);
-
-  const pathname = usePathname();
-
-  useEffect(() => setMounted(true), []);
-
-  // Close menu when route changes
   useEffect(() => {
     setOpen(false);
   }, [pathname]);
 
-  // Close menu when clicking outside
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (open && !event.target.closest('nav')) {
@@ -93,22 +102,30 @@ export default function Navbar() {
 
   return (
     <nav className="w-full bg-slate-900 fixed top-0 left-0 z-50 shadow-lg border-b border-gray-800">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5 flex justify-between items-center">
         {/* Logo and Main Nav */}
-        <div className="flex items-center space-x-8">
+        <div className="flex items-center space-x-6">
           <Link href="/" className="flex items-center space-x-3 text-white hover:opacity-90 transition-opacity">
             <Image
               src="/logo.png"
               alt="Birukdjn Logo"
-              width={48}
-              height={48}
-              className="h-12 w-12 rounded-lg"
+              width={44}
+              height={44}
+              className="h-11 w-11 rounded-lg"
               quality={100}
               priority
             />
-            <span className="font-bold text-xl bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
-              Birukdjn
-            </span>
+            <div className="flex flex-col">
+              <span className="font-bold text-xl bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent leading-none">
+                Birukdjn
+              </span>
+              {time && (
+                <span className="text-[10px] font-mono text-indigo-300 flex items-center space-x-1 mt-1">
+                  <span className="w-1.5 h-1.5 bg-emerald-400 rounded-full animate-pulse"></span>
+                  <span>Addis Ababa ({time} EAT)</span>
+                </span>
+              )}
+            </div>
           </Link>
 
           {/* Desktop Menu */}
@@ -124,8 +141,8 @@ export default function Navbar() {
         </div>
 
         {/* Right Section */}   
-        <div className="flex items-center space-x-1">
-           <a
+        <div className="flex items-center space-x-2">
+          <a
             href="/certifications"
             className="hidden md:flex items-center space-x-2 border-1 border-white hover:bg-slate-200 text-white hover:text-indigo-600 px-3 py-1.5 rounded-sm transition-colors duration-200"
           >
@@ -137,7 +154,7 @@ export default function Navbar() {
           <a
             href="/resume.pdf"
             download
-            className=" flex items-center space-x-2 bg-indigo-600 hover:bg-indigo-700 text-white px-3 py-1.5 rounded-sm transition-colors duration-200"
+            className="flex items-center space-x-2 bg-indigo-600 hover:bg-indigo-700 text-white px-3 py-1.5 rounded-sm transition-colors duration-200"
           >
             <span className="group flex items-center space-x-2">
               <FileText className="h-4 w-4 group-hover:hidden" />
@@ -145,8 +162,8 @@ export default function Navbar() {
               <span className="text-sm font-medium">Resume</span>
             </span>
           </a>
-          {/* Mobile Icons */}
-          <div className="flex md:hidden items-center space-x-3"></div>
+
+          {/* Mobile Toggle */}
           <button
             onClick={() => setOpen(!open)}
             className="md:hidden text-gray-400 focus:outline-none hover:text-white p-2 rounded-lg hover:bg-gray-800 transition-colors"
@@ -155,14 +172,13 @@ export default function Navbar() {
           >
             {open ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
           </button>
-          
         </div>
-        
       </div>
+
       {/* Mobile Dropdown */}
       {open && (
         <div className="md:hidden bg-gray-900 border-t border-gray-800 shadow-xl animate-in slide-in-from-top duration-300">
-          <ul className="flex flex-col py-2 ">
+          <ul className="flex flex-col py-2">
             <li>
               <NavLink href="/" mobile activeSection={activeSection} onClick={() => setOpen(false)}>Home</NavLink>
             </li>
@@ -172,11 +188,11 @@ export default function Navbar() {
             <li>
               <NavLink href="/#skills" mobile activeSection={activeSection} onClick={() => setOpen(false)}>Skills</NavLink>
             </li>
-             <li>
+            <li>
               <NavLink href="/#projects" mobile activeSection={activeSection} onClick={() => setOpen(false)}>Projects</NavLink>
             </li> 
             <li>
-              <NavLink href="/#experience" mobile activeSection={activeSection} onClick={() => setOpen(false)}>Experience </NavLink>
+              <NavLink href="/#experience" mobile activeSection={activeSection} onClick={() => setOpen(false)}>Experience</NavLink>
             </li> 
             <li>
               <NavLink href="/#blogs" mobile activeSection={activeSection} onClick={() => setOpen(false)}>Blogs</NavLink>
@@ -185,7 +201,7 @@ export default function Navbar() {
               <NavLink href="/#contact" mobile activeSection={activeSection} onClick={() => setOpen(false)}>Contact</NavLink>
             </li>
             <li>
-              <NavLink href="/certifications" mobile activeSection={activeSection} onClick={() => setOpen(false)}>certifications</NavLink>
+              <NavLink href="/certifications" mobile activeSection={activeSection} onClick={() => setOpen(false)}>Certifications</NavLink>
             </li>
           </ul>
         </div>

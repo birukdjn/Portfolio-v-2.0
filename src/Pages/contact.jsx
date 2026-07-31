@@ -1,12 +1,36 @@
 "use client";
 
 import { useState } from "react";
-import { motion } from "framer-motion";
-import { Mail, MapPin, Linkedin, Github, Send, CheckCircle2, MessageSquare } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Mail, MapPin, Send, CheckCircle2, MessageSquare, Copy, Check } from "lucide-react";
+
+const GithubIcon = (props) => (
+  <svg {...props} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4" />
+    <path d="M9 18c-4.51 2-5-2-7-2" />
+  </svg>
+);
+
+const LinkedinIcon = (props) => (
+  <svg {...props} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+    <rect x="2" y="9" width="4" height="12" />
+    <circle cx="4" cy="4" r="2" />
+  </svg>
+);
 
 export default function Contact() {
   const [formData, setFormData] = useState({ name: "", email: "", message: "" });
   const [submitted, setSubmitted] = useState(false);
+  const [copied, setCopied] = useState(false);
+
+  const emailAddress = "birukdejene45@gmail.com";
+
+  const handleCopyEmail = () => {
+    navigator.clipboard.writeText(emailAddress);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 3000);
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -19,6 +43,21 @@ export default function Contact() {
 
   return (
     <section id="contact" className="relative w-full py-20 bg-slate-950 text-white overflow-hidden">
+      {/* Toast Notification */}
+      <AnimatePresence>
+        {copied && (
+          <motion.div
+            initial={{ opacity: 0, y: 50, scale: 0.9 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: 50, scale: 0.9 }}
+            className="fixed bottom-20 right-6 z-50 bg-slate-900 border border-indigo-500/40 text-indigo-300 px-4 py-3 rounded-xl shadow-2xl flex items-center space-x-2 text-sm font-mono"
+          >
+            <Check className="w-4 h-4 text-emerald-400" />
+            <span>Email copied to clipboard!</span>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
       {/* Background Gradients */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-indigo-600/10 rounded-full blur-3xl animate-float-slow" />
@@ -58,20 +97,28 @@ export default function Contact() {
               </h3>
 
               <div className="space-y-4 text-sm text-slate-300">
-                <a
-                  href="mailto:birukdejene45@gmail.com"
-                  className="flex items-center space-x-3 p-3 bg-slate-950 border border-slate-800 hover:border-indigo-500/40 rounded-xl transition-all group"
+                {/* Email Card with 1-Click Copy */}
+                <div
+                  onClick={handleCopyEmail}
+                  className="flex items-center justify-between p-3 bg-slate-950 border border-slate-800 hover:border-indigo-500/40 rounded-xl transition-all group cursor-pointer"
+                  title="Click to copy email address"
                 >
-                  <div className="p-2 bg-indigo-950 border border-indigo-500/30 rounded-lg text-indigo-400">
-                    <Mail className="w-4 h-4" />
-                  </div>
-                  <div>
-                    <div className="text-xs text-slate-400 font-mono">Email</div>
-                    <div className="font-semibold text-white group-hover:text-indigo-300 transition-colors">
-                      birukdejene45@gmail.com
+                  <div className="flex items-center space-x-3">
+                    <div className="p-2 bg-indigo-950 border border-indigo-500/30 rounded-lg text-indigo-400">
+                      <Mail className="w-4 h-4" />
+                    </div>
+                    <div>
+                      <div className="text-xs text-slate-400 font-mono">Email (Click to Copy)</div>
+                      <div className="font-semibold text-white group-hover:text-indigo-300 transition-colors">
+                        {emailAddress}
+                      </div>
                     </div>
                   </div>
-                </a>
+
+                  <button className="p-1.5 text-slate-400 group-hover:text-indigo-300">
+                    {copied ? <Check className="w-4 h-4 text-emerald-400" /> : <Copy className="w-4 h-4" />}
+                  </button>
+                </div>
 
                 <a
                   href="https://linkedin.com/in/birukdjn"
@@ -80,7 +127,7 @@ export default function Contact() {
                   className="flex items-center space-x-3 p-3 bg-slate-950 border border-slate-800 hover:border-indigo-500/40 rounded-xl transition-all group"
                 >
                   <div className="p-2 bg-indigo-950 border border-indigo-500/30 rounded-lg text-indigo-400">
-                    <Linkedin className="w-4 h-4" />
+                    <LinkedinIcon className="w-4 h-4" />
                   </div>
                   <div>
                     <div className="text-xs text-slate-400 font-mono">LinkedIn Profile</div>
@@ -97,7 +144,7 @@ export default function Contact() {
                   className="flex items-center space-x-3 p-3 bg-slate-950 border border-slate-800 hover:border-indigo-500/40 rounded-xl transition-all group"
                 >
                   <div className="p-2 bg-indigo-950 border border-indigo-500/30 rounded-lg text-indigo-400">
-                    <Github className="w-4 h-4" />
+                    <GithubIcon className="w-4 h-4" />
                   </div>
                   <div>
                     <div className="text-xs text-slate-400 font-mono">GitHub Profile</div>

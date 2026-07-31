@@ -128,7 +128,7 @@ export default function HeroSection() {
           animate={{ opacity: 1, scale: 1, x: 0 }}
           transition={{ duration: 1, ease: "easeOut", delay: 0.4 }}
         >
-          <div className="relative w-80 h-80 md:w-100 md:h-100">
+          <div className="relative w-64 h-64 sm:w-80 sm:h-80 md:w-96 md:h-96 max-w-[80vw] max-h-[80vw]">
             {/* Background Glow */}
             <div className="absolute inset-0 bg-gradient-to-br from-indigo-600 to-purple-600 rounded-full blur-3xl animate-pulse-slow"></div>
             

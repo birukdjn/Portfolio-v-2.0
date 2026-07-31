@@ -5,7 +5,7 @@ import { useEffect, useState, Suspense } from "react";
 const TerminalIntro = dynamic(() => import("./terminalIntro"), { ssr: false });
 const Navbar = dynamic(() => import("./navbar"), { ssr: false });
 const Footer = dynamic(() => import("./footer"), { ssr: false });
-
+const ScrollToTop = dynamic(() => import("./ScrollToTop"), { ssr: false });
 
 export default function RootClient({ children }) {
   const [showContent, setShowContent] = useState(false);
@@ -42,6 +42,7 @@ export default function RootClient({ children }) {
           <Navbar />
           <main className="pt-20">{children}</main>
           <Footer />
+          <ScrollToTop />
         </div>
       </Suspense>
     </>
