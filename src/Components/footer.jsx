@@ -249,15 +249,11 @@ export default function Footer() {
                 </div>
                 <div className="flex items-center justify-between text-sm">
                   <span className="text-gray-300">Current Focus</span>
-                  <span className="text-purple-300 font-mono">Next.js 14</span>
-                </div>
-                <div className="flex items-center justify-between text-sm">
-                  <span className="text-gray-300">Preferred </span>
-                  <span className="text-gray-300 font-mono">API</span>
+                  <span className="text-purple-300 font-mono">.NET 10 / C#</span>
                 </div>
                 <div className="flex items-center justify-between text-sm">
                   <span className="text-gray-300">Learning</span>
-                  <span className="text-gray-300 font-mono">.NET core</span>
+                  <span className="text-emerald-400 font-mono">Spring Boot</span>
                 </div>
                 <div className="flex items-center justify-between text-sm">
                   <span className="text-gray-300">Last Commit</span>

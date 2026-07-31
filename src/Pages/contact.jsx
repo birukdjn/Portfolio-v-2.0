@@ -81,7 +81,7 @@ export default function Contact() {
             Get In <span className="bg-gradient-to-r from-indigo-400 to-purple-300 bg-clip-text text-transparent">Touch</span>
           </h2>
           <p className="text-sm sm:text-base text-slate-400 max-w-xl mx-auto px-2">
-            Available for remote software engineering positions, full-stack development contracts, and payment system consulting.
+            Open to full-stack engineering contracts, backend .NET roles, and payment systems consulting with teams worldwide.
           </p>
         </motion.div>
 
@@ -185,7 +185,7 @@ export default function Contact() {
                 <span>Ready to Interview?</span>
               </div>
               <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
-                Looking for a senior-level software engineer for your remote team? Send me an email or submit a message to schedule an initial interview call.
+                Looking for a senior-level software engineer to join your team? Send me an email or submit a message to schedule an initial interview call.
               </p>
               <a
                 href={`mailto:${emailAddress}?subject=Technical%20Interview%20Request%20-%20Software%20Engineer`}
@@ -252,7 +252,7 @@ export default function Contact() {
                   rows={4}
                   value={formData.message}
                   onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                  placeholder="Hello Biruk, I saw your portfolio and would like to discuss a remote software engineering role..."
+                  placeholder="Hello Biruk, I saw your portfolio and would like to discuss a software engineering opportunity..."
                   className="w-full px-4 py-3 bg-slate-950 border border-slate-800 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:border-indigo-500 transition-colors text-sm resize-none"
                 />
               </div>

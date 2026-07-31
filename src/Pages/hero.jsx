@@ -60,7 +60,7 @@ export default function HeroSection() {
                 <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
               </span>
               <Globe className="w-3.5 h-3.5 text-emerald-400" />
-              <span>Available for Global Remote Engineering Roles</span>
+              <span>Open to New Opportunities · Worldwide</span>
             </motion.div>
 
             <motion.div

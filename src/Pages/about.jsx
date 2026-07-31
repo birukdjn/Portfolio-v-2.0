@@ -221,7 +221,7 @@ export default function About() {
                     <div>
                       <h4 className="text-sm font-bold text-white">Target Roles &amp; Focus</h4>
                       <p className="text-xs sm:text-sm text-slate-400">
-                        Full Stack Engineer, Backend (.NET / C#), API / Microservices Engineer, and Payment Systems Engineer for international remote teams.
+                        Full Stack Engineer, Backend (.NET / C#), API / Microservices Engineer, and Payment Systems Engineer — open to joining teams in any timezone.
                       </p>
                     </div>
                   </div>
@@ -365,7 +365,7 @@ export default function About() {
               <span>Looking for a Dedicated Software Engineer?</span>
             </h3>
             <p className="text-sm sm:text-base text-slate-300 leading-relaxed">
-              I am available for remote full-stack, backend, and payment systems engineering positions worldwide. Let&apos;s build resilient systems together.
+              I am open to full-stack, backend, and payment systems engineering positions with ambitious teams worldwide. Let&apos;s build resilient systems together.
             </p>
             
             <div className="pt-2 flex justify-center">
