@@ -1,53 +1,141 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  /* =============================================
+   * GitHub Dark Theme — Palette Token Overrides
+   * Maps all existing Tailwind class names to
+   * GitHub's official dark color palette values.
+   * ============================================= */
+
+  /* --- Page Canvas (Slate → GitHub Canvas) --- */
+  --color-slate-950: #0d1117;   /* github canvas-default (main page bg) */
+  --color-slate-900: #161b22;   /* github canvas-overlay (nav, cards)   */
+  --color-slate-800: #21262d;   /* github canvas-subtle (hover, tags)   */
+  --color-slate-700: #30363d;   /* github border-default                */
+  --color-slate-600: #484f58;   /* github neutral-emphasis              */
+  --color-slate-500: #6e7681;   /* github neutral-muted                 */
+  --color-slate-400: #8b949e;   /* github fg-muted                      */
+  --color-slate-300: #c9d1d9;   /* github fg-subtle                     */
+  --color-slate-200: #d0d7de;
+  --color-slate-100: #e6edf3;   /* github fg-default                    */
+  --color-slate-50:  #f6f8fa;   /* github canvas-default (light)        */
+
+  /* --- Accent (Indigo → GitHub Blue) --- */
+  --color-indigo-950: #0d1b2e;  /* deep navy overlay                    */
+  --color-indigo-900: #0c2d6b;
+  --color-indigo-800: #1158c7;
+  --color-indigo-700: #1a7f37;
+  --color-indigo-600: #1f6feb;  /* github accent-emphasis (buttons)     */
+  --color-indigo-500: #388bfd;  /* github accent-fg-muted               */
+  --color-indigo-400: #58a6ff;  /* github accent-fg  (links, icons)     */
+  --color-indigo-300: #79c0ff;  /* github accent-subtle                 */
+  --color-indigo-200: #a5d6ff;
+  --color-indigo-100: #cae8ff;
+
+  /* --- Secondary Accent (Purple → GitHub Blue-Muted) ---
+   * Replaces purple gradients with GitHub's blue spectrum  */
+  --color-purple-900: #0c2d6b;
+  --color-purple-800: #1158c7;
+  --color-purple-700: #1f6feb;
+  --color-purple-600: #2f81f7;  /* slightly lighter than accent         */
+  --color-purple-500: #388bfd;
+  --color-purple-400: #58a6ff;
+  --color-purple-300: #79c0ff;
+  --color-purple-200: #a5d6ff;
+
+  /* --- Success Green (matches GitHub's success fg) --- */
+  --color-emerald-400: #3fb950;
+  --color-emerald-500: #2ea043;
+  --color-green-400:   #3fb950;
+  --color-green-500:   #2ea043;
 }
 
-[data-theme="dark"] {
-  --background: #0a0a0a;
-  --foreground: #ededed;
+/* =============================================
+ * Base Styles
+ * ============================================= */
+:root {
+  --background: #0d1117;
+  --foreground: #e6edf3;
 }
+
 html {
   scroll-behavior: smooth;
 }
 
-
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-inter), system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Roboto, sans-serif;
 }
 
+code,
+kbd,
+samp,
+pre {
+  font-family: var(--font-mono), "JetBrains Mono", "Fira Code", monospace;
+}
+
+/* =============================================
+ * Custom Animations (unchanged)
+ * ============================================= */
 @keyframes float-slow {
-  0%, 100% { transform: translateY(0px) rotate(0deg); }
-  50% { transform: translateY(-20px) rotate(1deg); }
+  0%,
+  100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-20px) rotate(1deg);
+  }
 }
 
 @keyframes float-medium {
-  0%, 100% { transform: translateY(0px) scale(1); }
-  50% { transform: translateY(-30px) scale(1.05); }
+  0%,
+  100% {
+    transform: translateY(0px) scale(1);
+  }
+  50% {
+    transform: translateY(-30px) scale(1.05);
+  }
 }
 
 @keyframes float-fast {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-15px); }
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-15px);
+  }
 }
 
 @keyframes grid-flow {
-  0% { transform: translateY(0px); }
-  100% { transform: translateY(64px); }
+  0% {
+    transform: translateY(0px);
+  }
+  100% {
+    transform: translateY(64px);
+  }
 }
 
 @keyframes gradient-x {
-  0%, 100% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
 }
 
 @keyframes pulse-slow {
-  0%, 100% { opacity: 0.5; }
-  50% { opacity: 0.8; }
+  0%,
+  100% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 0.8;
+  }
 }
 
 .animate-float-slow {

@@ -1,50 +1,101 @@
-import { FolderGit2 , GraduationCap, MonitorSmartphone, BookKey } from "lucide-react";
+import { CreditCard, Server, GraduationCap, Code2 } from "lucide-react";
 
 const experiences = [
   {
+    title: "Software Engineer",
+    company: "Arifpay Financial Technologies",
+    period: "Oct 2024 - Present",
+    location: "Addis Ababa, Ethiopia",
+    description:
+      "Architecting and maintaining enterprise-grade payment gateway systems, backend microservices, recurring payment engines, and merchant backoffice solutions. Spearheaded RESTful API development with JWT authentication, role-based access control (RBAC), and OWASP security compliance across all services.",
+    technologies: [
+      ".NET Core / C#",
+      "React",
+      "TypeScript",
+      "PostgreSQL",
+      "Docker",
+      "RESTful APIs",
+      "JWT",
+      "Payment Gateways",
+    ],
+    icon: <CreditCard />,
+    branch: "main/payment-gateway",
+    commits: [
+      "Payment Engine API Design",
+      "Recurring Billing Engine",
+      "Merchant Backoffice Integration",
+      "Rate Limiting & Security Headers",
+    ],
+  },
+  {
     title: "Full Stack Developer",
     company: "Addis Systems Integration",
-    period: "Sep 2025 - Present",
+    period: "Sep 2024 - Oct 2024",
     location: "Addis Ababa, Ethiopia",
-    description: "Developing and maintaining full-stack web applications. Collaborating with cross-functional teams to deliver high-quality software solutions.",
-    technologies: ["React", "Node.js", "MongoDB", "AWS", "Docker"],
-    icon: <FolderGit2 />,
-    branch: "main",
-    commits: ["Full-Stack Development", "API Design", "Database Management"]
+    description:
+      "Transitioned from intern to full-time Full Stack Developer, designing and delivering end-to-end web applications and internal tooling. Collaborated with cross-functional teams on relational database schemas, API performance optimization, and automated deployment pipelines.",
+    technologies: [
+      "React",
+      "Next.js",
+      "Node.js",
+      "Express",
+      "PostgreSQL",
+      "Docker",
+      "Tailwind CSS",
+    ],
+    icon: <Server />,
+    branch: "main/enterprise-apps",
+    commits: [
+      "Full-Stack Feature Development",
+      "Database Schema Design",
+      "API Integration & Optimization",
+    ],
   },
   {
     title: "Frontend Developer Intern",
     company: "Addis Systems Integration",
-    period: "Jun 2025 - Sep 2025",
+    period: "Jun 2024 - Sep 2024",
     location: "Addis Ababa, Ethiopia",
-    description: "Gained hands-on experience in frontend development, contributing to user interface components and collaborating with the development team on real-world projects.",
-    technologies: ["JavaScript", "React", "CSS3", "Git", "Figma"],
-    icon: <MonitorSmartphone />,
-    branch: "feature/internship-tasks",
-    commits: ["UI Components", "Code Review", "Collaboration"]
-  },
-  {
-    title: "Self-Study & Project Work",
-    company: "Personal Development",
-    period: "Jul 2024 - Jun 2025",
-    location: "Remote",
-    description: "Dedicated a year to intensive self-learning, focusing on full-stack development, modern frameworks, and building a portfolio of personal projects.",
-    technologies: ["Next.js", "TypeScript", "Python", "Express", "PostgreSQL"],
-    icon: <BookKey />,
-    branch: "develop",
-    commits: ["Project Scaffolding", "Feature Implementation", "Continuous Learning"]
+    description:
+      "Built and refined core UI components, responsive layouts, and API integrations for client-facing software applications. Participated in daily standups, code reviews, and agile sprint cycles.",
+    technologies: [
+      "JavaScript (ES6+)",
+      "React",
+      "Tailwind CSS",
+      "Git",
+      "Figma",
+    ],
+    icon: <Code2 />,
+    branch: "feature/internship-ui",
+    commits: [
+      "Reusable UI Components",
+      "Responsive Layout Implementations",
+      "API Consumer Integration",
+    ],
   },
   {
     title: "BSc in Computer Science",
     company: "Hawassa University",
     period: "2020 - 2024",
     location: "Hawassa, Ethiopia",
-    description: "Graduated on July 4, 2024, with a CGPA of 3.51. Acquired a strong foundation in computer science principles, algorithms, and software development.",
-    technologies: ["Java", "C++", "Data Structures", "Algorithms", "SQL"],
+    description:
+      "Graduated with Distinction (CGPA 3.51 / 4.00) on July 4, 2024. Mastered core computer science principles: software engineering, data structures, algorithms, object-oriented design, database management systems, computer networks, and operating systems.",
+    technologies: [
+      "C# / .NET",
+      "Java",
+      "C++",
+      "SQL",
+      "Data Structures & Algorithms",
+      "System Design",
+    ],
     icon: <GraduationCap />,
-    branch: "education",
-    commits: ["Final Year Project", "Coursework", "Academic Excellence"]
+    branch: "academic/computer-science",
+    commits: [
+      "Graduated with Distinction (CGPA 3.51)",
+      "Software Engineering Capstone",
+      "Academic Excellence Award",
+    ],
   },
 ];
 
-export default experiences; 
+export default experiences;
