@@ -142,7 +142,7 @@ export default function HeroSection() {
             transition={{ duration: 0.6, delay: 0.6 }}
           >
             <a
-              href="mailto:birukdejene45@gmail.com?subject=Software%20Engineering%20Opportunity"
+              href="mailto:birukedjn@gmail.com?subject=Software%20Engineering%20Opportunity"
               className="group w-full sm:w-auto inline-flex items-center justify-center px-6 py-3.5 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 text-white font-bold rounded-xl transition-all shadow-lg shadow-indigo-600/25 text-sm cursor-pointer"
             >
               <CalendarCheck className="w-4 h-4 mr-2 group-hover:scale-110 transition-transform text-emerald-400" />

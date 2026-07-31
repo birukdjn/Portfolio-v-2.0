@@ -24,7 +24,7 @@ export default function Contact() {
   const [submitted, setSubmitted] = useState(false);
   const [copied, setCopied] = useState(false);
 
-  const emailAddress = "birukdejene45@gmail.com";
+  const emailAddress = "birukedjn@gmail.com";
 
   const handleCopyEmail = () => {
     navigator.clipboard.writeText(emailAddress);

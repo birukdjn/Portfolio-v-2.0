@@ -113,9 +113,9 @@ const socialLinks = [
   },
   { 
     name: "Email", 
-    href: "mailto:birukdejene45@gmail.com", 
+    href: "mailto:birukedjn@gmail.com", 
     icon: Mail, 
-    username: "birukdejene45@gmail.com",
+    username: "birukedjn@gmail.com",
     status: "active"
   }
 ];
