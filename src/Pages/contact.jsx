@@ -42,7 +42,7 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="relative w-full py-20 bg-slate-950 text-white overflow-hidden">
+    <section id="contact" className="relative w-full py-14 sm:py-20 bg-slate-950 text-white overflow-hidden">
       {/* Toast Notification */}
       <AnimatePresence>
         {copied && (
@@ -70,18 +70,18 @@ export default function Contact() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="text-center space-y-3"
+          className="text-center space-y-2 sm:space-y-3"
         >
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-white">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-white">
             Get In <span className="bg-gradient-to-r from-indigo-400 to-purple-300 bg-clip-text text-transparent">Touch</span>
           </h2>
-          <p className="text-base sm:text-lg text-slate-400 max-w-xl mx-auto">
+          <p className="text-sm sm:text-base text-slate-400 max-w-xl mx-auto px-2">
             Available for remote software engineering roles, full-stack development contracts, and technical consulting.
           </p>
         </motion.div>
 
         {/* Contact Grid */}
-        <div className="grid lg:grid-cols-12 gap-8 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 items-start">
           {/* Left Column: Direct Links & Info */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}

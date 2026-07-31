@@ -81,7 +81,7 @@ export default function Footer() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
             viewport={{ once: true }}
-            className="grid grid-cols-2 lg:grid-cols-4 gap-6 mb-12"
+            className="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6 mb-10 sm:mb-12"
           >
             {stats.map((stat, index) => (
               <motion.div
@@ -108,7 +108,7 @@ export default function Footer() {
           </motion.div>
 
         {/* Links Grid */}
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-8 mb-10 sm:mb-12">
             {/* Quick Links */}
             <motion.div
               initial={{ opacity: 0, x: -20 }}
@@ -195,7 +195,7 @@ export default function Footer() {
               <Terminal className="w-5 h-5 text-indigo-400" />
               <span>Connect With Me</span>
             </h3>
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-2 gap-3">
               {socialLinks.map((social, index) => (
                 <motion.a
                   key={social.name}

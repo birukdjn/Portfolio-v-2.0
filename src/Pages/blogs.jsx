@@ -25,7 +25,7 @@ export default function Blogs() {
   return (
     <section
       id="blogs"
-      className="relative py-20 bg-gradient-to-br from-slate-950 via-indigo-950 to-slate-950 text-white overflow-hidden"
+      className="relative py-14 sm:py-20 bg-gradient-to-br from-slate-950 via-indigo-950 to-slate-950 text-white overflow-hidden"
     >
       {/* Consistent Animated Background */}
       <div className="absolute inset-0 overflow-hidden">
@@ -70,22 +70,22 @@ export default function Blogs() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="text-center mb-10 sm:mb-16"
         >
-          <h2 className="text-3xl md:text-4xl font-black text-white mb-3">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-black text-white mb-2 sm:mb-3">
             My{" "}
             <span className="bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
               Blog
             </span>
           </h2>
-          <p className="text-lg text-gray-300 max-w-xl mx-auto">
+          <p className="text-sm sm:text-base text-gray-300 max-w-xl mx-auto px-2">
             Sharing insights, tutorials, and thoughts about web development and
             modern technologies
           </p>
         </motion.div>
 
         {/* Blogs Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6 mb-10 sm:mb-12">
           {latestBlogs.map((blog, index) => (
             <motion.article
               key={blog.title}
@@ -144,7 +144,7 @@ export default function Blogs() {
                 </div>
 
                 {/* Blog Content */}
-                <div className="p-5 flex-1 flex flex-col">
+                <div className="p-4 sm:p-5 flex-1 flex flex-col">
                   {/* Git Stats */}
                   <div className="flex justify-between items-center mb-3 text-xs text-gray-400">
                     <div className="flex items-center space-x-3">

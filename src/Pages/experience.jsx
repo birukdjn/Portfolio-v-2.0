@@ -6,7 +6,7 @@ import { GitBranch, GitCommit, MapPin, Calendar, Building2, CheckCircle2 } from 
 
 export default function Experience() {
   return (
-    <section id="experience" className="relative w-full py-20 bg-slate-950 text-white overflow-hidden">
+    <section id="experience" className="relative w-full py-14 sm:py-20 bg-slate-950 text-white overflow-hidden">
       {/* Background Gradients */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-1/2 left-1/4 w-96 h-96 bg-indigo-600/10 rounded-full blur-3xl animate-float-slow" />
@@ -19,18 +19,18 @@ export default function Experience() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="text-center mb-16 space-y-3"
+          className="text-center mb-10 sm:mb-16 space-y-2 sm:space-y-3"
         >
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-white">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-white">
             Work <span className="bg-gradient-to-r from-indigo-400 to-purple-300 bg-clip-text text-transparent">Experience</span>
           </h2>
-          <p className="text-base sm:text-lg text-slate-400 max-w-xl mx-auto">
+          <p className="text-sm sm:text-base text-slate-400 max-w-xl mx-auto px-2">
             Track record in software engineering, payment integrations, backend microservices, and enterprise applications.
           </p>
         </motion.div>
 
         {/* Timeline Container */}
-        <div className="relative border-l-2 border-indigo-500/30 ml-4 sm:ml-8 lg:ml-12 space-y-12 pl-6 sm:pl-10">
+        <div className="relative border-l-2 border-indigo-500/30 ml-3 sm:ml-8 lg:ml-12 space-y-8 sm:space-y-12 pl-5 sm:pl-10">
           {experiences.map((exp, index) => (
             <motion.div
               key={exp.title + exp.company}
@@ -41,16 +41,16 @@ export default function Experience() {
               className="relative group"
             >
               {/* Timeline Dot Icon */}
-              <div className="absolute -left-[31px] sm:-left-[47px] top-1 p-2 bg-slate-900 border-2 border-indigo-500 rounded-full text-indigo-400 group-hover:bg-indigo-600 group-hover:text-white transition-all shadow-lg">
+              <div className="absolute -left-[28px] sm:-left-[47px] top-1 p-1.5 sm:p-2 bg-slate-900 border-2 border-indigo-500 rounded-full text-indigo-400 group-hover:bg-indigo-600 group-hover:text-white transition-all shadow-lg">
                 {exp.icon}
               </div>
 
               {/* Card Body */}
-              <div className="bg-slate-900/80 backdrop-blur-xl border border-slate-800 hover:border-indigo-500/40 rounded-2xl p-6 sm:p-8 shadow-xl transition-all space-y-4">
+              <div className="bg-slate-900/80 backdrop-blur-xl border border-slate-800 hover:border-indigo-500/40 rounded-xl sm:rounded-2xl p-4 sm:p-6 lg:p-8 shadow-xl transition-all space-y-4">
                 {/* Header Row */}
                 <div className="flex flex-col md:flex-row md:items-center justify-between gap-2 pb-3 border-b border-slate-800">
                   <div>
-                    <h3 className="text-xl font-bold text-white group-hover:text-indigo-300 transition-colors">
+                    <h3 className="text-base sm:text-xl font-bold text-white group-hover:text-indigo-300 transition-colors">
                       {exp.title}
                     </h3>
                     <div className="flex flex-wrap items-center gap-3 text-sm text-indigo-300 font-semibold mt-1">

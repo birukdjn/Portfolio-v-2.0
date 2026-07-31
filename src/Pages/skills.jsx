@@ -21,7 +21,7 @@ export default function Skills() {
   };
 
   return (
-    <section id="skills" className="relative w-full py-20 bg-slate-950 text-white overflow-hidden">
+    <section id="skills" className="relative w-full py-14 sm:py-20 bg-slate-950 text-white overflow-hidden">
       {/* Ambient Glow */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-1/4 right-1/4 w-96 h-96 bg-purple-600/10 rounded-full blur-3xl animate-float-slow" />
@@ -34,18 +34,18 @@ export default function Skills() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="text-center mb-16 space-y-3"
+          className="text-center mb-10 sm:mb-16 space-y-2 sm:space-y-3"
         >
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-white">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-white">
             Technical <span className="bg-gradient-to-r from-indigo-400 to-purple-300 bg-clip-text text-transparent">Proficiency</span>
           </h2>
-          <p className="text-base sm:text-lg text-slate-400 max-w-xl mx-auto">
+          <p className="text-sm sm:text-base text-slate-400 max-w-xl mx-auto px-2">
             Comprehensive full-stack tech stack specializing in .NET backend systems, modern React/Next.js frontends, and cloud infrastructure.
           </p>
         </motion.div>
 
         {/* Skills Grid */}
-        <div className="grid md:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-8">
           {Object.entries(skills).map(([category, items], categoryIdx) => (
             <motion.div
               key={category}
@@ -53,14 +53,14 @@ export default function Skills() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: categoryIdx * 0.1 }}
               viewport={{ once: true }}
-              className="bg-slate-900/80 backdrop-blur-xl border border-slate-800 hover:border-indigo-500/40 rounded-2xl p-6 sm:p-8 shadow-xl transition-all space-y-6"
+              className="bg-slate-900/80 backdrop-blur-xl border border-slate-800 hover:border-indigo-500/40 rounded-xl sm:rounded-2xl p-4 sm:p-6 lg:p-8 shadow-xl transition-all space-y-5"
             >
               {/* Category Header */}
               <div className="flex items-center space-x-3 pb-3 border-b border-slate-800">
                 <div className="p-2 bg-indigo-950 border border-indigo-500/30 rounded-lg">
                   {getCategoryIcon(category)}
                 </div>
-                <h3 className="text-xl font-bold text-white">{category}</h3>
+                <h3 className="text-base sm:text-lg font-bold text-white">{category}</h3>
               </div>
 
               {/* Skills List */}
