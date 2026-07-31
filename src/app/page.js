@@ -9,20 +9,16 @@ const Experience = dynamic(() => import("../Pages/experience"), { ssr: false });
 const Blogs = dynamic(() => import("../Pages/blogs"), { ssr: false });
 const Contact = dynamic(() => import("../Pages/contact"), { ssr: false });
 
-
 export default function Home() {
-
   return (
-    <div className="min-h-screen transition-colors duration-300">
-        
-          <Hero />
-          <About />
-          <Skills />
-          <Projects />
-          <Experience />
-          <Blogs />
-          <Contact />
-        
-    </div>
+    <main id="main-content" className="min-h-screen transition-colors duration-300">
+      <Hero />
+      <About />
+      <Skills />
+      <Projects />
+      <Experience />
+      <Blogs />
+      <Contact />
+    </main>
   );
 }

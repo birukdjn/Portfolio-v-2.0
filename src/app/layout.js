@@ -15,25 +15,33 @@ const jetbrainsMono = JetBrains_Mono({
   display: "swap",
 });
 
+export const viewport = {
+  themeColor: "#0d1117",
+  width: "device-width",
+  initialScale: 1,
+};
+
 export const metadata = {
   metadataBase: new URL("https://birukdjn.vercel.app"),
   title: {
-    default: "Biruk Dejene | Full-Stack & Payment Gateway Engineer",
+    default: "Biruk Dejene | Software Engineer & Payment Systems Developer",
     template: "%s | Biruk Dejene",
   },
-  description: "Senior Full-Stack Software Engineer specializing in .NET Core, C#, ASP.NET, React 19, Next.js 16, and secure Payment Gateway Integrations. OCI Certified Architect.",
+  description: "Software Engineer specializing in .NET Core, C#, ASP.NET, React 19, Next.js 16, microservices, and secure Payment Gateway Integrations. Open for international remote opportunities.",
   keywords: [
     "Biruk Dejene",
-    "Full Stack Developer",
-    "Software Engineer Ethiopia",
-    ".NET Developer",
-    "React Developer",
-    "Payment Gateway Engineer",
-    "ASP.NET Core Engineer",
-    "Next.js Developer",
+    "Software Engineer",
+    "Full Stack Engineer",
     "Remote Software Engineer",
-    "Arifpay Software Engineer",
-    "Hawassa University Computer Science"
+    ".NET Core Engineer",
+    "C# Developer",
+    "ASP.NET Core Web API",
+    "Payment Gateway Engineer",
+    "React 19 Developer",
+    "Next.js 16 Developer",
+    "Microservices Developer",
+    "PostgreSQL",
+    "OCI Certified Architect"
   ],
   authors: [{ name: "Biruk Dejene", url: "https://github.com/birukdjn" }],
   creator: "Biruk Dejene",
@@ -51,21 +59,21 @@ export const metadata = {
     locale: "en_US",
     url: "https://birukdjn.vercel.app",
     siteName: "Biruk Dejene Portfolio",
-    title: "Biruk Dejene | Full-Stack & Payment Gateway Engineer",
-    description: "Full-Stack Software Engineer building scalable web applications, .NET microservices, and secure payment processing engines.",
+    title: "Biruk Dejene | Software Engineer & Payment Systems Developer",
+    description: "Software Engineer building scalable web applications, enterprise .NET microservices, and secure payment processing engines. Open for international remote roles.",
     images: [
       {
         url: "/logo.png",
         width: 512,
         height: 512,
-        alt: "Biruk Dejene - Full Stack Engineer Logo",
+        alt: "Biruk Dejene - Software Engineer Portfolio",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Biruk Dejene | Full-Stack & Payment Gateway Engineer",
-    description: "Full-Stack Software Engineer building enterprise .NET backend APIs, React/Next.js frontends, and payment solutions.",
+    title: "Biruk Dejene | Software Engineer & Payment Gateway Specialist",
+    description: "Software Engineer building enterprise .NET backend APIs, React/Next.js frontends, and payment solutions. Available for remote roles.",
     creator: "@birukdjn",
     images: ["/logo.png"],
   },
@@ -89,7 +97,7 @@ const jsonLd = {
       "@type": "Person",
       "@id": "https://birukdjn.vercel.app/#person",
       "name": "Biruk Dejene",
-      "jobTitle": "Full-Stack Software Engineer",
+      "jobTitle": "Software Engineer",
       "worksFor": {
         "@type": "Organization",
         "name": "Arifpay Financial Technologies",
@@ -108,22 +116,22 @@ const jsonLd = {
       ],
       "knowsAbout": [
         "Software Engineering",
-        ".NET Core",
-        "C#",
-        "Payment Gateway Integration",
-        "React",
-        "Next.js",
+        "Payment Gateway Systems",
+        ".NET Core / C#",
+        "ASP.NET Core Web API",
+        "React & Next.js",
         "TypeScript",
-        "PostgreSQL",
-        "Oracle Cloud Infrastructure",
-        "REST API Architecture"
+        "PostgreSQL & Database Design",
+        "Microservices Architecture",
+        "Docker & CI/CD",
+        "OWASP & Application Security"
       ]
     },
     {
       "@type": "WebSite",
       "@id": "https://birukdjn.vercel.app/#website",
       "url": "https://birukdjn.vercel.app",
-      "name": "Biruk Dejene Portfolio",
+      "name": "Biruk Dejene - Software Engineer Portfolio",
       "publisher": {
         "@id": "https://birukdjn.vercel.app/#person"
       }
@@ -135,6 +143,8 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" className={`${inter.variable} ${jetbrainsMono.variable}`} suppressHydrationWarning>
       <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}

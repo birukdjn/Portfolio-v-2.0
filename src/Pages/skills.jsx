@@ -1,19 +1,19 @@
 "use client";
 
 import { motion } from "framer-motion";
-import skills from "../Data/skillsData";
-import { Cpu, Terminal, ShieldCheck, Database, Cloud, Code2, CheckCircle2 } from "lucide-react";
+import skills, { currentlyExploring } from "../Data/skillsData";
+import { Cpu, ShieldCheck, Database, Cloud, Code2, CheckCircle2, Sparkles } from "lucide-react";
 
 export default function Skills() {
   const getCategoryIcon = (category) => {
     switch (category) {
-      case "Backend & Security":
+      case "Backend & APIs":
         return <ShieldCheck className="w-5 h-5 text-indigo-400" />;
-      case "Frontend Engineering":
+      case "Frontend & Web Apps":
         return <Code2 className="w-5 h-5 text-indigo-400" />;
-      case "Databases & Caching":
+      case "Databases & Storage":
         return <Database className="w-5 h-5 text-indigo-400" />;
-      case "Cloud & Infrastructure":
+      case "Cloud, DevOps & Security":
         return <Cloud className="w-5 h-5 text-indigo-400" />;
       default:
         return <Cpu className="w-5 h-5 text-indigo-400" />;
@@ -40,7 +40,7 @@ export default function Skills() {
             Technical <span className="bg-gradient-to-r from-indigo-400 to-purple-300 bg-clip-text text-transparent">Proficiency</span>
           </h2>
           <p className="text-sm sm:text-base text-slate-400 max-w-xl mx-auto px-2">
-            Comprehensive full-stack tech stack specializing in .NET backend systems, modern React/Next.js frontends, and cloud infrastructure.
+            Comprehensive tech stack specializing in .NET Core backend systems, RESTful microservices, React/Next.js, and cloud infrastructure.
           </p>
         </motion.div>
 
@@ -67,12 +67,14 @@ export default function Skills() {
               <div className="space-y-4">
                 {items.map((skill) => (
                   <div key={skill.name} className="space-y-1.5">
-                    <div className="flex items-center justify-between text-sm">
+                    <div className="flex items-center justify-between text-xs sm:text-sm">
                       <span className="font-semibold text-slate-200 flex items-center space-x-1.5">
-                        <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" />
+                        <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
                         <span>{skill.name}</span>
                       </span>
-                      <span className="text-xs font-mono text-slate-400">{skill.experience}</span>
+                      <span className="text-[11px] font-mono px-2 py-0.5 rounded bg-indigo-950 text-indigo-300 border border-indigo-500/20">
+                        {skill.experience}
+                      </span>
                     </div>
 
                     {/* Progress Bar */}
@@ -91,6 +93,32 @@ export default function Skills() {
             </motion.div>
           ))}
         </div>
+
+        {/* Currently Exploring / Continuous Learning */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+          viewport={{ once: true }}
+          className="mt-10 sm:mt-12 bg-slate-900/60 backdrop-blur-xl border border-indigo-500/20 rounded-2xl p-6 text-center space-y-4"
+        >
+          <div className="flex items-center justify-center space-x-2 text-indigo-400 font-semibold text-sm">
+            <Sparkles className="w-4 h-4" />
+            <span>Currently Exploring &amp; Expanding</span>
+          </div>
+          
+          <div className="flex flex-wrap justify-center gap-3">
+            {currentlyExploring.map((tech) => (
+              <div 
+                key={tech.name} 
+                className="flex items-center space-x-2 px-3 py-1.5 rounded-lg bg-slate-800/80 border border-slate-700 text-xs sm:text-sm font-mono text-slate-300"
+              >
+                <span>{tech.icon}</span>
+                <span>{tech.name}</span>
+              </div>
+            ))}
+          </div>
+        </motion.div>
       </div>
     </section>
   );

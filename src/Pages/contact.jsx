@@ -36,7 +36,12 @@ export default function Contact() {
     e.preventDefault();
     if (formData.name && formData.email && formData.message) {
       setSubmitted(true);
-      setTimeout(() => setSubmitted(false), 5000);
+      // Open email client with prefilled parameters
+      const subject = encodeURIComponent(`Portfolio Inquiry from ${formData.name}`);
+      const body = encodeURIComponent(`Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`);
+      window.location.href = `mailto:${emailAddress}?subject=${subject}&body=${body}`;
+
+      setTimeout(() => setSubmitted(false), 6000);
       setFormData({ name: "", email: "", message: "" });
     }
   };
@@ -102,6 +107,9 @@ export default function Contact() {
                   onClick={handleCopyEmail}
                   className="flex items-center justify-between p-3 bg-slate-950 border border-slate-800 hover:border-indigo-500/40 rounded-xl transition-all group cursor-pointer"
                   title="Click to copy email address"
+                  role="button"
+                  tabIndex={0}
+                  onKeyDown={(e) => e.key === 'Enter' && handleCopyEmail()}
                 >
                   <div className="flex items-center space-x-3">
                     <div className="p-2 bg-indigo-950 border border-indigo-500/30 rounded-lg text-indigo-400">
@@ -115,7 +123,7 @@ export default function Contact() {
                     </div>
                   </div>
 
-                  <button className="p-1.5 text-slate-400 group-hover:text-indigo-300">
+                  <button className="p-1.5 text-slate-400 group-hover:text-indigo-300" aria-label="Copy Email">
                     {copied ? <Check className="w-4 h-4 text-emerald-400" /> : <Copy className="w-4 h-4" />}
                   </button>
                 </div>
@@ -124,6 +132,7 @@ export default function Contact() {
                   href="https://linkedin.com/in/birukdjn"
                   target="_blank"
                   rel="noopener noreferrer"
+                  aria-label="LinkedIn Profile"
                   className="flex items-center space-x-3 p-3 bg-slate-950 border border-slate-800 hover:border-indigo-500/40 rounded-xl transition-all group"
                 >
                   <div className="p-2 bg-indigo-950 border border-indigo-500/30 rounded-lg text-indigo-400">
@@ -141,6 +150,7 @@ export default function Contact() {
                   href="https://github.com/birukdjn"
                   target="_blank"
                   rel="noopener noreferrer"
+                  aria-label="GitHub Profile"
                   className="flex items-center space-x-3 p-3 bg-slate-950 border border-slate-800 hover:border-indigo-500/40 rounded-xl transition-all group"
                 >
                   <div className="p-2 bg-indigo-950 border border-indigo-500/30 rounded-lg text-indigo-400">
@@ -159,7 +169,7 @@ export default function Contact() {
                     <MapPin className="w-4 h-4" />
                   </div>
                   <div>
-                    <div className="text-xs text-slate-400 font-mono">Location</div>
+                    <div className="text-xs text-slate-400 font-mono">Location &amp; Availability</div>
                     <div className="font-semibold text-white">
                       Addis Ababa, Ethiopia (UTC+3) • Open to Remote
                     </div>
@@ -186,13 +196,14 @@ export default function Contact() {
               {submitted && (
                 <div className="p-4 bg-emerald-950/80 border border-emerald-500/40 rounded-xl text-emerald-300 text-sm flex items-center space-x-2">
                   <CheckCircle2 className="w-4 h-4 shrink-0" />
-                  <span>Thank you! Your message has been sent successfully. I will get back to you shortly.</span>
+                  <span>Launching your email client to transmit this message... Thank you!</span>
                 </div>
               )}
 
               <div className="space-y-1">
-                <label className="block text-xs font-mono text-slate-400">Your Name</label>
+                <label htmlFor="contact-name" className="block text-xs font-mono text-slate-400">Your Name</label>
                 <input
+                  id="contact-name"
                   type="text"
                   required
                   value={formData.name}
@@ -203,8 +214,9 @@ export default function Contact() {
               </div>
 
               <div className="space-y-1">
-                <label className="block text-xs font-mono text-slate-400">Email Address</label>
+                <label htmlFor="contact-email" className="block text-xs font-mono text-slate-400">Email Address</label>
                 <input
+                  id="contact-email"
                   type="email"
                   required
                   value={formData.email}
@@ -215,8 +227,9 @@ export default function Contact() {
               </div>
 
               <div className="space-y-1">
-                <label className="block text-xs font-mono text-slate-400">Message</label>
+                <label htmlFor="contact-message" className="block text-xs font-mono text-slate-400">Message</label>
                 <textarea
+                  id="contact-message"
                   required
                   rows={4}
                   value={formData.message}
@@ -228,7 +241,7 @@ export default function Contact() {
 
               <button
                 type="submit"
-                className="w-full inline-flex items-center justify-center space-x-2 px-6 py-3.5 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 text-white font-semibold rounded-xl transition-all shadow-lg shadow-indigo-600/25 text-sm"
+                className="w-full inline-flex items-center justify-center space-x-2 px-6 py-3.5 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 text-white font-semibold rounded-xl transition-all shadow-lg shadow-indigo-600/25 text-sm cursor-pointer"
               >
                 <Send className="w-4 h-4" />
                 <span>Send Message</span>

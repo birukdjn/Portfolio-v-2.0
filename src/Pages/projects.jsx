@@ -15,7 +15,9 @@ import {
   Maximize2,
   GitBranch,
   Code,
-  ArrowRight
+  Zap,
+  TrendingUp,
+  UserCheck
 } from "lucide-react";
 
 const GithubIcon = (props) => (
@@ -44,6 +46,7 @@ export default function Projects() {
       p.title.toLowerCase().includes(query) ||
       p.description.toLowerCase().includes(query) ||
       p.tags.some((t) => t.toLowerCase().includes(query)) ||
+      (p.role && p.role.toLowerCase().includes(query)) ||
       (p.problemSolved && p.problemSolved.toLowerCase().includes(query));
 
     return matchesCategory && matchesQuery;
@@ -69,7 +72,7 @@ export default function Projects() {
             Featured <span className="bg-gradient-to-r from-indigo-400 to-purple-300 bg-clip-text text-transparent">Projects</span>
           </h2>
           <p className="text-sm sm:text-base text-slate-400 max-w-2xl mx-auto px-2">
-            Production solutions, enterprise microservices, and open-source applications engineered for high performance and reliability.
+            Production software systems, enterprise microservices, and high-impact full-stack solutions engineered for scale and reliability.
           </p>
 
           {/* Search Bar & Filter Controls */}
@@ -81,13 +84,14 @@ export default function Projects() {
                 type="text"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                placeholder="Search by tech, keyword, or feature (C#, Payment, Next.js)..."
+                placeholder="Search by tech, keyword, or role (C#, Payment, Docker)..."
                 className="w-full pl-10 pr-9 py-2.5 bg-slate-900 border border-slate-800 focus:border-indigo-500 rounded-xl text-xs sm:text-sm text-slate-200 placeholder-slate-500 focus:outline-none transition-colors"
               />
               {searchQuery && (
                 <button
                   onClick={() => setSearchQuery("")}
                   className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-white"
+                  aria-label="Clear search query"
                 >
                   <X className="w-4 h-4" />
                 </button>
@@ -142,20 +146,20 @@ export default function Projects() {
               className="bg-slate-900/80 backdrop-blur-xl border border-slate-800 hover:border-indigo-500/40 rounded-2xl p-5 sm:p-7 shadow-xl transition-all flex flex-col justify-between space-y-5 group"
             >
               <div className="space-y-4">
-                {/* Title & Quick View */}
+                {/* Title, Role & Quick View */}
                 <div className="flex items-start justify-between gap-3 pb-3 border-b border-slate-800">
                   <div className="space-y-1">
                     <h3 className="text-lg sm:text-xl font-bold text-white group-hover:text-indigo-300 transition-colors">
                       {project.title}
                     </h3>
-                    <div className="flex items-center space-x-2">
+                    <div className="flex flex-wrap items-center gap-2 pt-0.5">
                       <span className="text-xs font-mono text-indigo-400 bg-indigo-950/80 px-2.5 py-0.5 rounded border border-indigo-500/30">
                         {project.language}
                       </span>
-                      {project.branch && (
-                        <span className="text-[11px] font-mono text-slate-400 flex items-center space-x-1">
-                          <GitBranch className="w-3 h-3 text-indigo-400" />
-                          <span>{project.branch}</span>
+                      {project.role && (
+                        <span className="text-[11px] font-mono text-slate-300 bg-slate-800 px-2 py-0.5 rounded flex items-center space-x-1">
+                          <UserCheck className="w-3 h-3 text-emerald-400" />
+                          <span>{project.role}</span>
                         </span>
                       )}
                     </div>
@@ -164,7 +168,8 @@ export default function Projects() {
                   <button
                     onClick={() => setActiveModalProject(project)}
                     className="p-2 bg-slate-800 hover:bg-slate-700 text-indigo-300 hover:text-white rounded-lg transition-colors shrink-0"
-                    title="Quick View Details"
+                    title="Quick View Architecture & Details"
+                    aria-label="Quick View Details"
                   >
                     <Maximize2 className="w-4 h-4" />
                   </button>
@@ -174,6 +179,19 @@ export default function Projects() {
                 <p className="text-slate-300 text-xs sm:text-sm leading-relaxed">
                   {project.description}
                 </p>
+
+                {/* Business Impact Highlight */}
+                {project.impact && (
+                  <div className="bg-indigo-950/40 border border-indigo-500/30 rounded-xl p-3 space-y-1 text-xs">
+                    <div className="text-indigo-300 font-semibold flex items-center space-x-1.5">
+                      <TrendingUp className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
+                      <span>Business &amp; System Impact:</span>
+                    </div>
+                    <p className="text-slate-200 leading-normal font-medium">
+                      {project.impact}
+                    </p>
+                  </div>
+                )}
 
                 {/* Problem Solved */}
                 {project.problemSolved && (
@@ -193,7 +211,7 @@ export default function Projects() {
                   <div className="space-y-1.5 pt-1">
                     <div className="text-xs font-mono text-slate-400 flex items-center space-x-1">
                       <Cpu className="w-3.5 h-3.5 text-indigo-400" />
-                      <span>Key Features:</span>
+                      <span>Key Features &amp; Capabilities:</span>
                     </div>
                     <ul className="space-y-1 text-xs text-slate-300">
                       {project.keyFeatures.slice(0, 3).map((feat, i) => (
@@ -223,7 +241,7 @@ export default function Projects() {
                   ))}
                 </div>
 
-                {/* Side-by-Side Action Buttons */}
+                {/* Action Buttons */}
                 <div className="grid grid-cols-2 gap-3 pt-1">
                   {project.repoUrl ? (
                     <a
@@ -258,127 +276,115 @@ export default function Projects() {
           ))}
         </div>
 
-        {/* Bottom Call-To-Action Buttons: View All Projects & Visit GitHub Profile */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.3 }}
-          viewport={{ once: true }}
-          className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-6"
-        >
+        {/* View All Projects Button Footer */}
+        <div className="text-center pt-4">
           <Link
             href="/allProjects"
-            className="w-full sm:w-auto inline-flex items-center justify-center space-x-2 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 text-white px-8 py-3.5 rounded-xl font-bold text-sm shadow-xl transition-all transform hover:scale-105"
+            className="inline-flex items-center space-x-2 bg-slate-900 border border-indigo-500/30 hover:border-indigo-500 text-slate-200 hover:text-white px-6 py-3 rounded-xl font-mono text-xs sm:text-sm transition-all"
           >
-            <span>View All Projects</span>
-            <ArrowRight className="w-4 h-4" />
+            <Layers className="w-4 h-4 text-indigo-400" />
+            <span>Explore All Projects &amp; Repositories</span>
           </Link>
-
-          <a
-            href="https://github.com/birukdjn"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="w-full sm:w-auto inline-flex items-center justify-center space-x-2 bg-slate-900 border border-slate-700 hover:border-indigo-500 hover:bg-slate-800 text-slate-200 hover:text-white px-8 py-3.5 rounded-xl font-bold text-sm transition-all transform hover:scale-105"
-          >
-            <GithubIcon className="w-4 h-4" />
-            <span>Visit GitHub Profile</span>
-          </a>
-        </motion.div>
+        </div>
       </div>
 
-      {/* Project Quick View Modal */}
+      {/* Quick View Modal */}
       <AnimatePresence>
         {activeModalProject && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-md overflow-y-auto">
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex items-center justify-center p-4 overflow-y-auto"
+            onClick={() => setActiveModalProject(null)}
+          >
             <motion.div
-              initial={{ opacity: 0, scale: 0.95, y: 20 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.95, y: 20 }}
-              className="bg-slate-900 border border-slate-800 rounded-2xl max-w-2xl w-full p-6 sm:p-8 space-y-6 shadow-2xl relative my-8"
+              initial={{ scale: 0.9, y: 20 }}
+              animate={{ scale: 1, y: 0 }}
+              exit={{ scale: 0.9, y: 20 }}
+              className="bg-slate-900 border border-indigo-500/30 rounded-2xl p-6 sm:p-8 max-w-2xl w-full shadow-2xl space-y-6 max-h-[90vh] overflow-y-auto"
+              onClick={(e) => e.stopPropagation()}
             >
-              {/* Modal Close Button */}
-              <button
-                onClick={() => setActiveModalProject(null)}
-                className="absolute top-4 right-4 p-2 text-slate-400 hover:text-white rounded-lg bg-slate-800/80 transition-colors"
-              >
-                <X className="w-5 h-5" />
-              </button>
-
               {/* Modal Header */}
-              <div className="space-y-2 pr-8">
-                <h3 className="text-2xl font-bold text-white">
-                  {activeModalProject.title}
-                </h3>
-                <div className="flex flex-wrap items-center gap-2">
-                  <span className="text-xs font-mono text-indigo-400 bg-indigo-950 px-3 py-1 rounded border border-indigo-500/30">
-                    {activeModalProject.language}
-                  </span>
-                  <span className="text-xs font-mono text-slate-400 bg-slate-800 px-3 py-1 rounded">
-                    {activeModalProject.status || "Active"}
-                  </span>
+              <div className="flex items-start justify-between pb-4 border-b border-slate-800">
+                <div>
+                  <h3 className="text-xl sm:text-2xl font-bold text-white">
+                    {activeModalProject.title}
+                  </h3>
+                  {activeModalProject.role && (
+                    <p className="text-xs text-indigo-300 font-mono mt-1">
+                      Role: {activeModalProject.role}
+                    </p>
+                  )}
                 </div>
+                <button
+                  onClick={() => setActiveModalProject(null)}
+                  className="p-1.5 bg-slate-800 hover:bg-slate-700 text-slate-400 hover:text-white rounded-lg transition-colors"
+                  aria-label="Close modal"
+                >
+                  <X className="w-5 h-5" />
+                </button>
               </div>
 
-              {/* Description */}
-              <p className="text-slate-300 text-sm leading-relaxed">
-                {activeModalProject.description}
-              </p>
-
-              {/* Problem Solved */}
-              {activeModalProject.problemSolved && (
-                <div className="bg-slate-950 border border-slate-800 rounded-xl p-4 space-y-1">
-                  <div className="text-indigo-300 font-semibold text-xs flex items-center space-x-1.5">
-                    <AlertCircle className="w-4 h-4 text-indigo-400" />
-                    <span>Problem Solved</span>
-                  </div>
-                  <p className="text-slate-300 text-xs sm:text-sm leading-relaxed">
-                    {activeModalProject.problemSolved}
+              {/* Architecture & Problem Details */}
+              <div className="space-y-4 text-xs sm:text-sm">
+                <div>
+                  <h4 className="text-slate-400 font-mono text-xs font-semibold mb-1 uppercase tracking-wider">
+                    Overview
+                  </h4>
+                  <p className="text-slate-200 leading-relaxed">
+                    {activeModalProject.description}
                   </p>
                 </div>
-              )}
 
-              {/* Architecture */}
-              {activeModalProject.architecture && (
-                <div className="bg-slate-950 border border-slate-800 rounded-xl p-4 space-y-1">
-                  <div className="text-purple-300 font-semibold text-xs flex items-center space-x-1.5">
-                    <Layers className="w-4 h-4 text-purple-400" />
-                    <span>System Architecture</span>
+                {activeModalProject.impact && (
+                  <div className="p-3 bg-indigo-950/60 border border-indigo-500/30 rounded-xl">
+                    <h4 className="text-indigo-300 font-semibold text-xs mb-1">
+                      Business &amp; Technical Impact
+                    </h4>
+                    <p className="text-slate-200">{activeModalProject.impact}</p>
                   </div>
-                  <p className="text-slate-300 text-xs sm:text-sm leading-relaxed">
-                    {activeModalProject.architecture}
-                  </p>
-                </div>
-              )}
+                )}
 
-              {/* Key Features */}
-              {activeModalProject.keyFeatures && (
-                <div className="space-y-2">
-                  <div className="text-xs font-mono text-slate-400 flex items-center space-x-1.5">
-                    <Code className="w-4 h-4 text-indigo-400" />
-                    <span>All Key Features</span>
+                {activeModalProject.architecture && (
+                  <div>
+                    <h4 className="text-indigo-400 font-mono text-xs font-semibold mb-1 uppercase tracking-wider">
+                      System Architecture
+                    </h4>
+                    <p className="text-slate-300 bg-slate-950 p-3 rounded-xl border border-slate-800 font-mono text-xs leading-relaxed">
+                      {activeModalProject.architecture}
+                    </p>
                   </div>
-                  <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs text-slate-300">
-                    {activeModalProject.keyFeatures.map((feat, i) => (
-                      <li key={i} className="flex items-start space-x-2 bg-slate-950/60 p-2.5 rounded-lg border border-slate-800">
-                        <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
-                        <span>{feat}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              )}
+                )}
 
-              {/* Action Buttons inside Modal */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-4 border-t border-slate-800">
+                {activeModalProject.keyFeatures && (
+                  <div>
+                    <h4 className="text-slate-400 font-mono text-xs font-semibold mb-2 uppercase tracking-wider">
+                      All Key Features
+                    </h4>
+                    <ul className="space-y-1.5 text-slate-300">
+                      {activeModalProject.keyFeatures.map((feat, i) => (
+                        <li key={i} className="flex items-start space-x-2">
+                          <CheckCircle2 className="w-4 h-4 text-emerald-400 mt-0.5 shrink-0" />
+                          <span>{feat}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+              </div>
+
+              {/* Modal Actions */}
+              <div className="flex gap-3 pt-4 border-t border-slate-800">
                 {activeModalProject.repoUrl && (
                   <a
                     href={activeModalProject.repoUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center justify-center space-x-2 px-4 py-3 bg-slate-800 hover:bg-slate-700 text-white rounded-xl text-xs font-semibold transition-colors border border-slate-700"
+                    className="flex-1 inline-flex items-center justify-center space-x-2 bg-slate-800 hover:bg-slate-700 text-slate-200 px-4 py-3 rounded-xl text-xs font-bold transition-all"
                   >
                     <GithubIcon className="w-4 h-4" />
-                    <span>Open GitHub Repository</span>
+                    <span>View Repository</span>
                   </a>
                 )}
                 {activeModalProject.liveUrl && (
@@ -386,15 +392,15 @@ export default function Projects() {
                     href={activeModalProject.liveUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center justify-center space-x-2 px-4 py-3 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 text-white rounded-xl text-xs font-semibold transition-colors shadow-lg"
+                    className="flex-1 inline-flex items-center justify-center space-x-2 bg-indigo-600 hover:bg-indigo-500 text-white px-4 py-3 rounded-xl text-xs font-bold transition-all shadow-lg"
                   >
+                    <span>Open Live Application</span>
                     <ExternalLink className="w-4 h-4" />
-                    <span>Launch Live Application</span>
                   </a>
                 )}
               </div>
             </motion.div>
-          </div>
+          </motion.div>
         )}
       </AnimatePresence>
     </section>
